@@ -298,6 +298,16 @@
       margin-bottom: 1.5rem; letter-spacing: 0.5em;
     }
 
+    .story-photos-pair {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; margin-top: 2rem;
+    }
+    .story-photos-pair .story-photo { margin-top: 0; }
+
+    @media (max-width: 860px) {
+      .story-photos-pair { grid-template-columns: 1fr; }
+    }
+
     .story-photo {
       margin-top: 2rem; overflow: hidden;
       border: 1px solid var(--rule);
@@ -702,13 +712,15 @@
       <h2>Two Gabrieles.<br><em>One block.</em></h2>
       <br>
       <span class="ornament">&#8767; &#8767; &#8767;</span>
-      <div class="story-photo">
-        <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
-        <p class="story-photo-cap">Gabriele &amp; his father</p>
-      </div>
-      <div class="story-photo" style="margin-top: 3px;">
-        <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" style="object-position: center 20%;" />
-        <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
+      <div class="story-photos-pair">
+        <div class="story-photo">
+          <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
+          <p class="story-photo-cap">Gabriele &amp; his father</p>
+        </div>
+        <div class="story-photo">
+          <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" style="object-position: center 20%;" />
+          <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
+        </div>
       </div>
     </div>
     <div class="story-right">
