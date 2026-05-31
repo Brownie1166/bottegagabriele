@@ -122,9 +122,9 @@
       height: 60px;
       border: 1px solid rgba(184,147,58,0.3);
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden; flex-shrink: 0;
+      overflow: hidden; flex-shrink: 0; background: transparent;
     }
-    .hero-logo-circle img { height: 100%; width: auto; object-fit: contain; display: block; }
+    .hero-logo-circle img { height: 100%; width: auto; object-fit: contain; display: block; mix-blend-mode: screen; }
     .hero-logo-divider {
       width: 0.5px; height: 50px;
       background: linear-gradient(to bottom, transparent, rgba(184,147,58,0.35), transparent);
@@ -505,6 +505,8 @@
       .hero-left { padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
       .hero-logos { gap: 1rem; }
       .hero-logo-circle { width: 70px; height: 70px; }
+      .bottega-logo { display: none; }
+      .hero-logo-divider { display: none; }
       .hero-logo-divider { height: 40px; }
       .hero-locs { grid-template-columns: 1fr 1fr; }
       .section { padding: 3.5rem 1.5rem; }
