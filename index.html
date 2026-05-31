@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bottega Gabriele &amp; Casa Gabriele — Seattle</title>
+  <meta name="description" content="Two Gabrieles. One block on Yesler Way. Sandwiches and a restaurant — Sardinia and Naples, imported direct." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #1B2B4B;
+      --navy-deep:  #111D33;
+      --navy-mid:   #243660;
+      --gold:       #B8933A;
+      --gold-light: #D4AA5A;
+      --gold-pale:  #F0E4C4;
+      --cream:      #F8F4EC;
+      --warm-off:   #F2EDE3;
+      --paper:      #EDE8DC;
+      --muted:      #6B6257;
+      --rule:       rgba(27,43,75,0.1);
+      --rule-light: rgba(240,228,196,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--navy-deep);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 54px;
+      border-bottom: 1px solid rgba(184,147,58,0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px; color: var(--cream);
+      letter-spacing: 0.14em; font-style: italic;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(240,228,196,0.5); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy-deep);
+      min-height: 90vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 6rem 3rem 5rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* engraving-style texture rings */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -180px; top: 50%; transform: translateY(-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      border: 1px solid rgba(184,147,58,0.08);
+      box-shadow:
+        0 0 0 40px rgba(184,147,58,0.04),
+        0 0 0 80px rgba(184,147,58,0.03),
+        0 0 0 130px rgba(184,147,58,0.02);
+      pointer-events: none;
+    }
+
+    .hero-left, .hero-right { position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-size: 10px; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ''; flex: 1; max-width: 40px;
+      height: 0.5px; background: var(--gold); opacity: 0.4;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5rem);
+      line-height: 1.05; color: var(--cream); font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+    h1 em { font-style: italic; color: var(--gold-light); display: block; }
+
+    .hero-sub {
+      font-family: 'EB Garamond', serif;
+      font-size: 11px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(240,228,196,0.4);
+      margin-top: 1.5rem; margin-bottom: 3rem;
+    }
+
+    /* logo centrepiece */
+    .hero-logo-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 2rem;
+    }
+    .hero-logo-circle {
+      width: 280px; height: 280px; border-radius: 50%;
+      border: 1px solid rgba(184,147,58,0.3);
+      box-shadow: 0 0 0 8px rgba(184,147,58,0.05), 0 0 0 16px rgba(184,147,58,0.03);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+    .hero-logo-circle img { width: 90%; height: 90%; object-fit: contain; }
+
+    .hero-locs {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; width: 100%;
+      border: 0.5px solid rgba(184,147,58,0.2);
+    }
+    .loc {
+      padding: 1.25rem 1.5rem;
+      border-right: 0.5px solid rgba(184,147,58,0.2);
+    }
+    .loc:last-child { border-right: none; }
+    .loc h4 {
+      font-size: 9px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .loc p { font-size: 11px; color: rgba(240,228,196,0.45); line-height: 1.7; }
+
+    /* ── GOLD RULE DIVIDER ── */
+    .rule-divider {
+      background: var(--navy-deep);
+      padding: 0.9rem 3rem;
+      display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+      border-top: 1px solid rgba(184,147,58,0.2);
+      border-bottom: 1px solid rgba(184,147,58,0.2);
+    }
+    .rule-divider span {
+      font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(240,228,196,0.35);
+    }
+    .rule-divider .rdot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold); opacity: 0.4;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--navy);
+      overflow: hidden; white-space: nowrap; padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(184,147,58,0.15);
+    }
+    .ticker-track { display: inline-flex; animation: tick 32s linear infinite; }
+    .t-item {
+      display: inline-flex; align-items: center; gap: 1.25rem;
+      padding: 0 1.5rem; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(240,228,196,0.45);
+    }
+    .t-item em { color: var(--gold); font-style: normal; }
+    .t-sep {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold); opacity: 0.35; flex-shrink: 0;
+    }
+    @keyframes tick { to { transform: translateX(-50%); } }
+
+    /* ── SHARED SECTION ── */
+    .section { padding: 6rem 3rem; }
+    .label {
+      font-size: 9px; letter-spacing: 0.38em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .label::after {
+      content: ''; flex: 1; max-width: 50px;
+      height: 0.5px; background: var(--gold); opacity: 0.3;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      line-height: 1.1; font-weight: 400;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+
+    /* ── STORY ── */
+    .story { background: var(--cream); }
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1.8fr;
+      gap: 7rem; align-items: start;
+    }
+    .story-left { position: sticky; top: 5rem; }
+    .story-left h2 { margin-top: 1rem; margin-bottom: 2rem; color: var(--navy); }
+
+    /* small ornament */
+    .ornament {
+      display: block; text-align: left;
+      font-size: 1.5rem; color: var(--gold); opacity: 0.5;
+      margin-bottom: 1.5rem; letter-spacing: 0.5em;
+    }
+
+    .story-right p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem; line-height: 1.95;
+      color: var(--muted); margin-bottom: 0;
+    }
+    .story-right p + p { margin-top: 1.5rem; }
+
+    /* ── VENUES ── */
+    .venues-pre { background: var(--cream); padding: 0 3rem 3rem; }
+    .venues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+
+    .venue { padding: 3.5rem; position: relative; overflow: hidden; }
+    .venue.navy { background: var(--navy-deep); }
+    .venue.gold-bg {
+      background: var(--navy-mid);
+      border-top: 2px solid var(--gold);
+    }
+
+    .venue-bg-text {
+      position: absolute; bottom: -1.5rem; right: 1rem;
+      font-family: 'Playfair Display', serif; font-size: 8rem;
+      font-weight: 700; color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+
+    .v-tag {
+      font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .v-tag::before { content: ''; width: 20px; height: 0.5px; background: var(--gold); opacity: 0.5; }
+
+    .venue h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+      line-height: 1.1; color: var(--cream); margin-bottom: 1.5rem;
+    }
+    .venue h3 em { font-style: italic; color: var(--gold-light); }
+
+    .venue p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem; line-height: 1.85;
+      color: rgba(240,228,196,0.6);
+    }
+
+    .v-meta {
+      margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 0.5px solid var(--rule-light);
+      font-size: 11px; letter-spacing: 0.07em;
+      color: rgba(240,228,196,0.3); line-height: 1.85;
+    }
+    .v-meta a { transition: color 0.2s; }
+    .v-meta a:hover { color: var(--gold-light); }
+
+    /* ── MENU SHARED ── */
+    .menu-head {
+      display: grid; grid-template-columns: 1fr 2.5fr;
+      gap: 4rem; align-items: end; margin-bottom: 3.5rem;
+    }
+    .menu-note {
+      font-family: 'EB Garamond', serif;
+      font-style: italic; font-size: 1rem;
+      line-height: 1.6; color: var(--muted);
+    }
+
+    .cat {
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+      margin-bottom: 0; padding-bottom: 0.65rem;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .cat::before { content: '◆'; font-size: 6px; color: var(--gold); opacity: 0.7; }
+
+    .items { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 3rem; }
+    .item {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1.5rem; align-items: start;
+      padding: 1.25rem 0; border-bottom: 0.5px solid var(--rule);
+    }
+    .item:nth-child(odd)  { padding-right: 2.5rem; }
+    .item:nth-child(even) { padding-left: 2.5rem; border-left: 0.5px solid var(--rule); }
+
+    .iname {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.97rem; font-weight: 400;
+      letter-spacing: 0.01em; margin-bottom: 0.3rem;
+    }
+    .idesc { font-size: 11.5px; color: var(--muted); line-height: 1.65; }
+    .iprice {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem; color: var(--gold);
+      white-space: nowrap; padding-top: 2px;
+    }
+
+    .items-3 { display: grid; grid-template-columns: repeat(3,1fr); margin-bottom: 3rem; }
+    .item-s { padding: 1.25rem 0; border-bottom: 0.5px solid var(--rule); }
+    .item-s:nth-child(n+2) { padding-left: 2.5rem; border-left: 0.5px solid var(--rule); }
+    .item-s .iprice { display: block; margin-top: 0.4rem; }
+
+    /* Bottega menu */
+    .bmenu { background: var(--cream); }
+    .bmenu .label { color: var(--gold); }
+    .bmenu h2 { color: var(--navy); }
+    .bmenu .cat { color: var(--navy); border-bottom-color: var(--rule); }
+    .bmenu .iname { color: var(--navy); }
+
+    /* Bridge */
+    .bridge {
+      background: var(--navy);
+      padding: 2rem 3rem;
+      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      border-top: 1px solid rgba(184,147,58,0.15);
+      border-bottom: 1px solid rgba(184,147,58,0.15);
+    }
+    .bridge-line { flex: 1; max-width: 80px; height: 0.5px; background: rgba(184,147,58,0.25); }
+    .bridge p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: rgba(240,228,196,0.5); font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    /* Casa menu */
+    .cmenu { background: var(--navy-deep); padding: 6rem 3rem; }
+    .cmenu .label { color: var(--gold); }
+    .cmenu h2 { color: var(--cream); }
+    .cmenu h2 em { color: var(--gold-light); }
+    .cmenu .menu-note { color: rgba(240,228,196,0.4); }
+    .cmenu .cat { color: var(--gold-pale); border-bottom-color: var(--rule-light); }
+    .cmenu .cat::before { color: var(--gold); opacity: 1; }
+    .cmenu .item { border-bottom-color: var(--rule-light); }
+    .cmenu .item:nth-child(even) { border-left-color: var(--rule-light); }
+    .cmenu .iname { color: var(--cream); }
+    .cmenu .idesc { color: rgba(240,228,196,0.45); }
+    .cmenu .items-3 .item-s { border-bottom-color: var(--rule-light); }
+    .cmenu .items-3 .item-s:nth-child(n+2) { border-left-color: var(--rule-light); }
+
+    /* ── IMPORTS ── */
+    .imports { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .imports-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: center; }
+    .imports h2 { color: var(--navy); margin-top: 1rem; margin-bottom: 1.5rem; }
+    .imports p {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem; line-height: 1.9; color: var(--muted); margin-bottom: 2rem;
+    }
+    .trigu {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      border: 0.5px solid rgba(184,147,58,0.4);
+      padding: 0.7rem 1.25rem; transition: border-color 0.2s;
+    }
+    .trigu:hover { border-color: var(--gold); }
+    .trigu span {
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .origins { list-style: none; }
+    .origin {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 1rem 0; border-bottom: 0.5px solid var(--rule);
+    }
+    .origin:first-child { border-top: 0.5px solid var(--rule); }
+    .o-glyph {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border: 0.5px solid rgba(184,147,58,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .origin h4 {
+      font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--navy);
+      margin-bottom: 0.15rem; font-weight: 400;
+    }
+    .origin span { font-size: 11px; color: var(--muted); }
+
+    /* ── FIND US ── */
+    .find { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .find-panel { padding: 4rem 3rem; }
+    .find-panel.navy { background: var(--navy-deep); }
+    .find-panel.warm { background: var(--navy); border-top: 2px solid var(--gold); }
+
+    .find-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-style: italic;
+      color: var(--cream); font-weight: 400; margin-bottom: 2.5rem;
+    }
+
+    .find-detail { margin-bottom: 1.5rem; }
+    .find-detail dt {
+      font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+      margin-bottom: 0.3rem; color: rgba(240,228,196,0.3);
+    }
+    .find-panel.warm .find-detail dt { color: var(--gold); opacity: 0.7; }
+    .find-detail dd {
+      font-size: 13px; line-height: 1.75;
+      color: rgba(240,228,196,0.6);
+    }
+    .find-panel.warm .find-detail dd { color: rgba(240,228,196,0.85); }
+    .find-detail a { transition: color 0.2s; }
+    .find-detail a:hover { color: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 2rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(184,147,58,0.2);
+    }
+    .foot-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--cream); font-style: italic;
+    }
+    .foot-brand strong { font-style: normal; color: var(--gold-light); font-weight: 400; }
+    footer small {
+      font-size: 10px; letter-spacing: 0.1em;
+      color: rgba(240,228,196,0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3.5rem; min-height: auto; gap: 3rem; }
+      .hero-logo-circle { width: 200px; height: 200px; }
+      .section { padding: 4rem 1.5rem; }
+      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .story-left { position: static; }
+      .venues-pre { padding: 4rem 1.5rem 2rem; }
+      .venues-grid, .find { grid-template-columns: 1fr; }
+      .menu-head { grid-template-columns: 1fr; gap: 1.5rem; }
+      .items { grid-template-columns: 1fr; }
+      .item:nth-child(even) { padding-left: 0; border-left: none; }
+      .items-3 { grid-template-columns: 1fr; }
+      .item-s:nth-child(n+2) { padding-left: 0; border-left: none; }
+      .imports-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .cmenu { padding: 4rem 1.5rem; }
+      .bridge { padding: 1.75rem 1.5rem; }
+      .bridge-line { display: none; }
+      .find-panel { padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Gabriele</span>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#bottega-menu">Bottega</a></li>
+    <li><a href="#casa-menu">Casa</a></li>
+    <li><a href="#find-us">Find us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="eyebrow">Yesler Way &middot; Seattle</p>
+    <h1>
+      Due<br>
+      <em>Gabriele,</em>
+      una casa.
+    </h1>
+    <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
+    <div class="hero-locs">
+      <div class="loc">
+        <h4>Bottega Gabriele</h4>
+        <p>Sandwiches<br>Mon &ndash; Sun &nbsp;11am &ndash; 4pm</p>
+      </div>
+      <div class="loc">
+        <h4>Casa Gabriele</h4>
+        <p>Restaurant &amp; bar<br>Evenings</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-circle">
+        <img src="images/logo-casa.png" alt="Casa Gabriele — Restaurant &amp; Bar" />
+      </div>
+      <div class="hero-locs" style="width:280px;">
+        <div class="loc" style="text-align:center; border-right:none;">
+          <h4 style="justify-content:center;">Sardegna &middot; Napoli &middot; Seattle</h4>
+          <p>Imported direct from small producers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item"><em>Prosciutto di Parma</em><span class="t-sep"></span></span>
+    <span class="t-item">Mortadella con pistacchi<span class="t-sep"></span></span>
+    <span class="t-item"><em>Pecorino sardo</em><span class="t-sep"></span></span>
+    <span class="t-item">Nduja di Spilinga<span class="t-sep"></span></span>
+    <span class="t-item"><em>San Marzano DOP</em><span class="t-sep"></span></span>
+    <span class="t-item">Burrata fresca<span class="t-sep"></span></span>
+    <span class="t-item"><em>Olio sardo</em><span class="t-sep"></span></span>
+    <span class="t-item">Genovese di Napoli<span class="t-sep"></span></span>
+    <span class="t-item"><em>Prosciutto di Parma</em><span class="t-sep"></span></span>
+    <span class="t-item">Mortadella con pistacchi<span class="t-sep"></span></span>
+    <span class="t-item"><em>Pecorino sardo</em><span class="t-sep"></span></span>
+    <span class="t-item">Nduja di Spilinga<span class="t-sep"></span></span>
+    <span class="t-item"><em>San Marzano DOP</em><span class="t-sep"></span></span>
+    <span class="t-item">Burrata fresca<span class="t-sep"></span></span>
+    <span class="t-item"><em>Olio sardo</em><span class="t-sep"></span></span>
+    <span class="t-item">Genovese di Napoli<span class="t-sep"></span></span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section story" id="story">
+  <div class="story-grid">
+    <div class="story-left">
+      <p class="label">The story</p>
+      <h2>Two Gabrieles.<br><em>One block.</em></h2>
+      <br>
+      <span class="ornament">&#8767; &#8767; &#8767;</span>
+    </div>
+    <div class="story-right">
+      <p>Gabriele Brownstein grew up in Sardinia. His father and brother are still there, running Trigu Italia — a small export company that sources directly from local producers. He came to Seattle ten years ago and worked his way through the restaurant industry.</p>
+      <p>Gabriele Russo grew up in Naples in a family of chefs and shop owners. He brought the same instincts with him.</p>
+      <p>They opened Bottega Gabriele in 2025. Everything on the menu — the meats, the cheeses, the olive oil — comes from producers they chose themselves. Casa Gabriele is across the street. Same idea, at the table.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VENUES -->
+<div class="venues-pre">
+  <p class="label">The places</p>
+</div>
+<div class="venues-grid">
+  <div class="venue navy">
+    <div class="venue-bg-text" aria-hidden="true">01</div>
+    <span class="v-tag">Sandwich shop</span>
+    <h3>Bottega<br>Gabriele</h3>
+    <p>Lunch on Yesler Way. Sandwiches built from ingredients that came here by choice, not by catalogue.</p>
+    <div class="v-meta">
+      Mon &ndash; Sun &nbsp;&middot;&nbsp; 11am &ndash; 4pm<br>
+      <a href="tel:5103870881">(510) 387 0881</a>
+    </div>
+  </div>
+  <div class="venue gold-bg">
+    <div class="venue-bg-text" aria-hidden="true">02</div>
+    <span class="v-tag">Restaurant &amp; bar</span>
+    <h3>Casa<br><em>Gabriele</em></h3>
+    <p>Across the street. A Neapolitan trattoria and a Sardinian kitchen, sharing one room. Industry welcome.</p>
+    <div class="v-meta">
+      Evenings &mdash; reservations welcome
+    </div>
+  </div>
+</div>
+
+<!-- BOTTEGA MENU -->
+<section class="section bmenu" id="bottega-menu">
+  <div class="menu-head">
+    <div>
+      <p class="label">Bottega Gabriele</p>
+      <h2>Menu</h2>
+    </div>
+    <p class="menu-note">Ask about the weekly special. Please let us know of any allergies.</p>
+  </div>
+
+  <p class="cat">Sandwiches</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Scugnizzo</p><p class="idesc">Prosciutto di Parma, tomato, mozzarella, aged pecorino, arugula, olive oil</p></div>
+      <span class="iprice">$20</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Mamma Mia</p><p class="idesc">Mortadella con pistacchi, fresh ricotta, hot honey, lemon zest, arugula, olive oil</p></div>
+      <span class="iprice">$18.50</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">O&rsquo;Cerasiello</p><p class="idesc">Capocollo, salami, nduja, artichokes, olive &amp; tomato tapenade, fresh pecorino, arugula, olive oil</p></div>
+      <span class="iprice">$19.50</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">La Ciccia</p><p class="idesc">Pancetta, burrata, aged pecorino, walnuts, balsamic, arugula, olive oil</p></div>
+      <span class="iprice">$19</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarella, mayo, lemon juice, tomato, arugula, olive oil</p></div>
+      <span class="iprice">$18.50</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Vegetariano</p><p class="idesc">Sun dried tomatoes, olives, artichokes, ricotta salata, fresh &amp; aged pecorino, arugula, olive oil &mdash; can be made vegan</p></div>
+      <span class="iprice">$18.50</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Custom</p><p class="idesc">6 toppings, up to 3 meats &mdash; add nduja, artichoke or extra meat +$4</p></div>
+      <span class="iprice">$25</span>
+    </div>
+  </div>
+
+  <p class="cat">Salads</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div>
+      <span class="iprice">$13.50</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div>
+      <span class="iprice">$14</span>
+    </div>
+  </div>
+
+  <p class="cat">Dessert &amp; drinks</p>
+  <div class="items-3">
+    <div class="item-s">
+      <p class="iname">Cannoli</p>
+      <p class="idesc">Chocolate, pistachio or cherry</p>
+      <span class="iprice">$7</span>
+    </div>
+    <div class="item-s">
+      <p class="iname">San Pellegrino</p>
+      <p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p>
+      <span class="iprice">$3.50</span>
+    </div>
+    <div class="item-s">
+      <p class="iname">Water &amp; sodas</p>
+      <p class="idesc">Sparkling, Sprite, Coke</p>
+      <span class="iprice">$2.50</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<div class="bridge">
+  <div class="bridge-line"></div>
+  <p>Casa Gabriele &mdash; across the street</p>
+  <div class="bridge-line"></div>
+</div>
+
+<!-- CASA MENU -->
+<section class="cmenu" id="casa-menu">
+  <div class="menu-head">
+    <div>
+      <p class="label">Casa Gabriele</p>
+      <h2>Dinner<br><em>menu</em></h2>
+    </div>
+    <p class="menu-note">Menus change with the season.</p>
+  </div>
+
+  <p class="cat">Appetizers</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Cuoppo di Mare</p><p class="idesc">Crispy calamari and shrimp, lemon, capers, tartar sauce</p></div>
+      <span class="iprice">$23</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Cuoppo di Terra</p><p class="idesc">Rice arancine with seasonal vegetables and tomato sauce</p></div>
+      <span class="iprice">$22</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Meatballs</p><p class="idesc">Veal and pork, garlic, parsley, parmesan, San Marzano tomato sauce</p></div>
+      <span class="iprice">$20</span>
+    </div>
+  </div>
+
+  <p class="cat">Pasta</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Pasta fagioli e cozze</p><p class="idesc">Tubetti rigati, beans, stewed fresh mussels</p></div>
+      <span class="iprice">$22</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Gamberi alla nerano</p><p class="idesc">Cream of zucchini, fresh basil, saut&eacute;ed shrimp</p></div>
+      <span class="iprice">$21</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Genovese di Napoli</p><p class="idesc">Tubetti rigati, sweet onions, pork shoulder rag&ugrave;</p></div>
+      <span class="iprice">$23</span>
+    </div>
+  </div>
+
+  <p class="cat">Salads</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Arugula</p><p class="idesc">Cherry tomatoes, olives, sun dried tomatoes, walnuts, artichokes, balsamic, olive oil</p></div>
+      <span class="iprice">$16</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Romaine</p><p class="idesc">Parmesan, garlic croutons, fermented anchovies, caesar or balsamic</p></div>
+      <span class="iprice">$15</span>
+    </div>
+  </div>
+
+  <p class="cat">Carni</p>
+  <div class="items">
+    <div class="item">
+      <div><p class="iname">Scaloppine di pollo</p><p class="idesc">Chicken, white wine, capers, lemon sauce, seasonal vegetables</p></div>
+      <span class="iprice">$23</span>
+    </div>
+    <div class="item">
+      <div><p class="iname">Costoletta pizzaiola</p><p class="idesc">Pork chop, garlic, red wine, crushed San Marzano</p></div>
+      <span class="iprice">$24</span>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTS -->
+<section class="section imports" id="imports">
+  <div class="imports-grid">
+    <div>
+      <p class="label">The products</p>
+      <h2>From<br><em>the source</em></h2>
+      <br>
+      <p>Everything on both menus was chosen by us, directly from small producers in Sardegna and Campania. Gabriele Brownstein's family runs Trigu Italia in Sardinia — that's how the supply chain works. Personal, not commercial.</p>
+      <a class="trigu" href="#"><span>Trigu Italia &middot; Sardegna</span></a>
+    </div>
+    <ul class="origins">
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>Prosciutto di Parma</h4><span>DOP, 18 months</span></div></li>
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>Pecorino sardo</h4><span>Fresh and aged, Sardinia</span></div></li>
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>Nduja di Spilinga</h4><span>Calabria</span></div></li>
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>San Marzano</h4><span>DOP, Campania</span></div></li>
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>Olio extravergine</h4><span>Single origin, Sardinia</span></div></li>
+      <li class="origin"><div class="o-glyph">🇮🇹</div><div><h4>Mortadella di Bologna</h4><span>IGP, whole pistachios</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FIND US -->
+<div class="find" id="find-us">
+  <div class="find-panel navy">
+    <h3>Bottega Gabriele</h3>
+    <dl>
+      <div class="find-detail"><dt>Where</dt><dd>Yesler Way, Seattle</dd></div>
+      <div class="find-detail"><dt>Hours</dt><dd>Monday &ndash; Sunday<br>11am &ndash; 4pm</dd></div>
+      <div class="find-detail"><dt>Phone</dt><dd><a href="tel:5103870881">(510) 387 0881</a></dd></div>
+      <div class="find-detail"><dt>Email</dt><dd><a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a></dd></div>
+    </dl>
+  </div>
+  <div class="find-panel warm">
+    <h3>Casa Gabriele</h3>
+    <dl>
+      <div class="find-detail"><dt>Where</dt><dd>Yesler Way, Seattle<br>(across from Bottega)</dd></div>
+      <div class="find-detail"><dt>Hours</dt><dd>Evenings</dd></div>
+      <div class="find-detail"><dt>Reservations</dt><dd><a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a></dd></div>
+      <div class="find-detail"><dt>Instagram</dt><dd><a href="https://instagram.com/bottegagabriele" target="_blank">@bottegagabriele</a></dd></div>
+    </dl>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="foot-brand"><strong>Bottega</strong> &amp; <em>Casa Gabriele</em></p>
+  <small>&copy; 2026 &nbsp;&middot;&nbsp; Yesler Way, Seattle &nbsp;&middot;&nbsp; Imported via Trigu Italia, Sardegna</small>
+</footer>
+
+</body>
+</html>
