@@ -112,18 +112,27 @@
 
     /* logo centrepiece */
     .hero-logo-wrap {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 2rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+    .hero-logos {
+      display: flex; align-items: center; gap: 1.5rem;
     }
     .hero-logo-circle {
-      width: 280px; height: 280px; border-radius: 50%;
+      width: 210px; height: 210px; border-radius: 50%;
       border: 1px solid rgba(184,147,58,0.3);
-      box-shadow: 0 0 0 8px rgba(184,147,58,0.05), 0 0 0 16px rgba(184,147,58,0.03);
+      box-shadow: 0 0 0 8px rgba(184,147,58,0.04), 0 0 0 16px rgba(184,147,58,0.02);
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.03);
-      overflow: hidden;
+      background: rgba(255,255,255,0.03); overflow: hidden;
     }
-    .hero-logo-circle img { width: 90%; height: 90%; object-fit: contain; }
+    .hero-logo-circle img { width: 88%; height: 88%; object-fit: contain; }
+    .hero-logo-divider {
+      width: 0.5px; height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(184,147,58,0.3), transparent);
+    }
+    .hero-origin {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(240,228,196,0.35); text-align: center;
+    }
 
     .hero-locs {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -451,28 +460,57 @@
     }
 
     /* ── RESPONSIVE ── */
+    /* hamburger */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px; background: rgba(240,228,196,0.6);
+    }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(184,147,58,0.2);
+      padding: 1rem 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(240,228,196,0.6); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.75rem 0; border-bottom: 0.5px solid rgba(184,147,58,0.1);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-light); }
+
     @media (max-width: 860px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3.5rem; min-height: auto; gap: 3rem; }
-      .hero-logo-circle { width: 200px; height: 200px; }
-      .section { padding: 4rem 1.5rem; }
+      .nav-hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem 3rem; min-height: auto; gap: 2.5rem; }
+      .hero-right { display: flex; justify-content: center; }
+      .hero-logos { gap: 1rem; }
+      .hero-logo-circle { width: 130px; height: 130px; }
+      .hero-logo-divider { height: 80px; }
+      .hero-locs { grid-template-columns: 1fr 1fr; }
+      .section { padding: 3.5rem 1.5rem; }
       .photos-strip { grid-template-columns: 1fr 1fr; }
-      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
       .story-left { position: static; }
-      .venues-pre { padding: 4rem 1.5rem 2rem; }
+      .venues-pre { padding: 3.5rem 1.5rem 2rem; }
       .venues-grid, .find { grid-template-columns: 1fr; }
-      .menu-head { grid-template-columns: 1fr; gap: 1.5rem; }
+      .menu-head { grid-template-columns: 1fr; gap: 1.25rem; }
       .items { grid-template-columns: 1fr; }
-      .item:nth-child(even) { padding-left: 0; border-left: none; }
+      .item { padding-right: 0 !important; padding-left: 0 !important; border-left: none !important; }
       .items-3 { grid-template-columns: 1fr; }
-      .item-s:nth-child(n+2) { padding-left: 0; border-left: none; }
-      .imports-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .cmenu { padding: 4rem 1.5rem; }
+      .item-s { padding-left: 0 !important; border-left: none !important; }
+      .imports-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cmenu { padding: 3.5rem 1.5rem; }
       .bridge { padding: 1.75rem 1.5rem; }
       .bridge-line { display: none; }
       .find-panel { padding: 3rem 1.5rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -487,7 +525,24 @@
     <li><a href="#casa-menu">Casa</a></li>
     <li><a href="#find-us">Find us</a></li>
   </ul>
+  <button class="nav-hamburger" aria-label="Menu" id="ham">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mob-menu">
+  <a href="#story">Story</a>
+  <a href="#bottega-menu">Bottega menu</a>
+  <a href="#casa-menu">Casa menu</a>
+  <a href="#find-us">Find us</a>
+</div>
+<script>
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mob-menu');
+  ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
+  mob.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mob.classList.remove('open'); });
+  });
+</script>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -513,15 +568,16 @@
 
   <div class="hero-right">
     <div class="hero-logo-wrap">
-      <div class="hero-logo-circle">
-        <img src="logo-casa.png" alt="Casa Gabriele — Restaurant &amp; Bar" />
-      </div>
-      <div class="hero-locs" style="width:280px;">
-        <div class="loc" style="text-align:center; border-right:none;">
-          <h4 style="justify-content:center;">Sardegna &middot; Napoli &middot; Seattle</h4>
-          <p>Imported direct from small producers</p>
+      <div class="hero-logos">
+        <div class="hero-logo-circle">
+          <img src="logo-bottega.png" alt="Bottega Gabriele" />
+        </div>
+        <div class="hero-logo-divider" aria-hidden="true"></div>
+        <div class="hero-logo-circle">
+          <img src="logo-casa.png" alt="Casa Gabriele — Restaurant &amp; Bar" />
         </div>
       </div>
+      <p class="hero-origin">Sardegna &middot; Napoli &middot; Seattle</p>
     </div>
   </div>
 </section>
@@ -806,4 +862,3 @@
 
 </body>
 </html>
-
