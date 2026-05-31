@@ -203,6 +203,35 @@
     }
     h2 em { font-style: italic; color: var(--gold); }
 
+    /* ── CASA OPEN ── */
+    .casa-open {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh; background: var(--navy-deep);
+    }
+    .casa-open-photo { overflow: hidden; }
+    .casa-open-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      filter: brightness(0.88);
+    }
+    .casa-open-text {
+      padding: 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;
+      border-left: 1px solid rgba(184,147,58,0.15);
+    }
+    .casa-open-text h2 { color: var(--cream); font-size: clamp(2rem, 3.5vw, 3rem); }
+    .casa-open-text h2 em { color: var(--gold-light); }
+    .casa-open-text p:last-child {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem; line-height: 1.9; color: rgba(240,228,196,0.55);
+    }
+
+    @media (max-width: 860px) {
+      .casa-open { grid-template-columns: 1fr; }
+      .casa-open-photo { height: 60vw; }
+      .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
+    }
+
     /* ── CASA PHOTOS ── */
     .casa-photos {
       display: grid;
@@ -677,6 +706,10 @@
         <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
         <p class="story-photo-cap">Gabriele &amp; his father</p>
       </div>
+      <div class="story-photo" style="margin-top: 3px;">
+        <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" />
+        <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
+      </div>
     </div>
     <div class="story-right">
       <p>Gabriele Brownstein grew up in Sardinia. His father and brother are still there, running Trigu Italia — a small export company that sources directly from local producers. He came to Seattle ten years ago and worked his way through the restaurant industry.</p>
@@ -709,6 +742,18 @@
     <div class="v-meta">
       Evenings &mdash; reservations welcome
     </div>
+  </div>
+</div>
+
+<!-- CASA OPEN -->
+<div class="casa-open">
+  <div class="casa-open-photo">
+    <img src="casagabrieleopen.jpeg" alt="Casa Gabriele is open" />
+  </div>
+  <div class="casa-open-text">
+    <p class="label">Now open</p>
+    <h2>Casa Gabriele<br><em>is open.</em></h2>
+    <p>Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen. Come for dinner, stay at the bar.</p>
   </div>
 </div>
 
