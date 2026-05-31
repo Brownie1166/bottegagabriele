@@ -49,8 +49,8 @@
     }
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 14px; color: var(--cream);
-      letter-spacing: 0.14em; font-style: italic;
+      font-size: 12px; color: var(--cream);
+      letter-spacing: 0.1em; font-style: italic; white-space: nowrap;
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -62,27 +62,31 @@
     /* ── HERO ── */
     .hero {
       background: var(--navy-deep);
-      min-height: 90vh;
+      min-height: 92vh;
       display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; padding: 6rem 3rem 5rem;
-      position: relative; overflow: hidden;
+      align-items: stretch;
     }
 
-    /* engraving-style texture rings */
-    .hero::before {
-      content: '';
-      position: absolute;
-      right: -180px; top: 50%; transform: translateY(-50%);
-      width: 700px; height: 700px; border-radius: 50%;
-      border: 1px solid rgba(184,147,58,0.08);
-      box-shadow:
-        0 0 0 40px rgba(184,147,58,0.04),
-        0 0 0 80px rgba(184,147,58,0.03),
-        0 0 0 130px rgba(184,147,58,0.02);
-      pointer-events: none;
+    .hero-photo {
+      position: relative; overflow: hidden; min-height: 92vh;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      filter: brightness(0.88) saturate(0.95);
+    }
+    .hero-photo-caption {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
     }
 
-    .hero-left, .hero-right { position: relative; z-index: 1; }
+    .hero-left {
+      position: relative; z-index: 1;
+      padding: 5rem 3rem 4rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 2rem;
+      border-left: 1px solid rgba(184,147,58,0.12);
+    }
 
     .eyebrow {
       font-size: 10px; letter-spacing: 0.38em;
@@ -110,28 +114,20 @@
       margin-top: 1.5rem; margin-bottom: 3rem;
     }
 
-    /* logo centrepiece */
-    .hero-logo-wrap {
-      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-    }
+    /* logos inline in hero */
     .hero-logos {
-      display: flex; align-items: center; gap: 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem;
     }
     .hero-logo-circle {
-      width: 210px; height: 210px; border-radius: 50%;
+      width: 90px; height: 90px; border-radius: 50%;
       border: 1px solid rgba(184,147,58,0.3);
-      box-shadow: 0 0 0 8px rgba(184,147,58,0.04), 0 0 0 16px rgba(184,147,58,0.02);
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.03); overflow: hidden;
+      background: rgba(255,255,255,0.03); overflow: hidden; flex-shrink: 0;
     }
     .hero-logo-circle img { width: 88%; height: 88%; object-fit: contain; }
     .hero-logo-divider {
-      width: 0.5px; height: 120px;
-      background: linear-gradient(to bottom, transparent, rgba(184,147,58,0.3), transparent);
-    }
-    .hero-origin {
-      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-      color: rgba(240,228,196,0.35); text-align: center;
+      width: 0.5px; height: 50px;
+      background: linear-gradient(to bottom, transparent, rgba(184,147,58,0.35), transparent);
     }
 
     .hero-locs {
@@ -240,6 +236,22 @@
       display: block; text-align: left;
       font-size: 1.5rem; color: var(--gold); opacity: 0.5;
       margin-bottom: 1.5rem; letter-spacing: 0.5em;
+    }
+
+    .story-photo {
+      margin-top: 2rem; overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .story-photo img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; object-position: center top;
+      display: block;
+      filter: brightness(0.9) saturate(0.95);
+    }
+    .story-photo-cap {
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); padding: 0.65rem 0.75rem;
+      border-top: 0.5px solid var(--rule);
     }
 
     .story-right p {
@@ -488,11 +500,12 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem 3rem; min-height: auto; gap: 2.5rem; }
-      .hero-right { display: flex; justify-content: center; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-photo { min-height: 60vw; max-height: 70vh; }
+      .hero-left { padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
       .hero-logos { gap: 1rem; }
-      .hero-logo-circle { width: 130px; height: 130px; }
-      .hero-logo-divider { height: 80px; }
+      .hero-logo-circle { width: 70px; height: 70px; }
+      .hero-logo-divider { height: 40px; }
       .hero-locs { grid-template-columns: 1fr 1fr; }
       .section { padding: 3.5rem 1.5rem; }
       .photos-strip { grid-template-columns: 1fr 1fr; }
@@ -518,7 +531,7 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Gabriele</span>
+  <span class="nav-logo">Bottega Gabriele &nbsp;/&nbsp; Casa Gabriele</span>
   <ul class="nav-links">
     <li><a href="#story">Story</a></li>
     <li><a href="#bottega-menu">Bottega</a></li>
@@ -546,11 +559,16 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
+  <div class="hero-photo">
+    <img src="gabris.jpeg" alt="Gabriele Brownstein and Gabriele Russo" />
+    <div class="hero-photo-caption">Gabriele &amp; Gabriele &mdash; Yesler Way, Seattle</div>
+  </div>
+
   <div class="hero-left">
     <p class="eyebrow">Yesler Way &middot; Seattle</p>
     <h1>
       Due<br>
-      <em>Gabriele,</em>
+      <em>Gabriele,</em><br>
       una casa.
     </h1>
     <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
@@ -564,20 +582,14 @@
         <p>Restaurant &amp; bar<br>Evenings</p>
       </div>
     </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-logo-wrap">
-      <div class="hero-logos">
-        <div class="hero-logo-circle">
-          <img src="logo-bottega.png" alt="Bottega Gabriele" />
-        </div>
-        <div class="hero-logo-divider" aria-hidden="true"></div>
-        <div class="hero-logo-circle">
-          <img src="logo-casa.png" alt="Casa Gabriele — Restaurant &amp; Bar" />
-        </div>
+    <div class="hero-logos">
+      <div class="hero-logo-circle">
+        <img src="logo-bottega.png" alt="Bottega Gabriele" />
       </div>
-      <p class="hero-origin">Sardegna &middot; Napoli &middot; Seattle</p>
+      <div class="hero-logo-divider" aria-hidden="true"></div>
+      <div class="hero-logo-circle">
+        <img src="logo-casa.png" alt="Casa Gabriele" />
+      </div>
     </div>
   </div>
 </section>
@@ -849,16 +861,4 @@
       <div class="find-detail"><dt>Where</dt><dd>Yesler Way, Seattle<br>(across from Bottega)</dd></div>
       <div class="find-detail"><dt>Hours</dt><dd>Evenings</dd></div>
       <div class="find-detail"><dt>Reservations</dt><dd><a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a></dd></div>
-      <div class="find-detail"><dt>Instagram</dt><dd><a href="https://instagram.com/bottegagabriele" target="_blank">@bottegagabriele</a></dd></div>
-    </dl>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p class="foot-brand"><strong>Bottega</strong> &amp; <em>Casa Gabriele</em></p>
-  <small>&copy; 2026 &nbsp;&middot;&nbsp; Yesler Way, Seattle &nbsp;&middot;&nbsp; Imported via Trigu Italia, Sardegna</small>
-</footer>
-
-</body>
-</html>
+      <div 
