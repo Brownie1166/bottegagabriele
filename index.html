@@ -108,18 +108,36 @@
       text-transform: uppercase; color: var(--on-dark-muted);
       margin-top: 1.5rem; margin-bottom: 3rem;
     }
-    .hero-contact { display: flex; flex-direction: column; gap: 0.5rem; }
-    .hero-contact-line {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.15rem; line-height: 1.6;
-      color: var(--on-dark-muted);
+
+    /* CONTACT BANNER */
+    .contact-banner {
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(184,147,58,0.2);
+      border-bottom: 1px solid rgba(184,147,58,0.2);
+      padding: 2rem 3rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
     }
-    .hero-contact-line a {
+    .contact-banner-item {
+      display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    }
+    .contact-banner-label {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .contact-banner-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
       color: var(--gold-light);
-      border-bottom: 0.5px solid rgba(212,170,90,0.35);
-      transition: color 0.2s, border-color 0.2s;
     }
-    .hero-contact-line a:hover { color: var(--gold-pale); border-color: var(--gold-pale); }
+    .contact-banner-value a {
+      color: var(--gold-light);
+      transition: color 0.2s;
+    }
+    .contact-banner-value a:hover { color: var(--cream); }
 
     .hero-logos { display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem; }
     .hero-logo-circle {
@@ -309,8 +327,7 @@
     .tasting-card:hover { background: #1a2f55; }
     .tasting-card-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); margin: 0 0 0.75rem; }
     .tasting-card-rule { width: 28px; height: 0.5px; background: var(--gold); margin-bottom: 1rem; }
-    .tasting-card-desc { font-size: 12px; letter-spacing: 0.06em; color: var(--on-dark-faint); text-transform: uppercase; line-height: 1.8; }
-    .tasting-card-price { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-style: italic; color: var(--gold-light); margin: 1.5rem 0 0; }
+    .tasting-card-price { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-style: italic; color: var(--gold-light); margin-top: auto; }
     .tasting-foot { font-size: 12px; letter-spacing: 0.14em; color: var(--on-dark-faint); text-transform: uppercase; text-align: center; padding-top: 1.5rem; border-top: 0.5px solid rgba(201,169,110,0.15); }
 
     /* IMPORTS */
@@ -347,6 +364,69 @@
     .foot-brand strong { font-style: normal; color: var(--gold-light); font-weight: 400; }
     footer small { font-size: 11px; letter-spacing: 0.1em; color: rgba(240,228,196,0.45); }
 
+    /* SOFT LAUNCH POPUP */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,16,30,0.75);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      animation: fadeIn 0.4s ease;
+    }
+    .popup-overlay.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .popup {
+      background: var(--navy-deep);
+      border: 1px solid rgba(184,147,58,0.35);
+      max-width: 480px; width: 100%;
+      padding: 3rem 2.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .popup-close {
+      position: absolute; top: 1rem; right: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--on-dark-faint); font-size: 1.2rem; line-height: 1;
+      transition: color 0.2s;
+    }
+    .popup-close:hover { color: var(--cream); }
+    .popup-eyebrow {
+      font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.25rem;
+    }
+    .popup-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 3.5rem);
+      line-height: 1; color: var(--cream); font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+    .popup-title em { font-style: italic; color: var(--gold-light); }
+    .popup-rule { width: 40px; height: 0.5px; background: var(--gold); margin: 0 auto 1.25rem; opacity: 0.5; }
+    .popup-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem; line-height: 1.75; color: var(--on-dark-muted);
+      margin-bottom: 1.75rem;
+    }
+    .popup-offer {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 7vw, 3rem);
+      font-weight: 700; color: var(--gold-light);
+      letter-spacing: 0.04em; margin-bottom: 0.5rem;
+    }
+    .popup-offer-sub {
+      font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--on-dark-faint); margin-bottom: 2rem;
+    }
+    .popup-dismiss {
+      display: inline-block; border: 0.5px solid rgba(184,147,58,0.35);
+      padding: 0.75rem 2rem; cursor: pointer; background: none;
+      font-family: 'Josefin Sans', sans-serif; font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--on-dark-muted); transition: border-color 0.2s, color 0.2s;
+    }
+    .popup-dismiss:hover { border-color: var(--gold); color: var(--cream); }
+
     /* HAMBURGER */
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(240,228,196,0.7); }
@@ -368,6 +448,8 @@
       .bottega-logo { display: none; }
       .hero-logo-divider { display: none; }
       .hero-locs { grid-template-columns: 1fr 1fr; }
+      .contact-banner { padding: 1.5rem; }
+      .contact-banner-label, .contact-banner-value { font-size: 1rem; }
       .section { padding: 3.5rem 1.5rem; }
       .photos-strip { grid-template-columns: 1fr 1fr; }
       .story-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -397,6 +479,34 @@
   </style>
 </head>
 <body>
+
+<!-- SOFT LAUNCH POPUP -->
+<div class="popup-overlay" id="popup-overlay">
+  <div class="popup">
+    <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
+    <p class="popup-eyebrow">Soft Launch</p>
+    <h2 class="popup-title"><em>Casa</em><br>Gabriele</h2>
+    <div class="popup-rule"></div>
+    <p class="popup-body">Our new restaurant is now open across the street.<br>Join us for dinner and drinks &mdash;<br>Sardinia and Naples, imported direct.</p>
+    <p class="popup-offer">10% OFF</p>
+    <p class="popup-offer-sub">Present this invitation at Casa Gabriele</p>
+    <button class="popup-dismiss" id="popup-dismiss">Claim your offer</button>
+    <p class="popup-claimed" id="popup-claimed" style="display:none; font-family:'EB Garamond',serif; font-size:1.05rem; line-height:1.75; color:var(--gold-light); margin-top:1.5rem;">Simply tell the staff you were invited<br>to the soft launch discount offer.</p>
+  </div>
+</div>
+<script>
+  (function(){
+    var overlay = document.getElementById('popup-overlay');
+    var btn = document.getElementById('popup-dismiss');
+    var msg = document.getElementById('popup-claimed');
+    function close(){ overlay.classList.add('hidden'); }
+    document.getElementById('popup-close').addEventListener('click', close);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+    btn.addEventListener('click', function(){
+      window.location.href = 'mailto:ciao@bottegagabriele.com?subject=Soft%20Launch%20Reservation%20%E2%80%94%20Casa%20Gabriele&body=Hi%2C%0A%0AI%20saw%20the%20soft%20launch%20invitation%20and%20would%20like%20to%20make%20a%20reservation%20at%20Casa%20Gabriele.%0A%0AName%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A%0A%0ALooking%20forward%20to%20it!';
+    });
+  })();
+</script>
 
 <!-- NAV -->
 <nav>
@@ -436,16 +546,6 @@
     <p class="eyebrow">Yesler Way &middot; Seattle</p>
     <h1>Due<br><em>Gabriele,</em><br>una casa.</h1>
     <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
-
-    <div class="hero-contact">
-      <p class="hero-contact-line">
-        Bottega orders &nbsp;<a href="tel:5103870881">(510) 387 0881</a>
-      </p>
-      <p class="hero-contact-line">
-        Casa reservations &amp; catering &nbsp;<a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a>
-      </p>
-    </div>
-
     <div class="hero-locs">
       <div class="loc">
         <h4>Bottega Gabriele</h4>
@@ -465,6 +565,18 @@
     </div>
   </div>
 </section>
+
+<!-- CONTACT BANNER -->
+<div class="contact-banner">
+  <div class="contact-banner-item">
+    <span class="contact-banner-label">Reservations for Casa Gabriele:</span>
+    <span class="contact-banner-value"><a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a></span>
+  </div>
+  <div class="contact-banner-item">
+    <span class="contact-banner-label">For orders at Bottega Gabriele:</span>
+    <span class="contact-banner-value"><a href="tel:5103870881">(510) 387 0881</a></span>
+  </div>
+</div>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
@@ -657,19 +769,16 @@
     <div class="tasting-card">
       <p class="tasting-card-name">Tasting 1</p>
       <div class="tasting-card-rule"></div>
-      <p class="tasting-card-desc">Four courses &middot; seasonal selection</p>
       <p class="tasting-card-price">$55</p>
     </div>
     <div class="tasting-card">
       <p class="tasting-card-name">Tasting 2</p>
       <div class="tasting-card-rule"></div>
-      <p class="tasting-card-desc">Six courses &middot; chef's composition</p>
       <p class="tasting-card-price">$75</p>
     </div>
     <div class="tasting-card">
       <p class="tasting-card-name">Tasting 3</p>
       <div class="tasting-card-rule"></div>
-      <p class="tasting-card-desc">Eight courses &middot; full experience</p>
       <p class="tasting-card-price">$100</p>
     </div>
   </div>
