@@ -363,69 +363,29 @@
     .foot-brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); font-style: italic; }
     .foot-brand strong { font-style: normal; color: var(--gold-light); font-weight: 400; }
     footer small { font-size: 11px; letter-spacing: 0.1em; color: rgba(240,228,196,0.45); }
-
-    /* SOFT LAUNCH POPUP */
-    .popup-overlay {
-      position: fixed; inset: 0; z-index: 1000;
-      background: rgba(10,16,30,0.75);
-      display: flex; align-items: center; justify-content: center;
-      padding: 1.5rem;
-      animation: fadeIn 0.4s ease;
+    /* SOFT LAUNCH OFFER */
+    .soft-launch-offer {
+      margin-top: 2rem; padding-top: 2rem;
+      border-top: 0.5px solid rgba(184,147,58,0.2);
     }
-    .popup-overlay.hidden { display: none; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .popup {
-      background: var(--navy-deep);
-      border: 1px solid rgba(184,147,58,0.35);
-      max-width: 480px; width: 100%;
-      padding: 3rem 2.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-      animation: slideUp 0.4s ease;
-    }
-    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .popup-close {
-      position: absolute; top: 1rem; right: 1.25rem;
-      background: none; border: none; cursor: pointer;
-      color: var(--on-dark-faint); font-size: 1.2rem; line-height: 1;
-      transition: color 0.2s;
-    }
-    .popup-close:hover { color: var(--cream); }
-    .popup-eyebrow {
-      font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.25rem;
-    }
-    .popup-title {
+    .soft-launch-pct {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 8vw, 3.5rem);
-      line-height: 1; color: var(--cream); font-weight: 400;
-      margin-bottom: 1.25rem;
-    }
-    .popup-title em { font-style: italic; color: var(--gold-light); }
-    .popup-rule { width: 40px; height: 0.5px; background: var(--gold); margin: 0 auto 1.25rem; opacity: 0.5; }
-    .popup-body {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.1rem; line-height: 1.75; color: var(--on-dark-muted);
-      margin-bottom: 1.75rem;
-    }
-    .popup-offer {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 7vw, 3rem);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 700; color: var(--gold-light);
-      letter-spacing: 0.04em; margin-bottom: 0.5rem;
+      letter-spacing: 0.04em; line-height: 1; margin-bottom: 0.5rem;
     }
-    .popup-offer-sub {
+    .soft-launch-sub {
       font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--on-dark-faint); margin-bottom: 2rem;
+      color: var(--on-dark-faint); margin-bottom: 1.25rem;
     }
-    .popup-dismiss {
+    .soft-launch-cta {
       display: inline-block; border: 0.5px solid rgba(184,147,58,0.35);
-      padding: 0.75rem 2rem; cursor: pointer; background: none;
+      padding: 0.75rem 1.75rem;
       font-family: 'Josefin Sans', sans-serif; font-size: 11px;
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--on-dark-muted); transition: border-color 0.2s, color 0.2s;
     }
-    .popup-dismiss:hover { border-color: var(--gold); color: var(--cream); }
+    .soft-launch-cta:hover { border-color: var(--gold); color: var(--cream); }
 
     /* HAMBURGER */
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
@@ -480,33 +440,6 @@
 </head>
 <body>
 
-<!-- SOFT LAUNCH POPUP -->
-<div class="popup-overlay" id="popup-overlay">
-  <div class="popup">
-    <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
-    <p class="popup-eyebrow">Soft Launch</p>
-    <h2 class="popup-title"><em>Casa</em><br>Gabriele</h2>
-    <div class="popup-rule"></div>
-    <p class="popup-body">Our new restaurant is now open across the street.<br>Join us for dinner and drinks &mdash;<br>Sardinia and Naples, imported direct.</p>
-    <p class="popup-offer">10% OFF</p>
-    <p class="popup-offer-sub">Present this invitation at Casa Gabriele</p>
-    <button class="popup-dismiss" id="popup-dismiss">Claim your offer</button>
-    <p class="popup-claimed" id="popup-claimed" style="display:none; font-family:'EB Garamond',serif; font-size:1.05rem; line-height:1.75; color:var(--gold-light); margin-top:1.5rem;">Simply tell the staff you were invited<br>to the soft launch discount offer.</p>
-  </div>
-</div>
-<script>
-  (function(){
-    var overlay = document.getElementById('popup-overlay');
-    var btn = document.getElementById('popup-dismiss');
-    var msg = document.getElementById('popup-claimed');
-    function close(){ overlay.classList.add('hidden'); }
-    document.getElementById('popup-close').addEventListener('click', close);
-    overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
-    btn.addEventListener('click', function(){
-      window.location.href = 'mailto:ciao@bottegagabriele.com?subject=Soft%20Launch%20Reservation%20%E2%80%94%20Casa%20Gabriele&body=Hi%2C%0A%0AI%20saw%20the%20soft%20launch%20invitation%20and%20would%20like%20to%20make%20a%20reservation%20at%20Casa%20Gabriele.%0A%0AName%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A%0A%0ALooking%20forward%20to%20it!';
-    });
-  })();
-</script>
 
 <!-- NAV -->
 <nav>
@@ -662,9 +595,14 @@
     <img src="casagabrieleopen.jpeg" alt="Casa Gabriele is open" />
   </div>
   <div class="casa-open-text">
-    <p class="label">Now open</p>
-    <h2>Casa Gabriele<br><em>is open.</em></h2>
+    <p class="label">Soft Launch</p>
+    <h2>Soft Launch<br><em>offer.</em></h2>
     <p>Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen. Come for dinner, stay at the bar.</p>
+    <div class="soft-launch-offer">
+      <p class="soft-launch-pct">10% OFF</p>
+      <p class="soft-launch-sub">Soft launch &mdash; present this invitation at Casa Gabriele</p>
+      <a class="soft-launch-cta" href="mailto:ciao@bottegagabriele.com?subject=Soft%20Launch%20Reservation%20%E2%80%94%20Casa%20Gabriele&body=Hi%2C%0A%0AI%20saw%20the%20soft%20launch%20invitation%20and%20would%20like%20to%20make%20a%20reservation%20at%20Casa%20Gabriele.%0A%0AName%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A%0A%0ALooking%20forward%20to%20it!">Reserve &amp; claim offer</a>
+    </div>
   </div>
 </div>
 
