@@ -108,6 +108,19 @@
       text-transform: uppercase; color: var(--on-dark-muted);
       margin-top: 1.5rem; margin-bottom: 3rem;
     }
+    .hero-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-contact-line {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem; line-height: 1.6;
+      color: var(--on-dark-muted);
+    }
+    .hero-contact-line a {
+      color: var(--gold-light);
+      border-bottom: 0.5px solid rgba(212,170,90,0.35);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-contact-line a:hover { color: var(--gold-pale); border-color: var(--gold-pale); }
+
     .hero-logos { display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem; }
     .hero-logo-circle {
       border: 1px solid rgba(184,147,58,0.3);
@@ -423,6 +436,16 @@
     <p class="eyebrow">Yesler Way &middot; Seattle</p>
     <h1>Due<br><em>Gabriele,</em><br>una casa.</h1>
     <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
+
+    <div class="hero-contact">
+      <p class="hero-contact-line">
+        Bottega orders &nbsp;<a href="tel:5103870881">(510) 387 0881</a>
+      </p>
+      <p class="hero-contact-line">
+        Casa reservations &amp; catering &nbsp;<a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a>
+      </p>
+    </div>
+
     <div class="hero-locs">
       <div class="loc">
         <h4>Bottega Gabriele</h4>
