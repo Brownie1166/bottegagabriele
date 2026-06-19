@@ -80,6 +80,7 @@
   }
   .tab{
     appearance:none;background:none;cursor:pointer;
+    display:inline-block;user-select:none;
     font-family:Georgia,serif;
     font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
     color:var(--quiet);
@@ -87,13 +88,16 @@
     padding:9px 22px;border-radius:999px;
     transition:color .15s,border-color .15s,background .15s;
   }
-  .tab[aria-selected="true"]{
+  .tabradio{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap}
+  #rt-menu:checked ~ nav label[for="rt-menu"],
+  #rt-vini:checked ~ nav label[for="rt-vini"]{
     color:var(--carta);background:var(--ink);border-color:var(--ink);
   }
-  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .tabradio:focus-visible ~ nav label{outline:2px solid var(--gold);outline-offset:2px}
   /* ---------- sections ---------- */
   .panel{display:none;padding-top:8px}
-  .panel.active{display:block}
+  #rt-menu:checked ~ #panel-menu,
+  #rt-vini:checked ~ #panel-vini{display:block}
   .course{margin-top:30px}
   .course-title{
     text-align:center;
@@ -159,6 +163,9 @@
 <body>
 <div class="frame">
 
+  <input type="radio" name="mtab" id="rt-menu" class="tabradio" checked aria-label="Food menu">
+  <input type="radio" name="mtab" id="rt-vini" class="tabradio" aria-label="Wine list">
+
   <header>
     <div class="wordmark">Casa <em>Gabriele</em></div>
     <div class="tagline">Cucina casereccia del Sud — Napoli &amp; Sardegna</div>
@@ -166,13 +173,13 @@
     <div class="rule" aria-hidden="true"></div>
   </header>
 
-  <nav role="tablist" aria-label="Menu sections">
-    <button class="tab" id="tab-menu" role="tab" aria-selected="true" aria-controls="panel-menu">Menu</button>
-    <button class="tab" id="tab-vini" role="tab" aria-selected="false" aria-controls="panel-vini">Vini</button>
+  <nav aria-label="Menu sections">
+    <label class="tab" for="rt-menu">Menu</label>
+    <label class="tab" for="rt-vini">Vini</label>
   </nav>
 
   <!-- ================= MENU ================= -->
-  <section class="panel active" id="panel-menu" role="tabpanel" aria-labelledby="tab-menu">
+  <section class="panel" id="panel-menu" role="tabpanel" aria-labelledby="rt-menu">
 
     <div class="course">
       <div class="course-title">Appetizers</div>
@@ -250,7 +257,7 @@
   </section>
 
   <!-- ================= VINI ================= -->
-  <section class="panel" id="panel-vini" role="tabpanel" aria-labelledby="tab-vini">
+  <section class="panel" id="panel-vini" role="tabpanel" aria-labelledby="rt-vini">
 
     <div class="gb">glass / bottle</div>
 
@@ -281,6 +288,11 @@
         <div class="item-line"><span class="item-name">Pinot Grigio delle Venezie DOC</span><span class="item-price">$12 / $36</span></div>
         <div class="item-prod">Due Torri, 2024 · Veneto</div>
         <div class="item-desc">Crisp and easy, white pear and citrus — chilled with gamberi alla nerano or lighter pasta</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Verdicchio dei Castelli di Jesi Classico DOC</span><span class="item-price">$—</span></div>
+        <div class="item-prod">Fazi Battaglia · Marche</div>
+        <div class="item-desc">The Adriatic coast’s great white — citrus and green almond with a saline, mineral finish; fish, salads, the cuoppo di mare</div>
       </div>
     </div>
 
@@ -380,14 +392,4 @@
       <div class="item">
         <div class="item-line"><span class="item-name">Liquore delle Sirene Americano <span class="flag">— rosso or bianco</span></span><span class="item-price">$12 neat / $15 spritz</span></div>
         <div class="item-prod">Liquore delle Sirene · Italia</div>
-        <div class="item-desc">Artisan Italian americano — gentian and wormwood, softly bitter; neat over ice, or as a spritz with prosecco and soda</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Amaro Montenegro</span><span class="item-price">$14</span></div>
-        <div class="item-prod">Montenegro · Bologna</div>
-        <div class="item-desc">Italy’s most-loved amaro — orange peel, vanilla, and a wealth of botanicals; gentle and rounded, neat</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Averna</span><span class="item-price">$13</span></div>
-        <div class="item-prod">Amaro Averna · Sicilia</div>
-        <div class="item-desc">Sicilian classic — caramel, dried fig, and bitter herbs; rich and smooth, nea
+        <div class="item-desc">Artisan Italian americano — gentian and wormwood, softly bitter; neat 
