@@ -158,6 +158,17 @@
   footer p{color:var(--quiet);font-size:.85rem;margin-top:6px}
   footer a{color:var(--ink)}
   footer a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  @media print{
+    @page{ size:Letter; margin:14mm; }
+    .tabradio{ display:none !important; } nav{ display:none !important; position:static; }
+    .panel{ display:block !important; }
+    #panel-vini{ break-before:page; page-break-before:always; }
+    .item,.course,.tasting,.tasting-row{ break-inside:avoid; page-break-inside:avoid; }
+    .frame{ border:none; outline:none; max-width:none; margin:0 auto; padding:0; }
+    body{ font-size:12.5px; }
+  }
+
 </style>
 </head>
 <body>
@@ -185,15 +196,15 @@
       <div class="course-title">Appetizers</div>
       <div class="course-sub">Antipasti</div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Cuoppo di Mare</span><span class="item-price">$23</span></div>
+        <div class="item-line"><span class="item-name">Cuoppo di Mare</span><span class="item-price">$25</span></div>
         <div class="item-desc">Crispy calamari and shrimp, lemon, capers, tartar sauce</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Cuoppo di Terra</span><span class="item-price">$22</span></div>
+        <div class="item-line"><span class="item-name">Cuoppo di Terra</span><span class="item-price">$24</span></div>
         <div class="item-desc">Rice arancine, fried seasonal vegetables, tomato sauce</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Meatballs</span><span class="item-price">$20</span></div>
+        <div class="item-line"><span class="item-name">Meatballs</span><span class="item-price">$22</span></div>
         <div class="item-desc">Veal and pork, parmesan, San Marzano tomato</div>
       </div>
     </div>
@@ -201,15 +212,15 @@
     <div class="course">
       <div class="course-title">Pasta</div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Pasta fagioli e cozze</span><span class="item-price">$22</span></div>
+        <div class="item-line"><span class="item-name">Pasta fagioli e cozze</span><span class="item-price">$24</span></div>
         <div class="item-desc">Tubetti, beans, stewed mussels</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Gamberi alla nerano</span><span class="item-price">$21</span></div>
+        <div class="item-line"><span class="item-name">Gamberi alla nerano</span><span class="item-price">$23</span></div>
         <div class="item-desc">Zucchini cream, basil, sautéed shrimp</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Genovese di Napoli</span><span class="item-price">$23</span></div>
+        <div class="item-line"><span class="item-name">Genovese di Napoli</span><span class="item-price">$25</span></div>
         <div class="item-desc">Tubetti, slow-cooked onions, pork ragù</div>
       </div>
     </div>
@@ -218,11 +229,11 @@
       <div class="course-title">Salads</div>
       <div class="course-sub">Insalate</div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Arugula</span><span class="item-price">$16</span></div>
+        <div class="item-line"><span class="item-name">Arugula</span><span class="item-price">$18</span></div>
         <div class="item-desc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Romaine</span><span class="item-price">$15</span></div>
+        <div class="item-line"><span class="item-name">Romaine</span><span class="item-price">$17</span></div>
         <div class="item-desc">Parmesan, garlic croutons, anchovies, caesar or balsamic</div>
       </div>
     </div>
@@ -231,15 +242,15 @@
       <div class="course-title">Secondi</div>
       <div class="course-sub">Mains</div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Scaloppine di pollo</span><span class="item-price">$23</span></div>
+        <div class="item-line"><span class="item-name">Scaloppine di pollo</span><span class="item-price">$25</span></div>
         <div class="item-desc">Chicken, white wine, capers, lemon, seasonal vegetables</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Costoletta pizzaiola</span><span class="item-price">$24</span></div>
+        <div class="item-line"><span class="item-name">Costoletta pizzaiola</span><span class="item-price">$26</span></div>
         <div class="item-desc">Pork chop, garlic, red wine, San Marzano tomato</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Melanzane alla Parmigiana</span><span class="item-price">$22</span></div>
+        <div class="item-line"><span class="item-name">Melanzane alla Parmigiana</span><span class="item-price">$24</span></div>
         <div class="item-desc">Oven-roasted eggplant, house tomato sauce, basil, melted parmesan</div>
       </div>
     </div>
