@@ -220,12 +220,15 @@
     }
     .casa-open-photos {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
       margin-top: 2rem;
+      margin-bottom: 1rem;
       width: 100%;
     }
     .casa-open-photos .story-photo { margin-top: 0; }
+    .casa-open-photos .story-photo img { aspect-ratio: 3/4; }
+    .casa-open-photos .story-photo-cap { font-size: 9px; letter-spacing: 0.1em; padding: 0.5rem 0.5rem; }
     .casa-open-text h2 em { color: var(--gold-light); }
     .casa-open-text p:last-child {
       font-family: 'EB Garamond', serif;
@@ -467,6 +470,7 @@
       .bridge-line { display: none; }
       .find-panel { padding: 3rem 1.5rem; }
       .casa-open { grid-template-columns: 1fr; }
+      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; }
       .casa-open-photo { height: 60vw; }
       .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
@@ -595,10 +599,6 @@
         <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
       </div>
       <div class="story-photo">
-        <img src="gabrijon.jpg" alt="Jon and Chef Gabriele Russo" style="object-position: center 20%;" />
-        <p class="story-photo-cap">Jon &amp; Chef Gabriele</p>
-      </div>
-      <div class="story-photo">
         <img src="jonlorjosto.jpeg" alt="Jon and Lorenzo with Josto Miglior Cannonau di Sardegna" style="object-position: center 18%;" />
         <p class="story-photo-cap">Jon &amp; Lorenzo &mdash; Cannonau di Sardegna</p>
       </div>
@@ -666,29 +666,31 @@
 
   <p class="cat">Appetizers</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Cuoppo di Mare</p><p class="idesc">Crispy calamari and shrimp, lemon, capers, tartar sauce</p></div><span class="iprice">$23</span></div>
+    <div class="item"><div><p class="iname">Bruschetta</p><p class="idesc">Cherry tomatoes, stracciatella, garlic, extra virgin olive oil</p></div><span class="iprice">$20</span></div>
+    <div class="item"><div><p class="iname">Cuoppo di Mare</p><p class="idesc">Crispy calamari and shrimp, lemon, capers, tartar sauce</p></div><span class="iprice">$25</span></div>
     <div class="item"><div><p class="iname">Cuoppo di Terra</p><p class="idesc">Rice arancine, fried seasonal vegetables, tomato sauce</p></div><span class="iprice">$22</span></div>
-    <div class="item"><div><p class="iname">Meatballs</p><p class="idesc">Veal and pork, parmesan, San Marzano tomato</p></div><span class="iprice">$20</span></div>
+    <div class="item"><div><p class="iname">Meatballs</p><p class="idesc">Veal and pork, parmesan, San Marzano tomato</p></div><span class="iprice">$22</span></div>
   </div>
 
   <p class="cat">Pasta</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Pasta fagioli e cozze</p><p class="idesc">Tubetti, beans, stewed mussels</p></div><span class="iprice">$22</span></div>
-    <div class="item"><div><p class="iname">Gamberi alla nerano</p><p class="idesc">Zucchini cream, basil, saut&eacute;ed shrimp</p></div><span class="iprice">$21</span></div>
-    <div class="item"><div><p class="iname">Genovese di Napoli</p><p class="idesc">Tubetti, slow-cooked onions, pork rag&ugrave;</p></div><span class="iprice">$23</span></div>
+    <div class="item"><div><p class="iname">Spaghetti al Pomodoro</p><p class="idesc">San Marzano tomato, fresh basil, olive oil</p></div><span class="iprice">$22</span></div>
+    <div class="item"><div><p class="iname">Pasta fagioli e cozze</p><p class="idesc">Tubetti, beans, stewed mussels</p></div><span class="iprice">$24</span></div>
+    <div class="item"><div><p class="iname">Gamberi alla nerano</p><p class="idesc">Zucchini cream, basil, saut&eacute;ed shrimp</p></div><span class="iprice">$24</span></div>
+    <div class="item"><div><p class="iname">Genovese di Napoli</p><p class="idesc">Tubetti, slow-cooked onions, pork rag&ugrave;</p></div><span class="iprice">$25</span></div>
   </div>
 
   <p class="cat">Salads</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</p></div><span class="iprice">$16</span></div>
-    <div class="item"><div><p class="iname">Romaine</p><p class="idesc">Parmesan, garlic croutons, anchovies, caesar or balsamic</p></div><span class="iprice">$15</span></div>
+    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</p></div><span class="iprice">$18</span></div>
+    <div class="item"><div><p class="iname">Romaine</p><p class="idesc">Parmesan, garlic croutons, anchovies, caesar or balsamic</p></div><span class="iprice">$16</span></div>
   </div>
 
   <p class="cat">Secondi</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Scaloppine di pollo</p><p class="idesc">Chicken, white wine, capers, lemon, seasonal vegetables</p></div><span class="iprice">$23</span></div>
-    <div class="item"><div><p class="iname">Costoletta pizzaiola</p><p class="idesc">Pork chop, garlic, red wine, San Marzano tomato</p></div><span class="iprice">$24</span></div>
-    <div class="item"><div><p class="iname">Melanzane alla Parmigiana</p><p class="idesc">Oven-roasted eggplant, house tomato sauce, basil, melted parmesan</p></div><span class="iprice">$22</span></div>
+    <div class="item"><div><p class="iname">Scaloppine di pollo</p><p class="idesc">Chicken, white wine, capers, lemon, seasonal vegetables</p></div><span class="iprice">$25</span></div>
+    <div class="item"><div><p class="iname">Costoletta pizzaiola</p><p class="idesc">Pork chop, garlic, red wine, San Marzano tomato</p></div><span class="iprice">$26</span></div>
+    <div class="item"><div><p class="iname">Melanzane alla Parmigiana</p><p class="idesc">Oven-roasted eggplant, house tomato sauce, basil, melted parmesan</p></div><span class="iprice">$24</span></div>
   </div>
 </section>
 
@@ -824,9 +826,4 @@
 <!-- FOOTER -->
 <footer id="find-us">
   <small>Bottega Gabriele &middot; Casa Gabriele &mdash; 75 &amp; 88 Yesler Way, Seattle</small>
-  <small><a href="https://www.opentable.com/r/casa-gabriele-reservations-seattle?restref=1530016&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener" style="color:inherit">Reserve at Casa Gabriele</a> &middot; <a href="tel:2063005524" style="color:inherit">(206) 300 5524</a></small>
-  <small><a href="https://instagram.com/bottegagabriele" target="_blank" rel="noopener" style="color:inherit">@bottegagabriele</a></small>
-</footer>
-
-</body>
-</html>
+  <small><a href="https://www.opentable.com/r
