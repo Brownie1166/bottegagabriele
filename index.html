@@ -211,6 +211,21 @@
       border-left: 1px solid rgba(184,147,58,0.15);
     }
     .casa-open-text h2 { color: var(--cream); font-size: clamp(2rem, 3.5vw, 3rem); }
+    .casa-open-intro {
+      color: var(--cream);
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.55;
+      max-width: 30rem;
+      margin-top: 1.25rem;
+    }
+    .casa-open-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      margin-top: 2rem;
+      width: 100%;
+    }
+    .casa-open-photos .story-photo { margin-top: 0; }
     .casa-open-text h2 em { color: var(--gold-light); }
     .casa-open-text p:last-child {
       font-family: 'EB Garamond', serif;
@@ -562,6 +577,45 @@
   </div>
 </div>
 
+<!-- CASA OPEN -->
+<div class="casa-open">
+  <div class="casa-open-photo">
+    <img src="casagabrieleopen.jpeg" alt="Casa Gabriele is open" />
+  </div>
+  <div class="casa-open-text">
+    <p class="label">Now Open</p>
+    <p class="casa-open-intro">Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen &mdash; come for dinner, stay at the bar.</p>
+    <div class="casa-open-photos">
+      <div class="story-photo">
+        <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
+        <p class="story-photo-cap">Gabriele &amp; his father</p>
+      </div>
+      <div class="story-photo">
+        <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" style="object-position: center 20%;" />
+        <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
+      </div>
+      <div class="story-photo">
+        <img src="gabrijon.jpg" alt="Jon and Chef Gabriele Russo" style="object-position: center 20%;" />
+        <p class="story-photo-cap">Jon &amp; Chef Gabriele</p>
+      </div>
+      <div class="story-photo">
+        <img src="jonlorjosto.jpeg" alt="Jon and Lorenzo with Josto Miglior Cannonau di Sardegna" style="object-position: center 18%;" />
+        <p class="story-photo-cap">Jon &amp; Lorenzo &mdash; Cannonau di Sardegna</p>
+      </div>
+    </div>
+    <a class="soft-launch-cta" style="margin-top:2rem" href="https://www.opentable.com/r/casa-gabriele-reservations-seattle?restref=1530016&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener">Reserve a table &rarr;</a>
+  </div>
+</div>
+
+<!-- CASA PHOTOS -->
+<div class="casa-photos">
+  <div class="casa-photo-cell"><img src="barII.jpg" alt="Casa Gabriele bar" /></div>
+  <div class="casa-photo-cell"><img src="inside.jpg" alt="Casa Gabriele dining room" /></div>
+  <div class="casa-photo-cell"><img src="CasaG-20.jpg" alt="Casa Gabriele bar detail" /></div>
+  <div class="casa-photo-cell"><img src="CasaG-21.jpg" alt="Casa Gabriele kitchen window" /></div>
+  <div class="casa-photo-cell"><img src="CasaG-23.jpg" alt="Casa Gabriele dining room brick" /></div>
+</div>
+
 <!-- STORY -->
 <section class="section story" id="story">
   <div class="story-grid">
@@ -570,24 +624,6 @@
       <h2>Two Gabrieles.<br><em>One block.</em></h2>
       <br>
       <span class="ornament">&#8767; &#8767; &#8767;</span>
-      <div class="story-photos-pair">
-        <div class="story-photo">
-          <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
-          <p class="story-photo-cap">Gabriele &amp; his father</p>
-        </div>
-        <div class="story-photo">
-          <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" style="object-position: center 20%;" />
-          <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
-        </div>
-        <div class="story-photo">
-          <img src="gabrijon.jpg" alt="Jon and Chef Gabriele Russo" style="object-position: center 20%;" />
-          <p class="story-photo-cap">Jon &amp; Chef Gabriele</p>
-        </div>
-        <div class="story-photo">
-          <img src="jonlorjosto.jpeg" alt="Jon and Lorenzo with Josto Miglior Cannonau di Sardegna" style="object-position: center 18%;" />
-          <p class="story-photo-cap">Jon &amp; Lorenzo &mdash; Cannonau di Sardegna</p>
-        </div>
-      </div>
     </div>
     <div class="story-right">
       <p>Gabriele Brownstein grew up in Sardinia. His father and brother are still there, running Trigu Italia — a small export company that sources directly from local producers. He came to Seattle ten years ago and worked his way through the restaurant industry.</p>
@@ -616,28 +652,6 @@
     <p>Across the street. A Neapolitan trattoria and a Sardinian kitchen, sharing one room. Industry welcome.</p>
     <div class="v-meta">Evenings &mdash; reservations welcome</div>
   </div>
-</div>
-
-<!-- CASA OPEN -->
-<div class="casa-open">
-  <div class="casa-open-photo">
-    <img src="casagabrieleopen.jpeg" alt="Casa Gabriele is open" />
-  </div>
-  <div class="casa-open-text">
-    <p class="label">Now Open</p>
-    <h2>Casa Gabriele<br><em>is open.</em></h2>
-    <p>Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen. Come for dinner, stay at the bar.</p>
-    <a class="soft-launch-cta" style="margin-top:2rem" href="mailto:ciao@bottegagabriele.com?subject=Reservation%20%E2%80%94%20Casa%20Gabriele&body=Hi%2C%0A%0AI'd%20like%20to%20make%20a%20reservation%20at%20Casa%20Gabriele.%0A%0AName%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A%0A%0AThank%20you!">Reserve a table</a>
-  </div>
-</div>
-
-<!-- CASA PHOTOS -->
-<div class="casa-photos">
-  <div class="casa-photo-cell"><img src="barII.jpg" alt="Casa Gabriele bar" /></div>
-  <div class="casa-photo-cell"><img src="inside.jpg" alt="Casa Gabriele dining room" /></div>
-  <div class="casa-photo-cell"><img src="CasaG-20.jpg" alt="Casa Gabriele bar detail" /></div>
-  <div class="casa-photo-cell"><img src="CasaG-21.jpg" alt="Casa Gabriele kitchen window" /></div>
-  <div class="casa-photo-cell"><img src="CasaG-23.jpg" alt="Casa Gabriele dining room brick" /></div>
 </div>
 
 <!-- CASA MENU -->
