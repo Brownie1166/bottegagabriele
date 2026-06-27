@@ -1,146 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Casa Gabriele — Soft Launch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Gabriele — Menu & Vini</title>
+<meta name="description" content="Casa Gabriele — Neapolitan trattoria and Sardinian kitchen on Yesler Way, Seattle. Dinner menu and wine list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carta:#F7F3EB;
+    --ink:#1C1A17;
+    --gold:#8B6F3E;
+    --quiet:#6B6560;
+    --hair:#D8CFBE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--carta);
+    color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:16px;
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  .frame{
+    max-width:640px;
+    margin:10px auto 24px;
+    border:1px solid var(--ink);
+    outline:1px solid var(--ink);
+    outline-offset:3px;
+    padding:28px 20px 36px;
+  }
+  /* ---------- header ---------- */
+  header{text-align:center;margin-bottom:18px}
+  .wordmark{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:2.35rem;
+    font-weight:500;
+    letter-spacing:.04em;
+    line-height:1.05;
+  }
+  .wordmark em{font-style:italic;font-weight:400}
+  .tagline{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;
+    color:var(--quiet);
+    font-size:1.02rem;
+    margin-top:6px;
+  }
+  .meta{
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--quiet);
+    margin-top:10px;
+  }
+  .rule{
+    width:64px;height:1px;background:var(--gold);
+    margin:16px auto 0;
+    position:relative;
+  }
+  .rule::after{
+    content:"";position:absolute;left:50%;top:-2.5px;
+    width:5px;height:5px;background:var(--gold);
+    transform:translateX(-50%) rotate(45deg);
+  }
+  /* ---------- tabs ---------- */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:var(--carta);
+    padding:12px 0 10px;
+    margin:14px -4px 6px;
+    display:flex;justify-content:center;gap:10px;
+    border-bottom:1px solid var(--hair);
+  }
+  .tab{
+    appearance:none;background:none;cursor:pointer;
+    display:inline-block;user-select:none;
+    font-family:Georgia,serif;
+    font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--quiet);
+    border:1px solid var(--hair);
+    padding:9px 22px;border-radius:999px;
+    transition:color .15s,border-color .15s,background .15s;
+  }
+  .tabradio{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap}
+  #rt-menu:checked ~ nav label[for="rt-menu"],
+  #rt-vini:checked ~ nav label[for="rt-vini"]{
+    color:var(--carta);background:var(--ink);border-color:var(--ink);
+  }
+  .tabradio:focus-visible ~ nav label{outline:2px solid var(--gold);outline-offset:2px}
+  /* ---------- sections ---------- */
+  .panel{display:none;padding-top:8px}
+  #rt-menu:checked ~ #panel-menu,
+  #rt-vini:checked ~ #panel-vini{display:block}
+  .course{margin-top:30px}
+  .course-title{
+    text-align:center;
+    font-size:.92rem;font-weight:bold;
+    letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .course-sub{
+    text-align:center;
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;color:var(--quiet);
+    font-size:.95rem;margin-top:2px;margin-bottom:6px;
+  }
+  .item{padding:13px 0;border-bottom:1px solid var(--hair)}
+  .item:last-child{border-bottom:none}
+  .item-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .item-name{font-weight:bold;font-size:1rem}
+  .item-name .flag{
+    font-weight:normal;font-style:italic;color:var(--quiet);font-size:.88rem;
+    white-space:nowrap;
+  }
+  .item-price{font-size:1rem;white-space:nowrap}
+  .item-prod{color:var(--quiet);font-size:.86rem;margin-top:2px}
+  .item-desc{
+    font-style:italic;color:var(--quiet);
+    font-size:.9rem;margin-top:3px;
+  }
+  .note{
+    text-align:center;font-style:italic;color:var(--quiet);
+    font-size:.88rem;margin-top:26px;
+    padding-top:16px;border-top:1px solid var(--hair);
+  }
+  .gb{ /* glass/bottle key */
+    text-align:right;font-style:italic;color:var(--quiet);
+    font-size:.78rem;margin-top:14px;
+  }
+  /* tasting block */
+  .tasting{
+    margin-top:30px;border:1px solid var(--hair);
+    padding:18px 16px;text-align:center;
+  }
+  .tasting .course-title{margin-bottom:4px}
+  .tasting-row{
+    display:flex;justify-content:space-between;
+    max-width:300px;margin:10px auto 0;font-size:1rem;
+  }
+  .tasting p{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;color:var(--quiet);font-size:.98rem;
+  }
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:36px;text-align:center;
+    border-top:1px solid var(--ink);
+    padding-top:18px;
+  }
+  footer .wordmark{font-size:1.3rem}
+  footer p{color:var(--quiet);font-size:.85rem;margin-top:6px}
+  footer a{color:var(--ink)}
+  footer a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  @media print{
+    @page{ size:Letter; margin:14mm; }
+    .tabradio{ display:none !important; } nav{ display:none !important; position:static; }
+    .panel{ display:block !important; }
+    #panel-vini{ break-before:page; page-break-before:always; }
+    .item,.course,.tasting,.tasting-row{ break-inside:avoid; page-break-inside:avoid; }
+    .frame{ border:none; outline:none; max-width:none; margin:0 auto; padding:0; }
+    body{ font-size:12.5px; }
+  }
+
+</style>
 </head>
-<body style="margin:0;padding:0;background:#0d1525;font-family:Georgia,serif;">
+<body>
+<div class="frame">
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d1525;">
-  <tr>
-    <td align="center" style="padding:40px 20px;">
+  <input type="radio" name="mtab" id="rt-menu" class="tabradio" checked aria-label="Food menu">
+  <input type="radio" name="mtab" id="rt-vini" class="tabradio" aria-label="Wine list">
 
-      <!-- CONTAINER -->
-      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+  <header>
+    <div class="wordmark">Casa <em>Gabriele</em></div>
+    <div class="tagline">Cucina casereccia del Sud — Napoli &amp; Sardegna</div>
+    <div class="meta">Restaurant · Bar — 88 Yesler Way, Seattle</div>
+    <div class="rule" aria-hidden="true"></div>
+  </header>
 
-        <!-- TOP RULE -->
-        <tr>
-          <td style="padding-bottom:32px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr><td style="border-top:1px solid rgba(184,147,58,0.35);font-size:0;">&nbsp;</td></tr>
-            </table>
-          </td>
-        </tr>
+  <nav aria-label="Menu sections">
+    <label class="tab" for="rt-menu">Menu</label>
+    <label class="tab" for="rt-vini">Vini</label>
+  </nav>
 
-        <!-- EYEBROW -->
-        <tr>
-          <td align="center" style="padding-bottom:24px;">
-            <span style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.38em;text-transform:uppercase;color:#B8933A;">Soft Launch &nbsp;&middot;&nbsp; Yesler Way &nbsp;&middot;&nbsp; Seattle</span>
-          </td>
-        </tr>
+  <!-- ================= MENU ================= -->
+  <section class="panel" id="panel-menu" role="tabpanel" aria-labelledby="rt-menu">
 
-        <!-- TITLE -->
-        <tr>
-          <td align="center" style="padding-bottom:8px;">
-            <span style="font-family:Georgia,'Times New Roman',serif;font-size:72px;font-style:italic;color:#D4AA5A;line-height:1;display:block;">Casa</span>
-          </td>
-        </tr>
-        <tr>
-          <td align="center" style="padding-bottom:28px;">
-            <span style="font-family:Georgia,'Times New Roman',serif;font-size:64px;font-style:normal;font-weight:bold;color:#F8F4EC;line-height:1;display:block;letter-spacing:-0.01em;">Gabriele</span>
-          </td>
-        </tr>
+    <div class="course">
+      <div class="course-title">Appetizers</div>
+      <div class="course-sub">Antipasti</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Bruschetta</span><span class="item-price">$20</span></div>
+        <div class="item-desc">Cherry tomatoes, stracciatella, garlic, extra virgin olive oil</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Cuoppo di Mare</span><span class="item-price">$25</span></div>
+        <div class="item-desc">Crispy calamari and shrimp, lemon, capers, tartar sauce</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Cuoppo di Terra</span><span class="item-price">$22</span></div>
+        <div class="item-desc">Rice arancine, fried seasonal vegetables, tomato sauce</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Meatballs</span><span class="item-price">$22</span></div>
+        <div class="item-desc">Veal and pork, parmesan, San Marzano tomato</div>
+      </div>
+    </div>
 
-        <!-- GOLD RULE -->
-        <tr>
-          <td align="center" style="padding-bottom:32px;">
-            <table cellpadding="0" cellspacing="0" border="0">
-              <tr><td width="80" style="border-top:0.5px solid #B8933A;font-size:0;">&nbsp;</td></tr>
-            </table>
-          </td>
-        </tr>
+    <div class="course">
+      <div class="course-title">Pasta</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Spaghetti al Pomodoro</span><span class="item-price">$22</span></div>
+        <div class="item-desc">San Marzano tomato, fresh basil, olive oil</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Pasta fagioli e cozze</span><span class="item-price">$24</span></div>
+        <div class="item-desc">Tubetti, beans, stewed mussels</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Gamberi alla nerano</span><span class="item-price">$24</span></div>
+        <div class="item-desc">Zucchini cream, basil, sautéed shrimp</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Genovese di Napoli</span><span class="item-price">$25</span></div>
+        <div class="item-desc">Tubetti, slow-cooked onions, pork ragù</div>
+      </div>
+    </div>
 
-        <!-- TWO GABRIELES PHOTO -->
-        <tr>
-          <td style="padding-bottom:0;">
-            <img src="https://mcusercontent.com/9d17f1dc76f702442855bc241/images/6ad72a61-c2de-4eba-0180-363dcfb4fa37.jpeg" alt="Gabriele and Gabriele" width="600" style="width:100%;max-width:600px;display:block;border:0;filter:brightness(0.92);" />
-          </td>
-        </tr>
+    <div class="course">
+      <div class="course-title">Salads</div>
+      <div class="course-sub">Insalate</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Arugula</span><span class="item-price">$18</span></div>
+        <div class="item-desc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Romaine</span><span class="item-price">$16</span></div>
+        <div class="item-desc">Parmesan, garlic croutons, anchovies, caesar or balsamic</div>
+      </div>
+    </div>
 
-        <!-- MAIN BODY PANEL -->
-        <tr>
-          <td style="background:#111D33;padding:48px 56px 40px;border-left:1px solid rgba(184,147,58,0.15);border-right:1px solid rgba(184,147,58,0.15);">
+    <div class="course">
+      <div class="course-title">Secondi</div>
+      <div class="course-sub">Mains</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Scaloppine di pollo</span><span class="item-price">$25</span></div>
+        <div class="item-desc">Chicken, white wine, capers, lemon, seasonal vegetables</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Costoletta pizzaiola</span><span class="item-price">$26</span></div>
+        <div class="item-desc">Pork chop, garlic, red wine, San Marzano tomato</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Melanzane alla Parmigiana</span><span class="item-price">$24</span></div>
+        <div class="item-desc">Oven-roasted eggplant, house tomato sauce, basil, melted parmesan</div>
+      </div>
+    </div>
 
-            <!-- GREETING -->
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.75;color:#F0E4C4;margin:0 0 24px;">Dear Friends and Family,</p>
+    <div class="tasting">
+      <div class="course-title">Tasting Menus</div>
+      <p>An evening composed for you — each menu a journey through the season.</p>
+      <div class="tasting-row"><span>Tasting 1</span><span>$55</span></div>
+      <div class="tasting-row"><span>Tasting 2</span><span>$75</span></div>
+      <div class="tasting-row"><span>Tasting 3</span><span>$100</span></div>
+      <p style="margin-top:10px">Wine pairing available upon request</p>
+    </div>
 
-            <!-- BODY TEXT -->
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.85;color:rgba(240,228,196,0.8);margin:0 0 20px;">As a proud father, I would like to announce the opening of <strong style="color:#F0E4C4;">Casa Gabriele</strong>, my son and his partner&#8217;s restaurant in Pioneer Square in Seattle &mdash; directly in front of their sandwich shop on Yesler, Bottega Gabriele. Chef Gabriele Russo is in the kitchen.</p>
+    <div class="note">Menus change with the season.<br>Please inform your server of any allergies or dietary preferences.</div>
+  </section>
 
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.85;color:rgba(240,228,196,0.8);margin:0 0 40px;">If you are in Seattle this summer, come down and have a sandwich or a sit-down meal with me &mdash; I will be here all of June and part of July &mdash; at Casa Gabriele, and celebrate authentic, sincere Sardo-Campana cucina.</p>
+  <!-- ================= VINI ================= -->
+  <section class="panel" id="panel-vini" role="tabpanel" aria-labelledby="rt-vini">
 
-            <!-- DIAMOND SEPARATOR -->
-            <p style="text-align:center;color:#B8933A;font-size:14px;margin:0 0 36px;letter-spacing:0.5em;">&#9670;</p>
+    <div class="gb">glass / bottle</div>
 
-            <!-- OFFER BOX -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:0.5px solid rgba(184,147,58,0.35);margin-bottom:36px;">
-              <tr>
-                <td style="padding:32px 36px;text-align:center;">
-                  <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#B8933A;margin:0 0 12px;">A gift for our friends</p>
-                  <p style="font-family:Georgia,'Times New Roman',serif;font-size:56px;font-weight:bold;color:#D4AA5A;line-height:1;margin:0 0 10px;letter-spacing:0.02em;">10% OFF</p>
-                  <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(240,228,196,0.45);margin:0;">Present this invitation at Casa Gabriele</p>
-                </td>
-              </tr>
-            </table>
+    <div class="course">
+      <div class="course-title">Bollicine</div>
+      <div class="course-sub">Sparkling</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Contemporaneo” Prosecco DOC Brut</span><span class="item-price">$12 / $48</span></div>
+        <div class="item-prod">Batiso, NV · Veneto</div>
+        <div class="item-desc">Brut and bone-bright — crisp pear, white flowers, fine bubbles; the way to start, or alongside the cuoppo di mare</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Lambrusco Grasparossa di Castelvetro DOP Amabile</span><span class="item-price">$12 / $38</span></div>
+        <div class="item-prod">Cantina Settecani · Emilia-Romagna</div>
+        <div class="item-desc">Sparkling red, gently sweet — violet froth and dark berries; serve cool with salumi, cuoppo di terra, or in place of dessert</div>
+      </div>
+    </div>
 
-            <!-- CTA BUTTON -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:36px;">
-              <tr>
-                <td align="center">
-                  <a href="mailto:ciao@bottegagabriele.com?subject=Soft%20Launch%20Reservation%20%E2%80%94%20Casa%20Gabriele&body=Hi%2C%0A%0AI%20received%20the%20soft%20launch%20invitation%20and%20would%20love%20to%20make%20a%20reservation%20at%20Casa%20Gabriele.%0A%0AName%3A%0ADate%3A%0ATime%3A%0AParty%20size%3A%0A%0ALooking%20forward%20to%20it!" style="display:inline-block;padding:16px 40px;border:0.5px solid rgba(184,147,58,0.5);font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:#D4AA5A;text-decoration:none;">Reserve a table</a>
-                </td>
-              </tr>
-            </table>
+    <div class="course">
+      <div class="course-title">Bianchi</div>
+      <div class="course-sub">White</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Nordest” Vermentino di Sardegna DOC</span><span class="item-price">$12 / $50</span></div>
+        <div class="item-prod">Cantina del Vermentino, 2024 · Sardegna</div>
+        <div class="item-desc">Dry and breezy, green apple with a hint of almond — Gabriele’s island in a glass; salads, fish, aperitivo</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Pinot Grigio delle Venezie DOC</span><span class="item-price">$12 / $36</span></div>
+        <div class="item-prod">Due Torri, 2024 · Veneto</div>
+        <div class="item-desc">Crisp and easy, white pear and citrus — chilled with gamberi alla nerano or lighter pasta</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Sannio Greco DOC</span><span class="item-price">$16 / $65</span></div>
+        <div class="item-prod">La Fortezza · Sannio, Campania</div>
+        <div class="item-desc">Vibrant and mineral off Campania’s volcanic hills — citrus, green apple, and white flowers, finishing soft and almond-like; the cuoppo di mare, pasta al nerano, and fish</div>
+      </div>
+    </div>
 
-            <!-- CLOSING -->
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.85;color:rgba(240,228,196,0.8);margin:0 0 8px;">With warmth and good food,</p>
+    <div class="course">
+      <div class="course-title">Rosati</div>
+      <div class="course-sub">Rosé</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Marche Rosato IGT</span><span class="item-price">$12 / $55</span></div>
+        <div class="item-prod">Fazi Battaglia, 2021 · Marche</div>
+        <div class="item-desc">Pale and dry off the Adriatic — wild strawberry and citrus peel, crisp and saline; aperitivo, salads, the cuoppo di mare</div>
+      </div>
+    </div>
 
-          </td>
-        </tr>
+    <div class="course">
+      <div class="course-title">Rossi</div>
+      <div class="course-sub">Red — lighter to fuller</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Carbonic Nebbiolo <span class="flag">— served chilled</span></span><span class="item-price">$14 / $56</span></div>
+        <div class="item-prod">Sage Rat, 2025 · Columbia Valley, Washington</div>
+        <div class="item-desc">Our hometown guest — nebbiolo done carbonic-style, bright cranberry and black tea, between a red and a dark rosé; pour it cool with the cuoppo di mare or on its own at the bar</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Acasto” Frappato Terre Siciliane IGT</span><span class="item-price">$12 / $50</span></div>
+        <div class="item-prod">Alcesti, 2023 · Sicilia</div>
+        <div class="item-desc">Sicily’s light, chillable red — fresh black cherry and blueberry, soft and bright; slightly cool with meatballs, scaloppine di pollo, or nothing at all</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Possessioni” Rosso del Veronese IGT</span><span class="item-price">$55</span></div>
+        <div class="item-prod">Serego Alighieri · Veneto</div>
+        <div class="item-desc">From the estate Dante’s family has farmed for seven centuries — corvina’s bright sour-cherry lift, light and supple; meatballs, scaloppine di pollo, anything in San Marzano</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Barbera d’Asti Superiore DOCG</span><span class="item-price">$12 / $45</span></div>
+        <div class="item-prod">Terzetto, 2023 · Piemonte</div>
+        <div class="item-desc">Bright cherry and a floral lift, juicy and low in tannin — pasta fagioli e cozze, meatballs</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Montepulciano d’Abruzzo DOC</span><span class="item-price">$12 / $36</span></div>
+        <div class="item-prod">Collegiata, 2024 · Abruzzo</div>
+        <div class="item-desc">Ruby and easygoing, ripe dark cherry, soft round finish — anything in San Marzano</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Biferno Rosso Riserva DOC</span><span class="item-price">$13 / $46</span></div>
+        <div class="item-prod">Rinomata Cantina Tombacco, 2020 · Molise</div>
+        <div class="item-desc">From Italy’s quietest region — plum, leather, warm spice; costoletta pizzaiola, the Genovese</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Josto Miglior” Cannonau di Sardegna Riserva DOC</span><span class="item-price">$12 / $60</span></div>
+        <div class="item-prod">Antichi Poderi Jerzu, 2019 · Sardegna</div>
+        <div class="item-desc">Gabriele’s island in red — sun-baked grenache, wild macchia herbs and bramble fruit, warm and open; the Genovese, carni, aged pecorino</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Portale Adduca” Aglianico del Vulture DOC</span><span class="item-price">$20 / $100</span></div>
+        <div class="item-prod">Casa Maschito, 2019 · Basilicata</div>
+        <div class="item-desc">Grown on an extinct volcano — dark fruit, smoke, firm structure; carni, aged pecorino — for the table that’s settling in</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Pomorosso” Barbera d’Asti DOCG</span><span class="item-price">$95</span></div>
+        <div class="item-prod">Coppo, 2016 · Piemonte</div>
+        <div class="item-desc">The serious Barbera — years in oak bring black cherry, cocoa, and velvet depth; carni, the costoletta pizzaiola, a table settling in for the night</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Monte Piazzo” Valpolicella Classico Superiore DOC</span><span class="item-price">$100</span></div>
+        <div class="item-prod">Serego Alighieri, 2019 · Veneto</div>
+        <div class="item-desc">Single-vineyard Valpolicella from the Dante estate — dried cherry, sweet spice, a ripasso-like richness; carni, aged cheese, the tasting menus</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Il Sasso” Carmignano DOCG</span><span class="item-price">$50 ½ btl / $100</span></div>
+        <div class="item-prod">Piaggia di Mauro Vannucci, 2022 · Toscana</div>
+        <div class="item-desc">Sangiovese with a whisper of cabernet from the historic Medici hills — dark cherry, violets, fine-grained tannin; made for the tasting menus</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Oreno” Toscana IGT</span><span class="item-price">$210</span></div>
+        <div class="item-prod">Tenuta Sette Ponti, 2022 · Toscana</div>
+        <div class="item-desc">A celebrated Super Tuscan — merlot, cabernet and petit verdot grown above the Arno; blackcurrant, espresso, and polished tannin, deep and ageworthy; the cellar bottle, for carni and the tasting menus</div>
+      </div>
+    </div>
 
-        <!-- RESTAURANT PHOTO -->
-        <tr>
-          <td style="padding-bottom:0;">
-            <img src="https://mcusercontent.com/9d17f1dc76f702442855bc241/images/b4fdf595-63b2-7770-4f62-afdf96de2602.jpeg" alt="Casa Gabriele restaurant" width="600" style="width:100%;max-width:600px;display:block;border:0;" />
-          </td>
-        </tr>
+    <div class="course">
+      <div class="course-title">Dolci &amp; Amari</div>
+      <div class="course-sub">Aperitivi &amp; after dinner</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Campari Spritz</span><span class="item-price">$15</span></div>
+        <div class="item-prod">Campari · Milano</div>
+        <div class="item-desc">Campari, prosecco, soda, and orange — bittersweet and bracing; the classic aperitivo</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Aperol Spritz</span><span class="item-price">$15</span></div>
+        <div class="item-prod">Aperol · Padova</div>
+        <div class="item-desc">Aperol, prosecco, and soda — light and orange-bitter; the easy aperitivo</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Liquore delle Sirene Americano <span class="flag">— rosso or bianco</span></span><span class="item-price">$12 neat / $15 spritz</span></div>
+        <div class="item-prod">Liquore delle Sirene · Italia</div>
+        <div class="item-desc">Artisan Italian americano — gentian and wormwood, softly bitter; neat over ice, or as a spritz with prosecco and soda</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Amaro Montenegro</span><span class="item-price">$14</span></div>
+        <div class="item-prod">Montenegro · Bologna</div>
+        <div class="item-desc">Italy’s most-loved amaro — orange peel, vanilla, and a wealth of botanicals; gentle and rounded, neat</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Averna</span><span class="item-price">$13</span></div>
+        <div class="item-prod">Amaro Averna · Sicilia</div>
+        <div class="item-desc">Sicilian classic — caramel, dried fig, and bitter herbs; rich and smooth, neat or over ice</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Cynar</span><span class="item-price">$12</span></div>
+        <div class="item-prod">Cynar Ricetta Originale · Italia</div>
+        <div class="item-desc">Artichoke amaro, the original recipe — herbal and lightly bitter; neat, on ice, or with soda</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Lo-Fi Gentian Amaro</span><span class="item-price">$10</span></div>
+        <div class="item-prod">Lo-Fi Aperitifs · California</div>
+        <div class="item-desc">Bright, root-driven gentian amaro — clean and lightly bitter; over ice with an orange twist</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Amaro Sfumato Rabarbaro</span><span class="item-price">$10</span></div>
+        <div class="item-prod">Antica Erboristeria Cappelletti · Trentino</div>
+        <div class="item-desc">Smoky alpine rhubarb, dark and bittersweet — after dinner, neat or over ice</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Limoncello Italiano</span><span class="item-price">$9</span></div>
+        <div class="item-prod">Vita Vera · Italia</div>
+        <div class="item-desc">Bright, sweet lemon, ice cold — the only proper way to end</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Bomba Carta</span><span class="item-price">$16</span></div>
+        <div class="item-prod">Silvio Carta · Sardegna</div>
+        <div class="item-desc">Explosive Sardinian amaro — wild mountain herbs and rare strawberry-tree honey, bittersweet and balsamic; neat over ice after dinner</div>
+      </div>
+    </div>
 
-        <!-- FOOTER PANEL -->
-        <tr>
-          <td style="background:#0d1525;border:1px solid rgba(184,147,58,0.15);border-top:none;padding:28px 56px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td style="border-top:0.5px solid rgba(184,147,58,0.2);padding-top:24px;">
-                  <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,228,196,0.4);margin:0 0 6px;text-align:center;">
-                    <strong style="color:rgba(240,228,196,0.65);">Bottega Gabriele</strong> &nbsp;&middot;&nbsp; <strong style="color:#D4AA5A;">Casa Gabriele</strong> &nbsp;&middot;&nbsp; Yesler Way, Seattle
-                  </p>
-                  <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.1em;color:rgba(240,228,196,0.3);margin:8px 0 0;text-align:center;">
-                    <a href="mailto:ciao@bottegagabriele.com" style="color:rgba(240,228,196,0.4);text-decoration:none;">ciao@bottegagabriele.com</a>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="https://instagram.com/bottegagabriele" style="color:rgba(240,228,196,0.4);text-decoration:none;">@bottegagabriele</a>
-                  </p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+    <div class="note">Wine pairing available upon request</div>
 
-        <!-- BOTTOM RULE -->
-        <tr>
-          <td style="padding-top:32px;">
-            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr><td style="border-top:1px solid rgba(184,147,58,0.2);font-size:0;">&nbsp;</td></tr>
-            </table>
-          </td>
-        </tr>
+  </section>
 
-      </table>
-      <!-- END CONTAINER -->
-
-    </td>
-  </tr>
-</table>
-
+</div>
 </body>
 </html>
