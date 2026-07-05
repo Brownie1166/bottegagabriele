@@ -221,14 +221,18 @@
     .casa-open-text h2 em { color: var(--gold-light); }
     .casa-open-photos {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
       margin-top: 2rem;
       width: 100%;
+      max-width: 700px;
     }
     .casa-open-photos .story-photo { margin-top: 0; }
-    .casa-open-photos .story-photo img { aspect-ratio: 3/4; }
-    .casa-open-photos .story-photo-cap { font-size: 9px; letter-spacing: 0.08em; padding: 0.5rem 0.5rem; }
+    .casa-open-photos .story-photo img { aspect-ratio: 4/3; }
+    .casa-open-photos .story-photo-cap {
+      font-size: 12px; letter-spacing: 0.01em; text-transform: none;
+      padding: 0.6rem 0.65rem; line-height: 1.4;
+    }
     .casa-open-text p:last-child {
       font-family: 'EB Garamond', serif;
       font-size: 1.15rem; line-height: 1.9; color: var(--on-dark-muted);
@@ -447,7 +451,8 @@
       .hero-photo { height: auto; display: block; }
       .hero-photo-cell { height: auto; }
       .hero-photo-cell.hero-photo-interior { aspect-ratio: 16 / 10; }
-      .hero-photo-cell.hero-photo-founders { aspect-ratio: 4 / 5; margin-top: 3px; }
+      .hero-photo-cell.hero-photo-founders { aspect-ratio: 3 / 4; margin-top: 3px; }
+      .hero-photo-founders img { object-position: center 15%; }
       .hero-left { height: auto; overflow: visible; padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
       .hero-locs { grid-template-columns: 1fr 1fr; }
       .contact-banner { padding: 1.5rem; }
@@ -473,7 +478,8 @@
       .casa-open { grid-template-columns: 1fr; }
       .casa-open-photo { height: 60vw; }
       .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
-      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: none; }
+      .casa-open-photos .story-photo-cap { font-size: 10px; padding: 0.4rem 0.4rem; }
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
       .casa-photo-cell:first-child { grid-row: auto; }
       .casa-photo-cell { aspect-ratio: 1; }
@@ -596,16 +602,8 @@
     <p class="casa-open-intro">Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen &mdash; come for dinner, stay at the bar.</p>
     <div class="casa-open-photos">
       <div class="story-photo">
-        <img src="barella-trigu.jpg" alt="Nicolo Barella at Trigu Italia" />
-        <p class="story-photo-cap">Nicol&ograve; Barella stops by Trigu Italia</p>
-      </div>
-      <div class="story-photo">
         <img src="jon-bottega-street.jpg" alt="Jon with his sons Gabriele and Lorenzo outside Bottega Gabriele" />
         <p class="story-photo-cap">Jon &amp; his sons, Gabriele &amp; Lorenzo</p>
-      </div>
-      <div class="story-photo">
-        <img src="jon-vineyard.jpg" alt="Jon and Gabriele at Cuscusa Vineyards, Sardinia" />
-        <p class="story-photo-cap">Jon &amp; Gabriele, Cuscusa Vineyards</p>
       </div>
       <div class="story-photo">
         <img src="jon-bottega-table.jpg" alt="Gabriele with Armando Batali" />
@@ -798,4 +796,5 @@
 
   <p class="cat">Salads</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.
+    <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.50</span></div>
+    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span cla
