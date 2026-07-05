@@ -221,11 +221,11 @@
     .casa-open-text h2 em { color: var(--gold-light); }
     .casa-open-photos {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin-top: 2rem;
       width: 100%;
-      max-width: 700px;
+      max-width: 500px;
     }
     .casa-open-photos .story-photo { margin-top: 0; }
     .casa-open-photos .story-photo img { aspect-ratio: 4/3; }
@@ -306,7 +306,6 @@
     .venue { padding: 3.5rem; position: relative; overflow: hidden; }
     .venue.navy { background: var(--navy-deep); }
     .venue.gold-bg { background: var(--navy-mid); border-top: 2px solid var(--gold); }
-    .venue-bg-text { position: absolute; bottom: -1.5rem; right: 1rem; font-family: 'Playfair Display', serif; font-size: 8rem; font-weight: 700; color: rgba(255,255,255,0.04); line-height: 1; pointer-events: none; user-select: none; }
     .v-tag { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.6rem; color: var(--gold-light); margin-bottom: 1.5rem; }
     .v-tag::before { content: ''; width: 20px; height: 0.5px; background: var(--gold); opacity: 0.5; }
     .venue h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.2rem); line-height: 1.1; color: var(--cream); margin-bottom: 1.5rem; }
@@ -478,7 +477,7 @@
       .casa-open { grid-template-columns: 1fr; }
       .casa-open-photo { height: 60vw; }
       .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
-      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: none; }
+      .casa-open-photos { grid-template-columns: repeat(2, 1fr); gap: 6px; max-width: none; }
       .casa-open-photos .story-photo-cap { font-size: 10px; padding: 0.4rem 0.4rem; }
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
       .casa-photo-cell:first-child { grid-row: auto; }
@@ -609,10 +608,6 @@
         <img src="jon-bottega-table.jpg" alt="Gabriele with Armando Batali" />
         <p class="story-photo-cap">Gabriele with Armando Batali</p>
       </div>
-      <div class="story-photo">
-        <img src="jon-casa-street.jpg" alt="Gabriele Russo, Jon, and Gabriele Brownstein outside Casa Gabriele" />
-        <p class="story-photo-cap">Gabriele Russo, Jon &amp; Gabriele Brownstein</p>
-      </div>
     </div>
   </div>
 </div>
@@ -650,14 +645,12 @@
 </div>
 <div class="venues-grid">
   <div class="venue navy">
-    <div class="venue-bg-text" aria-hidden="true">01</div>
     <span class="v-tag">Sandwich shop</span>
     <h3>Bottega<br>Gabriele</h3>
     <p>Lunch on Yesler Way. Sandwiches built from ingredients that came here by choice, not by catalogue.</p>
     <div class="v-meta">Mon &ndash; Sun &nbsp;&middot;&nbsp; 11am &ndash; 4pm<br><a href="tel:2063005524">(206) 300 5524</a></div>
   </div>
   <div class="venue gold-bg">
-    <div class="venue-bg-text" aria-hidden="true">02</div>
     <span class="v-tag">Restaurant &amp; bar</span>
     <h3>Casa<br><em>Gabriele</em></h3>
     <p>Across the street. A Neapolitan trattoria and a Sardinian kitchen, sharing one room. Industry welcome.</p>
@@ -797,4 +790,17 @@
   <p class="cat">Salads</p>
   <div class="items">
     <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.50</span></div>
-    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span cla
+    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span class="iprice">$14</span></div>
+  </div>
+
+  <p class="cat">Dessert &amp; drinks</p>
+  <div class="items-3">
+    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></div>
+    <div class="item-s"><p class="iname">San Pellegrino</p><p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p><span class="iprice">$3.50</span></div>
+    <div class="item-s"><p class="iname">Water &amp; sodas</p><p class="idesc">Sparkling, Sprite, Coke</p><span class="iprice">$2.50</span></div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer i
