@@ -80,8 +80,8 @@
       width: 100%; height: 100%; object-fit: cover;
       filter: brightness(0.9) saturate(0.98);
     }
-    .hero-photo-cell:first-child img { object-position: center top; }
-    .hero-photo-cell:last-child img { object-position: center 35%; }
+    .hero-photo-cell:first-child img { object-position: center 12%; }
+    .hero-photo-cell:last-child img { object-position: center 42%; }
     .hero-photo-caption {
       position: absolute; bottom: 1rem; left: 1.25rem;
       font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -153,22 +153,6 @@
     }
     .contact-banner-value a:hover { color: var(--cream); }
 
-    .hero-logos { display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem; }
-    .hero-logo-circle {
-      border: 1px solid rgba(184,147,58,0.3);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; background: transparent; padding: 4px;
-    }
-    .hero-logo-circle img { height: 55px; width: auto; object-fit: contain; display: block; mix-blend-mode: screen; }
-    .hero-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px; letter-spacing: 0.12em;
-      color: var(--on-dark-muted); font-style: italic; white-space: nowrap;
-    }
-    .hero-logo-divider {
-      width: 0.5px; height: 50px;
-      background: linear-gradient(to bottom, transparent, rgba(184,147,58,0.35), transparent);
-    }
     .hero-locs {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 0; width: 100%;
@@ -466,10 +450,6 @@
       .hero-photo-cell:first-child { aspect-ratio: 1 / 1; }
       .hero-photo-cell:last-child { aspect-ratio: 16 / 11; margin-top: 3px; }
       .hero-left { height: auto; overflow: visible; padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
-      .hero-logos { gap: 1rem; }
-      .hero-logo-circle { width: 70px; height: 70px; }
-      .bottega-logo { display: none; }
-      .hero-logo-divider { display: none; }
       .hero-locs { grid-template-columns: 1fr 1fr; }
       .contact-banner { padding: 1.5rem; }
       .contact-banner-label, .contact-banner-value { font-size: 1rem; }
@@ -559,14 +539,7 @@
       </div>
       <div class="loc">
         <h4>Casa Gabriele</h4>
-        <p>Restaurant &amp; bar<br>88 Yesler Way<br>Evenings</p>
-      </div>
-    </div>
-    <div class="hero-logos">
-      <span class="hero-logo-text">Bottega Gabriele</span>
-      <div class="hero-logo-divider" aria-hidden="true"></div>
-      <div class="hero-logo-circle">
-        <img src="logo-casa.png" alt="Casa Gabriele" />
+        <p>Restaurant &amp; bar<br>88 Yesler Way<br>Wed &ndash; Sun &nbsp;5pm &ndash; 10pm</p>
       </div>
     </div>
   </div>
@@ -811,4 +784,18 @@
     <div class="item"><div><p class="iname">Mamma Mia</p><p class="idesc">Mortadella con pistacchi, fresh ricotta, hot honey, lemon zest, arugula, olive oil</p></div><span class="iprice">$18.50</span></div>
     <div class="item"><div><p class="iname">O&rsquo;Cerasiello</p><p class="idesc">Capocollo, salami, nduja, artichokes, olive &amp; tomato tapenade, fresh pecorino, arugula, olive oil</p></div><span class="iprice">$19.50</span></div>
     <div class="item"><div><p class="iname">La Ciccia</p><p class="idesc">Pancetta, burrata, aged pecorino, walnuts, balsamic, arugula, olive oil</p></div><span class="iprice">$19</span></div>
-    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarell
+    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarella, mayo, lemon juice, tomato, arugula, olive oil</p></div><span class="iprice">$18.50</span></div>
+    <div class="item"><div><p class="iname">Vegetariano</p><p class="idesc">Sun dried tomatoes, olives, artichokes, ricotta salata, fresh &amp; aged pecorino, arugula, olive oil &mdash; can be made vegan</p></div><span class="iprice">$18.50</span></div>
+    <div class="item"><div><p class="iname">Custom</p><p class="idesc">6 toppings, up to 3 meats &mdash; add nduja, artichoke or extra meat +$4</p></div><span class="iprice">$25</span></div>
+  </div>
+
+  <p class="cat">Salads</p>
+  <div class="items">
+    <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.50</span></div>
+    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span class="iprice">$14</span></div>
+  </div>
+
+  <p class="cat">Dessert &amp; drinks</p>
+  <div class="items-3">
+    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></div>
+    <div class=
