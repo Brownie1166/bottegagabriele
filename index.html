@@ -218,18 +218,17 @@
       max-width: 30rem;
       margin-top: 1.25rem;
     }
+    .casa-open-text h2 em { color: var(--gold-light); }
     .casa-open-photos {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 6px;
       margin-top: 2rem;
-      margin-bottom: 1rem;
       width: 100%;
     }
     .casa-open-photos .story-photo { margin-top: 0; }
     .casa-open-photos .story-photo img { aspect-ratio: 3/4; }
-    .casa-open-photos .story-photo-cap { font-size: 9px; letter-spacing: 0.1em; padding: 0.5rem 0.5rem; }
-    .casa-open-text h2 em { color: var(--gold-light); }
+    .casa-open-photos .story-photo-cap { font-size: 9px; letter-spacing: 0.08em; padding: 0.5rem 0.5rem; }
     .casa-open-text p:last-child {
       font-family: 'EB Garamond', serif;
       font-size: 1.15rem; line-height: 1.9; color: var(--on-dark-muted);
@@ -472,9 +471,9 @@
       .bridge-line { display: none; }
       .find-panel { padding: 3rem 1.5rem; }
       .casa-open { grid-template-columns: 1fr; }
-      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; }
       .casa-open-photo { height: 60vw; }
       .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
+      .casa-open-photos { grid-template-columns: repeat(3, 1fr); gap: 4px; }
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
       .casa-photo-cell:first-child { grid-row: auto; }
       .casa-photo-cell { aspect-ratio: 1; }
@@ -548,12 +547,12 @@
 <!-- CONTACT BANNER -->
 <div class="contact-banner">
   <div class="contact-banner-item">
-    <span class="contact-banner-label">On Yesler Way, Seattle:</span>
-    <span class="contact-banner-value">Bottega Gabriele 75 &middot; Casa Gabriele 88</span>
-  </div>
-  <div class="contact-banner-item">
     <span class="contact-banner-label">Reservations for Casa Gabriele:</span>
     <span class="contact-banner-value"><a href="https://www.opentable.com/r/casa-gabriele-reservations-seattle?restref=1530016&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener">Reserve a table &rarr;</a></span>
+  </div>
+  <div class="contact-banner-item">
+    <span class="contact-banner-label">Call Casa Gabriele:</span>
+    <span class="contact-banner-value"><a href="tel:2063005524">(206) 300 5524</a></span>
   </div>
   <div class="contact-banner-item">
     <span class="contact-banner-label">For orders at Bottega Gabriele:</span>
@@ -597,16 +596,24 @@
     <p class="casa-open-intro">Across the street from Bottega Gabriele on Yesler Way. Chef Gabriele Russo in the kitchen &mdash; come for dinner, stay at the bar.</p>
     <div class="casa-open-photos">
       <div class="story-photo">
-        <img src="fatherandson.jpeg" alt="Gabriele Brownstein with his father" />
-        <p class="story-photo-cap">Gabriele &amp; his father</p>
+        <img src="barella-trigu.jpg" alt="Nicolo Barella at Trigu Italia" />
+        <p class="story-photo-cap">Nicol&ograve; Barella stops by Trigu Italia</p>
       </div>
       <div class="story-photo">
-        <img src="gabrirobin.jpeg" alt="Chef Gabriele Russo and Robin" style="object-position: center 20%;" />
-        <p class="story-photo-cap">Chef Gabriele &amp; Robin</p>
+        <img src="jon-bottega-street.jpg" alt="Jon with his sons Gabriele and Lorenzo outside Bottega Gabriele" />
+        <p class="story-photo-cap">Jon &amp; his sons, Gabriele &amp; Lorenzo</p>
       </div>
       <div class="story-photo">
-        <img src="jonlorjosto.jpeg" alt="Jon and Lorenzo with Josto Miglior Cannonau di Sardegna" style="object-position: center 18%;" />
-        <p class="story-photo-cap">Jon &amp; Lorenzo &mdash; Cannonau di Sardegna</p>
+        <img src="jon-vineyard.jpg" alt="Jon and Gabriele at Cuscusa Vineyards, Sardinia" />
+        <p class="story-photo-cap">Jon &amp; Gabriele, Cuscusa Vineyards</p>
+      </div>
+      <div class="story-photo">
+        <img src="jon-bottega-table.jpg" alt="Gabriele with Armando Batali" />
+        <p class="story-photo-cap">Gabriele with Armando Batali</p>
+      </div>
+      <div class="story-photo">
+        <img src="jon-casa-street.jpg" alt="Gabriele Russo, Jon, and Gabriele Brownstein outside Casa Gabriele" />
+        <p class="story-photo-cap">Gabriele Russo, Jon &amp; Gabriele Brownstein</p>
       </div>
     </div>
   </div>
@@ -791,10 +798,4 @@
 
   <p class="cat">Salads</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.50</span></div>
-    <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span class="iprice">$14</span></div>
-  </div>
-
-  <p class="cat">Dessert &amp; drinks</p>
-  <div class="items-3">
-    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span c
+    <div class="item"><div><p class="iname">Mozzarella &amp; tomato</p><p class="idesc">Olive oil, balsamic</p></div><span class="iprice">$13.
