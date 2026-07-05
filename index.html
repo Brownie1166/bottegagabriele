@@ -72,7 +72,7 @@
     }
     .hero-photo {
       position: relative; overflow: hidden; height: 100%;
-      display: grid; grid-template-rows: 1fr 1.35fr; gap: 3px;
+      display: grid; grid-template-rows: 0.85fr 1.5fr; gap: 3px;
       background: var(--navy-deep);
     }
     .hero-photo-cell { position: relative; overflow: hidden; height: 100%; }
@@ -81,7 +81,7 @@
       filter: brightness(0.9) saturate(0.98);
     }
     .hero-photo-interior img { object-position: center 42%; }
-    .hero-photo-founders img { object-position: center 8%; }
+    .hero-photo-founders img { object-position: center 32%; }
     .hero-photo-caption {
       position: absolute; bottom: 1rem; left: 1.25rem;
       font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
@@ -448,7 +448,7 @@
       .hero-photo { height: auto; display: block; }
       .hero-photo-cell { height: auto; }
       .hero-photo-cell.hero-photo-interior { aspect-ratio: 16 / 10; }
-      .hero-photo-cell.hero-photo-founders { aspect-ratio: 5 / 4; margin-top: 3px; }
+      .hero-photo-cell.hero-photo-founders { aspect-ratio: 4 / 5; margin-top: 3px; }
       .hero-left { height: auto; overflow: visible; padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
       .hero-locs { grid-template-columns: 1fr 1fr; }
       .contact-banner { padding: 1.5rem; }
@@ -797,4 +797,4 @@
 
   <p class="cat">Dessert &amp; drinks</p>
   <div class="items-3">
-    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span clas
+    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span c
