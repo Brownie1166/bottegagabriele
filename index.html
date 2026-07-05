@@ -65,7 +65,7 @@
     /* HERO */
     .hero {
       background: var(--navy-deep);
-      height: 92vh; min-height: 620px;
+      height: clamp(620px, 92vh, 880px);
       display: grid; grid-template-columns: 1.05fr 1fr;
       align-items: stretch;
       position: relative;
@@ -89,8 +89,8 @@
     }
     .hero-left {
       position: relative; z-index: 1; height: 100%; overflow: hidden;
-      padding: 3rem 3.5rem;
-      display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;
+      padding: 1.5rem 3.5rem 2rem;
+      display: flex; flex-direction: column; justify-content: flex-start; gap: 1.5rem;
       border-left: 1px solid rgba(184,147,58,0.12);
       background-image:
         radial-gradient(ellipse 70% 55% at 25% 35%, rgba(212,170,90,0.09), transparent 70%),
@@ -811,4 +811,4 @@
     <div class="item"><div><p class="iname">Mamma Mia</p><p class="idesc">Mortadella con pistacchi, fresh ricotta, hot honey, lemon zest, arugula, olive oil</p></div><span class="iprice">$18.50</span></div>
     <div class="item"><div><p class="iname">O&rsquo;Cerasiello</p><p class="idesc">Capocollo, salami, nduja, artichokes, olive &amp; tomato tapenade, fresh pecorino, arugula, olive oil</p></div><span class="iprice">$19.50</span></div>
     <div class="item"><div><p class="iname">La Ciccia</p><p class="idesc">Pancetta, burrata, aged pecorino, walnuts, balsamic, arugula, olive oil</p></div><span class="iprice">$19</span></div>
-    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarella, mayo, lemo
+    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarell
