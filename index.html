@@ -87,7 +87,7 @@
       border-left: 1px solid rgba(184,147,58,0.12);
     }
     .eyebrow {
-      font-size: 11px; letter-spacing: 0.38em;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 2rem;
       display: flex; align-items: center; gap: 1rem;
@@ -247,6 +247,7 @@
       transition: transform 0.6s ease; filter: brightness(0.9) saturate(1.05);
     }
     .casa-photo-cell:hover img { transform: scale(1.04); }
+    .mobile-photo { display: none; }
 
     /* PHOTOS STRIP */
     .photos-strip { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.2fr; gap: 3px; background: var(--navy-deep); }
@@ -476,6 +477,7 @@
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
       .casa-photo-cell:first-child { grid-row: auto; }
       .casa-photo-cell { aspect-ratio: 1; }
+      .mobile-photo { display: block; }
       .food-gallery-head { padding: 3rem 1.5rem 1.5rem; }
       .food-gallery-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 2rem 1.5rem; }
@@ -520,7 +522,7 @@
     <div class="hero-photo-caption">Gabriele &amp; Gabriele</div>
   </div>
   <div class="hero-left">
-    <p class="eyebrow">Yesler Way &middot; Seattle</p>
+    <p class="eyebrow">75 &amp; 88 Yesler Way &middot; Seattle</p>
     <h1>Due<br><em>Gabriele,</em><br>una casa.</h1>
     <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
     <div class="hero-locs">
@@ -617,6 +619,7 @@
   <div class="casa-photo-cell"><img src="CasaG-20.jpg" alt="Casa Gabriele bar detail" /></div>
   <div class="casa-photo-cell"><img src="CasaG-21.jpg" alt="Casa Gabriele kitchen window" /></div>
   <div class="casa-photo-cell"><img src="CasaG-23.jpg" alt="Casa Gabriele dining room brick" /></div>
+  <div class="casa-photo-cell mobile-photo"><img src="slicer.jpg" alt="Vintage OMAS meat slicer at Casa Gabriele" /></div>
 </div>
 
 <!-- STORY -->
@@ -677,7 +680,7 @@
 
   <p class="cat">Pasta</p>
   <div class="items">
-    <div class="item"><div><p class="iname">Spaghetti al Pomodoro</p><p class="idesc">San Marzano tomato, fresh basil, olive oil</p></div><span class="iprice">$22</span></div>
+    <div class="item"><div><p class="iname">Spaghetti al Pomodoro</p><p class="idesc">San Marzano tomato, fresh basil, olive oil &mdash; <em>add meatballs +$6</em></p></div><span class="iprice">$22</span></div>
     <div class="item"><div><p class="iname">Pasta fagioli e cozze</p><p class="idesc">Tubetti, beans, stewed mussels</p></div><span class="iprice">$26</span></div>
     <div class="item"><div><p class="iname">Gamberi alla nerano</p><p class="idesc">Zucchini cream, basil, saut&eacute;ed shrimp</p></div><span class="iprice">$28</span></div>
     <div class="item"><div><p class="iname">Genovese di Napoli</p><p class="idesc">Tubetti, slow-cooked onions, pork rag&ugrave;</p></div><span class="iprice">$25</span></div>
@@ -686,7 +689,7 @@
   <p class="cat">Salads</p>
   <div class="items">
     <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</p></div><span class="iprice">$18</span></div>
-    <div class="item"><div><p class="iname">Romaine</p><p class="idesc">Parmesan, garlic croutons, anchovies, caesar or balsamic</p></div><span class="iprice">$16</span></div>
+    <div class="item"><div><p class="iname">Romaine</p><p class="idesc">Parmesan, garlic croutons, anchovies, caesar or balsamic &mdash; <em>add shrimp +$8, chicken +$7</em></p></div><span class="iprice">$16</span></div>
   </div>
 
   <p class="cat">Secondi</p>
@@ -750,17 +753,6 @@
   </div>
 </section>
 
-<!-- SPLIT AND MARRY -->
-<section class="tasting">
-  <div class="tasting-head">
-    <div>
-      <p class="label">Casa Gabriele</p>
-      <h2>Split &amp;<br><em>Marry</em></h2>
-    </div>
-    <p class="tasting-note">At Casa Gabriele, we believe a great Italian meal shouldn't come with a big price tag. That's why we let you &quot;split and marry&quot; your dishes &mdash; order two plates, like a pasta and a salad, and we'll split each one in half and marry them together, so every plate at the table gets a taste of both. For example: split a pasta al pomodoro and a Romaine salad between two plates, add two glasses of house wine, and you're at $31 per person, before tip!</p>
-  </div>
-</section>
-
 <!-- BRIDGE -->
 <div class="bridge">
   <div class="bridge-line"></div>
@@ -809,4 +801,9 @@
     <div class="item-s"><p class="iname">San Pellegrino</p><p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p><span class="iprice">$3.50</span></div>
     <div class="item-s"><p class="iname">Water &amp; sodas</p><p class="idesc">Sparkling, Sprite, Coke</p><span class="iprice">$2.50</span></div>
   </div>
-</sec
+</section>
+
+
+<!-- FOOTER -->
+<footer id="find-us">
+  <small>Bottega Gabriele &middot; Casa Gabriele &mdash; 75 &amp; 88 Y
