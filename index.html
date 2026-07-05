@@ -225,10 +225,12 @@
       gap: 10px;
       margin-top: 2rem;
       width: 100%;
-      max-width: 500px;
+      max-width: 640px;
     }
     .casa-open-photos .story-photo { margin-top: 0; }
     .casa-open-photos .story-photo img { aspect-ratio: 4/3; }
+    .story-photo-wide { grid-column: 1 / -1; }
+    .story-photo-wide img { aspect-ratio: 21/9 !important; object-position: center 30%; }
     .casa-open-photos .story-photo-cap {
       font-size: 12px; letter-spacing: 0.01em; text-transform: none;
       padding: 0.6rem 0.65rem; line-height: 1.4;
@@ -608,6 +610,10 @@
         <img src="jon-bottega-table.jpg" alt="Gabriele with Armando Batali" />
         <p class="story-photo-cap">Gabriele with Armando Batali</p>
       </div>
+      <div class="story-photo story-photo-wide">
+        <img src="barella-trigu.jpg" alt="Nicolo Barella at Trigu Italia" />
+        <p class="story-photo-cap">Nicol&ograve; Barella stops by Trigu Italia</p>
+      </div>
     </div>
   </div>
 </div>
@@ -795,12 +801,4 @@
 
   <p class="cat">Dessert &amp; drinks</p>
   <div class="items-3">
-    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></div>
-    <div class="item-s"><p class="iname">San Pellegrino</p><p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p><span class="iprice">$3.50</span></div>
-    <div class="item-s"><p class="iname">Water &amp; sodas</p><p class="idesc">Sparkling, Sprite, Coke</p><span class="iprice">$2.50</span></div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer i
+    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></
