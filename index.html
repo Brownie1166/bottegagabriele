@@ -64,32 +64,45 @@
 
     /* HERO */
     .hero {
-      background: var(--navy-deep);
-      min-height: 92vh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: stretch;
+      position: relative; min-height: 100vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
     }
-    .hero-photo { position: relative; overflow: hidden; min-height: 92vh; }
-    .hero-photo img {
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img {
       width: 100%; height: 100%; object-fit: cover;
-      object-position: center top;
-      filter: brightness(0.88) saturate(0.95);
+      object-position: center 22%;
+      filter: brightness(0.82) saturate(1.05);
     }
-    .hero-photo-caption {
-      position: absolute; bottom: 1.5rem; left: 1.5rem;
-      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.65);
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(17,29,51,0.12) 0%, rgba(17,29,51,0.38) 45%, rgba(17,29,51,0.97) 92%),
+        linear-gradient(90deg, rgba(17,29,51,0.85) 0%, rgba(17,29,51,0.35) 42%, rgba(17,29,51,0.05) 70%);
     }
-    .hero-left {
+    .hero-content {
       position: relative; z-index: 1;
-      padding: 5rem 3rem 4rem;
-      display: flex; flex-direction: column; justify-content: center; gap: 2rem;
-      border-left: 1px solid rgba(184,147,58,0.12);
+      width: 100%;
+      padding: 5rem 3rem 3.5rem;
+      display: flex; flex-direction: column; gap: 1.75rem;
+      max-width: 900px;
     }
+    .hero-scroll {
+      position: absolute; z-index: 1; right: 3rem; bottom: 2.25rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--on-dark-muted);
+    }
+    .hero-scroll::after {
+      content: ''; width: 1px; height: 34px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      animation: hero-scroll-move 2.2s ease-in-out infinite;
+    }
+    @keyframes hero-scroll-move { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
     .eyebrow {
       font-size: 16px; font-weight: 700; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--gold);
-      margin-bottom: 2rem;
+      margin-bottom: 0;
       display: flex; align-items: center; gap: 1rem;
     }
     .eyebrow::before, .eyebrow::after {
@@ -106,7 +119,7 @@
       font-family: 'EB Garamond', serif;
       font-size: 14px; letter-spacing: 0.28em;
       text-transform: uppercase; color: var(--on-dark-muted);
-      margin-top: 1.5rem; margin-bottom: 3rem;
+      margin-top: 0; margin-bottom: 0.5rem;
     }
 
     /* CONTACT BANNER */
@@ -158,15 +171,17 @@
     .hero-locs {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 0; width: 100%;
-      border: 0.5px solid rgba(184,147,58,0.2);
+      border: 0.5px solid rgba(184,147,58,0.25);
+      background: rgba(10,18,36,0.4);
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
     }
-    .loc { padding: 1.25rem 1.5rem; border-right: 0.5px solid rgba(184,147,58,0.2); }
+    .loc { padding: 1.5rem 2rem; border-right: 0.5px solid rgba(184,147,58,0.25); }
     .loc:last-child { border-right: none; }
     .loc h4 {
-      font-size: 10px; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.4rem;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.65rem;
     }
-    .loc p { font-size: 13px; color: var(--on-dark-muted); line-height: 1.7; }
+    .loc p { font-size: 17px; color: var(--on-dark); line-height: 1.75; }
 
     /* TICKER */
     .ticker {
@@ -442,9 +457,9 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-photo { min-height: 60vw; max-height: 70vh; }
-      .hero-left { padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
+      .hero { min-height: 100svh; }
+      .hero-content { padding: 2.5rem 1.5rem 2.25rem; gap: 1.25rem; }
+      .hero-scroll { display: none; }
       .hero-logos { gap: 1rem; }
       .hero-logo-circle { width: 70px; height: 70px; }
       .bottega-logo { display: none; }
@@ -517,11 +532,11 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-photo">
+  <div class="hero-bg">
     <img src="gabris.jpeg" alt="Gabriele Brownstein and Gabriele Russo" />
-    <div class="hero-photo-caption">Gabriele &amp; Gabriele</div>
   </div>
-  <div class="hero-left">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
     <p class="eyebrow">75 &amp; 88 Yesler Way &middot; Seattle</p>
     <h1>Due<br><em>Gabriele,</em><br>una casa.</h1>
     <p class="hero-sub">Restaurant &middot; Bar &middot; Sandwiches</p>
@@ -543,6 +558,7 @@
       </div>
     </div>
   </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
 </section>
 
 <!-- CONTACT BANNER -->
@@ -795,15 +811,4 @@
     <div class="item"><div><p class="iname">Arugula</p><p class="idesc">Ricotta salata, artichokes, sundried tomatoes, olives, balsamic</p></div><span class="iprice">$14</span></div>
   </div>
 
-  <p class="cat">Dessert &amp; drinks</p>
-  <div class="items-3">
-    <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></div>
-    <div class="item-s"><p class="iname">San Pellegrino</p><p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p><span class="iprice">$3.50</span></div>
-    <div class="item-s"><p class="iname">Water &amp; sodas</p><p class="idesc">Sparkling, Sprite, Coke</p><span class="iprice">$2.50</span></div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer id="find-us">
-  <small>Bottega Gabriele &middot; Casa Gabriele &mdash; 75 &amp; 88 Y
+  <p class="cat">Dessert &amp;
