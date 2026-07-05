@@ -65,17 +65,17 @@
     /* HERO */
     .hero {
       background: var(--navy-deep);
-      min-height: 92vh;
+      height: 92vh; min-height: 620px;
       display: grid; grid-template-columns: 1.05fr 1fr;
       align-items: stretch;
       position: relative;
     }
     .hero-photo {
-      position: relative; overflow: hidden; min-height: 92vh;
+      position: relative; overflow: hidden; height: 100%;
       display: grid; grid-template-rows: 1.3fr 1fr; gap: 3px;
       background: var(--navy-deep);
     }
-    .hero-photo-cell { position: relative; overflow: hidden; }
+    .hero-photo-cell { position: relative; overflow: hidden; height: 100%; }
     .hero-photo img {
       width: 100%; height: 100%; object-fit: cover;
       filter: brightness(0.9) saturate(0.98);
@@ -88,9 +88,9 @@
       color: rgba(245,240,232,0.65);
     }
     .hero-left {
-      position: relative; z-index: 1;
-      padding: 5rem 3.5rem 4rem;
-      display: flex; flex-direction: column; justify-content: center; gap: 2rem;
+      position: relative; z-index: 1; height: 100%; overflow: hidden;
+      padding: 3rem 3.5rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;
       border-left: 1px solid rgba(184,147,58,0.12);
       background-image:
         radial-gradient(ellipse 70% 55% at 25% 35%, rgba(212,170,90,0.09), transparent 70%),
@@ -110,7 +110,7 @@
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.4rem, 6vw, 5.5rem);
+      font-size: clamp(3rem, 5.2vw, 5rem);
       line-height: 1.05; color: var(--cream); font-weight: 400;
       position: relative; z-index: 1;
     }
@@ -460,9 +460,12 @@
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-photo { min-height: 60vw; max-height: 70vh; }
-      .hero-left { padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
+      .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
+      .hero-photo { height: auto; display: block; }
+      .hero-photo-cell { height: auto; }
+      .hero-photo-cell:first-child { aspect-ratio: 1 / 1; }
+      .hero-photo-cell:last-child { aspect-ratio: 16 / 11; margin-top: 3px; }
+      .hero-left { height: auto; overflow: visible; padding: 3rem 1.5rem 2.5rem; gap: 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.12); }
       .hero-logos { gap: 1rem; }
       .hero-logo-circle { width: 70px; height: 70px; }
       .bottega-logo { display: none; }
@@ -808,5 +811,4 @@
     <div class="item"><div><p class="iname">Mamma Mia</p><p class="idesc">Mortadella con pistacchi, fresh ricotta, hot honey, lemon zest, arugula, olive oil</p></div><span class="iprice">$18.50</span></div>
     <div class="item"><div><p class="iname">O&rsquo;Cerasiello</p><p class="idesc">Capocollo, salami, nduja, artichokes, olive &amp; tomato tapenade, fresh pecorino, arugula, olive oil</p></div><span class="iprice">$19.50</span></div>
     <div class="item"><div><p class="iname">La Ciccia</p><p class="idesc">Pancetta, burrata, aged pecorino, walnuts, balsamic, arugula, olive oil</p></div><span class="iprice">$19</span></div>
-    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarella, mayo, lemon juice, tomato, arugula, olive oil</p></div><span class="iprice">$18.50</span></div>
-    <div class="item"><div><p class="iname">Vegetariano</p><p class="idesc">Sun dried tomatoes, olives, artichokes, ricotta salata, fresh &amp; aged pecorino, arugula, olive oil &mdash; 
+    <div class="item"><div><p class="iname">Pinocchio</p><p class="idesc">Tuna, nduja, fresh pecorino, mozzarella, mayo, lemo
