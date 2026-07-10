@@ -99,6 +99,10 @@
   #rt-menu:checked ~ #panel-menu,
   #rt-vini:checked ~ #panel-vini{display:block}
   .course{margin-top:30px}
+  .course-special{
+    margin-top:10px;padding:18px 16px;
+    border:1px solid var(--gold);
+  }
   .course-title{
     text-align:center;
     font-size:.92rem;font-weight:bold;
@@ -196,6 +200,19 @@
   <!-- ================= MENU ================= -->
   <section class="panel" id="panel-menu" role="tabpanel" aria-labelledby="rt-menu">
 
+    <div class="course course-special">
+      <div class="course-title">This Week's Special</div>
+      <div class="course-sub">Specialit&agrave; della Settimana</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Spaghetti all'Arrabbiata con Cozze</span><span class="item-price">$40</span></div>
+        <div class="item-desc">Spaghetti with spicy tomato sauce and mussels, topped with fresh salmon and salsa verde &mdash; mint, parsley, caper, lemon, garlic</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Pollo alla Cacciatora</span><span class="item-price">$28</span></div>
+        <div class="item-desc">Chicken breast, San Marzano tomato sauce, cherry tomatoes, olives, bell peppers</div>
+      </div>
+    </div>
+
     <div class="course">
       <div class="course-title">Appetizers</div>
       <div class="course-sub">Antipasti</div>
@@ -279,9 +296,6 @@
         <div class="item-line"><span class="item-name">Tiramisù</span><span class="item-price">$10</span></div>
         <div class="item-desc">Made in house, ladyfingers soaked in espresso with marscarpone and cocoa powder</div>
       </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Espresso</span><span class="item-price">$4</span></div>
-      </div>
     </div>
 
     <div class="note">Menus change with the season.<br>Please inform your server of any allergies or dietary preferences.</div>
@@ -291,6 +305,16 @@
   <section class="panel" id="panel-vini" role="tabpanel" aria-labelledby="rt-vini">
 
     <div class="gb">glass / bottle</div>
+
+    <div class="course course-special">
+      <div class="course-title">Weekend Wine Special</div>
+      <div class="course-sub">Friday, July 10 &amp; Saturday, July 11</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Oreno” Toscana IGT, by the glass</span><span class="item-price">$40</span></div>
+        <div class="item-prod">Tenuta Sette Ponti, 2022 · Toscana</div>
+        <div class="item-desc">Try one of the top-rated wines in the world — ranked <strong>#22</strong> on James Suckling's Top 100 World Wines of 2024, scoring 99 points. A celebrated Super Tuscan built on merlot, cabernet, and petit verdot grown above the Arno; blackcurrant, espresso, and polished tannin, deep and layered. Costoletta pizzaiola, meatballs, the Genovese. Two nights only, by the glass</div>
+      </div>
+    </div>
 
     <div class="course">
       <div class="course-title">Bollicine</div>
@@ -317,9 +341,9 @@
         <div class="item-desc">Dry and breezy, green apple with a hint of almond — Gabriele’s island in a glass; salads, fish, aperitivo</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">“Limizzani” Vermentino di Gallura DOCG</span><span class="item-price">$52</span></div>
+        <div class="item-line"><span class="item-name">“Limizzani” Vermentino di Gallura DOCG</span><span class="item-price">$55</span></div>
         <div class="item-prod">Surrau, 2024 · Sardegna</div>
-        <div class="item-desc">From Sardinia's only DOCG, up in Gallura — citrus and sea-breeze minerality, dry and bright; the cuoppo di mare, gamberi alla nerano, salads</div>
+        <div class="item-desc">Sardinia's only DOCG — more structured and select than our Nordest, with citrus, sea-breeze minerality, and a touch more complexity and persistence on the finish; the cuoppo di mare, gamberi alla nerano, salads</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Pinot Grigio delle Venezie DOC</span><span class="item-price">$12 / $36</span></div>
@@ -352,29 +376,29 @@
         <div class="item-desc">Our hometown guest — nebbiolo done carbonic-style, bright cranberry and black tea, between a red and a dark rosé; pour it cool with the cuoppo di mare or on its own at the bar</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">“Acasto” Frappato Terre Siciliane IGT</span><span class="item-price">$12 / $50</span></div>
+        <div class="item-line"><span class="item-name">“Acasto” Frappato Terre Siciliane IGT</span><span class="item-price">$50</span></div>
         <div class="item-prod">Alcesti, 2023 · Sicilia</div>
         <div class="item-desc">Sicily’s light, chillable red — fresh black cherry and blueberry, soft and bright; slightly cool with meatballs, scaloppine di pollo, or nothing at all</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">“Possessioni” Rosso del Veronese IGT</span><span class="item-price">$55</span></div>
+        <div class="item-line"><span class="item-name">“Possessioni” Rosso del Veronese IGT</span><span class="item-price">$50</span></div>
         <div class="item-prod">Serego Alighieri · Veneto</div>
         <div class="item-desc">From the estate Dante’s family has farmed for seven centuries — corvina’s bright sour-cherry lift, light and supple; meatballs, scaloppine di pollo, anything in San Marzano</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Barbera d’Asti Superiore DOCG</span><span class="item-price">$12 / $45</span></div>
         <div class="item-prod">Terzetto, 2023 · Piemonte</div>
-        <div class="item-desc">Bright cherry and a floral lift, juicy and low in tannin — pasta fagioli e cozze, meatballs</div>
+        <div class="item-desc">For lovers of young, blackberry, dark fruity wines — easy and smooth, yet big enough to stand up to our heartier dishes too; pasta fagioli e cozze, meatballs</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Montepulciano d’Abruzzo DOC</span><span class="item-price">$12 / $36</span></div>
         <div class="item-prod">Collegiata, 2024 · Abruzzo</div>
-        <div class="item-desc">Ruby and easygoing, ripe dark cherry, soft round finish — anything in San Marzano</div>
+        <div class="item-desc">Ruby and easygoing, ripe dark cherry, soft round finish — along with the Biferno, this is our absolute best quality-price wine on the menu; anything in San Marzano</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">Biferno Rosso Riserva DOC</span><span class="item-price">$46</span></div>
+        <div class="item-line"><span class="item-name">Biferno Rosso Riserva DOC</span><span class="item-price">$50</span></div>
         <div class="item-prod">Rinomata Cantina Tombacco, 2020 · Molise</div>
-        <div class="item-desc">From Italy’s quietest region — plum, leather, warm spice; costoletta pizzaiola, the Genovese</div>
+        <div class="item-desc">80% Montepulciano, 20% Aglianico — an earthy, fruity riserva and one of our best value-for-quality reds on the list, built for anyone who loves big, fruity, earthy red wines. Surprisingly smooth thanks to the varietal mix; costoletta pizzaiola, the Genovese</div>
       </div>
       <div class="subhead">Sardegna</div>
       <div class="item">
@@ -385,12 +409,12 @@
       <div class="item">
         <div class="item-line"><span class="item-name">“Cardanera” Carignano</span><span class="item-price">$14 / $48</span></div>
         <div class="item-prod">Argiolas, 2024 · Sulcis, Sardegna</div>
-        <div class="item-desc">Argiolas's expression of Carignano from the sandy Sulcis coast — wild macchia herbs, red and black fruit, fine-grained tannin; costoletta pizzaiola, meatballs, aged pecorino</div>
+        <div class="item-desc">Argiolas's expression of Carignano, Sardinia's southwest — a more gentle, smoother grape than the island's better-known Cannonau, without being any less interesting: wild macchia herbs, red and black fruit, fine-grained tannin; costoletta pizzaiola, meatballs, aged pecorino</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">“Perdera” Monica di Sardegna DOC</span><span class="item-price">$12 / $40</span></div>
         <div class="item-prod">Argiolas, 2023 · Sardegna</div>
-        <div class="item-desc">Mostly Monica with a touch of Carignano and Bovale — soft, juicy cherry and plum with a floral lift, light enough to chill; pasta fagioli e cozze, scaloppine di pollo</div>
+        <div class="item-desc">Mostly Monica with a touch of Carignano and Bovale — Monica is Sardinia's most gentle grape: elegant, smooth and floral, soft juicy cherry and plum, light enough to chill; pairs beautifully with both meat and fish; pasta fagioli e cozze, scaloppine di pollo</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">“Bombarde” Cannonau di Sardegna</span><span class="item-price">$40</span></div>
@@ -400,17 +424,12 @@
       <div class="item">
         <div class="item-line"><span class="item-name">“Josto Miglior” Cannonau di Sardegna Riserva DOC</span><span class="item-price">$12 / $60</span></div>
         <div class="item-prod">Antichi Poderi Jerzu, 2019 · Sardegna</div>
-        <div class="item-desc">Gabriele’s island in red — sun-baked grenache, wild macchia herbs and bramble fruit, warm and open; the Genovese, carni, aged pecorino</div>
+        <div class="item-desc">From Jerzu, one of Sardinia's most prestigious Cannonau zones and the heart of the island's Blue Zone — longevity experts credit wines like this with 2-3 times the polyphenols of most reds. Gabriele's island in red — sun-baked grenache, wild macchia herbs and bramble fruit, warm and open; the Genovese, carni, aged pecorino</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">“Portale Adduca” Aglianico del Vulture DOC</span><span class="item-price">$20 / $100</span></div>
+        <div class="item-line"><span class="item-name">“Portale Adduca” Aglianico del Vulture DOC</span><span class="item-price">$100</span></div>
         <div class="item-prod">Casa Maschito, 2019 · Basilicata</div>
-        <div class="item-desc">Grown on an extinct volcano — dark fruit, smoke, firm structure; carni, aged pecorino — for the table that’s settling in</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Pomorosso” Barbera d’Asti DOCG</span><span class="item-price">$95</span></div>
-        <div class="item-prod">Coppo, 2016 · Piemonte</div>
-        <div class="item-desc">The serious Barbera — years in oak bring black cherry, cocoa, and velvet depth; carni, the costoletta pizzaiola, a table settling in for the night</div>
+        <div class="item-desc">Grown on the slopes of an extinct volcano — a gentler, more approachable Aglianico than most, more balanced and less aggressive than a Taurasi: dark fruit, smoke, refined structure; carni, aged pecorino — for the table that’s settling in</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">“Monte Piazzo” Valpolicella Classico Superiore DOC</span><span class="item-price">$100</span></div>
@@ -445,12 +464,12 @@
       <div class="item">
         <div class="item-line"><span class="item-name">Mirto Spritz <span class="flag">— Casa Gabriele original</span></span><span class="item-price">$16</span></div>
         <div class="item-prod">Tre Montis Mirto · Sardegna</div>
-        <div class="item-desc">Our own spin on the spritz, no Aperol here — Sardinian mirto, a wild myrtle-berry liqueur, deep purple and berry-sweet, built with prosecco and soda and finished with a bright kick of fresh mint</div>
+        <div class="item-desc">Sardinians call it their little elixir of long life — mirto grows wild across the island's macchia, its dark berries hand-picked from ancient shrubs and steeped for months into a deep purple, berry-sweet liqueur that's graced Blue Zone tables for centuries. Genuinely rich in polyphenols and antioxidants, and undeniably delicious. Our own spin on the spritz, no Aperol here: mirto built with prosecco and soda, finished with a bright kick of fresh mint</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Limoncello Spritz</span><span class="item-price">$16</span></div>
         <div class="item-prod">Tremontis “Limonsardo” · Sardegna</div>
-        <div class="item-desc">Sunny and citrus-forward, no Aperol here either — Sardinian limoncello lifted with prosecco and soda; sweet lemon up front, crisp and refreshing all the way through</div>
+        <div class="item-desc">Sunny and citrus-forward, no Aperol here either — Sardinian limoncello lifted with prosecco and soda and a sprig of fresh basil; sweet lemon up front, crisp and refreshing all the way through</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Liquore delle Sirene Americano <span class="flag">— rosso or bianco</span></span><span class="item-price">$12 neat / $15 spritz</span></div>
@@ -483,4 +502,26 @@
         <div class="item-desc">Bright, root-driven gentian amaro — clean and lightly bitter; over ice with an orange twist</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class
+        <div class="item-line"><span class="item-name">Amaro Sfumato Rabarbaro</span><span class="item-price">$10</span></div>
+        <div class="item-prod">Antica Erboristeria Cappelletti · Trentino</div>
+        <div class="item-desc">Smoky alpine rhubarb, dark and bittersweet — after dinner, neat or over ice</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Limoncello Italiano</span><span class="item-price">$9</span></div>
+        <div class="item-prod">Vita Vera · Italia</div>
+        <div class="item-desc">Bright, sweet lemon, ice cold — the only proper way to end</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Bomba Carta</span><span class="item-price">$16</span></div>
+        <div class="item-prod">Silvio Carta · Sardegna</div>
+        <div class="item-desc">Explosive Sardinian amaro — wild mountain herbs and rare strawberry-tree honey, bittersweet and balsamic; neat over ice after dinner</div>
+      </div>
+    </div>
+
+    <div class="note">Wine pairing available upon request</div>
+
+  </section>
+
+</div>
+</body>
+</html>
