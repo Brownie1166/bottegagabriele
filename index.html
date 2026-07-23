@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bottega Gabriele &amp; Casa Gabriele — Seattle</title>
-  <meta name="description" content="Two Gabrieles. One block on Yesler Way. Sandwiches and a restaurant — Sardinia and Naples, imported direct." />
+  <meta name="description" content="Two Gabrieles. One block on Yesler Way. Sandwiches and a restaurant — Sardinia and Naples, imported direct. Private events, private dining, and catering available in Seattle." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet" />
@@ -239,6 +239,36 @@
       font-family: 'EB Garamond', serif;
       font-size: 1.15rem; line-height: 1.9; color: var(--on-dark-muted);
     }
+    .events { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; background: var(--navy-deep); }
+    .events-photo { overflow: hidden; }
+    .events-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; filter: brightness(0.88); }
+    .events-text {
+      padding: 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 1.25rem;
+      border-left: 1px solid rgba(184,147,58,0.15);
+    }
+    .events-text .label { color: var(--gold); }
+    .events-text h2 { color: var(--cream); font-size: clamp(2rem, 3.5vw, 3rem); }
+    .events-text h2 em { color: var(--gold-light); font-style: italic; }
+    .events-intro {
+      color: var(--cream);
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      line-height: 1.6;
+      max-width: 32rem;
+    }
+    .events-list {
+      list-style: none; margin-top: 0.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      font-family: 'EB Garamond', serif; font-size: 1.1rem; color: var(--on-dark);
+    }
+    .events-list li { display: flex; align-items: baseline; gap: 0.75rem; }
+    .events-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .events-cta {
+      margin-top: 1rem; font-family: 'EB Garamond', serif;
+      font-size: 1.1rem; color: var(--on-dark-muted);
+    }
+    .events-cta a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+    .events-cta a:hover { color: var(--cream); }
 
     /* CASA PHOTOS */
     .casa-photos {
@@ -481,6 +511,9 @@
       .casa-open-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
       .casa-open-photos { grid-template-columns: repeat(2, 1fr); gap: 6px; max-width: none; }
       .casa-open-photos .story-photo-cap { font-size: 10px; padding: 0.4rem 0.4rem; }
+      .events { grid-template-columns: 1fr; }
+      .events-photo { height: 60vw; }
+      .events-text { padding: 3rem 1.5rem; border-left: none; border-top: 1px solid rgba(184,147,58,0.15); }
       .casa-photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; height: auto; }
       .casa-photo-cell:first-child { grid-row: auto; }
       .casa-photo-cell { aspect-ratio: 1; }
@@ -501,6 +534,7 @@
     <li><a href="#story">Story</a></li>
     <li><a href="#casa-menu">Casa</a></li>
     <li><a href="#bottega-menu">Bottega</a></li>
+    <li><a href="#events">Private Events</a></li>
     <li><a href="#find-us">Find us</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu" id="ham">
@@ -511,6 +545,7 @@
   <a href="#story">Story</a>
   <a href="#casa-menu">Casa menu</a>
   <a href="#bottega-menu">Bottega menu</a>
+  <a href="#events">Private Events</a>
   <a href="#find-us">Find us</a>
 </div>
 <script>
@@ -813,6 +848,25 @@
     <div class="item-s"><p class="iname">Cannoli</p><p class="idesc">Chocolate, pistachio or cherry</p><span class="iprice">$7</span></div>
     <div class="item-s"><p class="iname">San Pellegrino</p><p class="idesc">Aranciata, Blood Orange, Lemon &amp; more</p><span class="iprice">$3.50</span></div>
     <div class="item-s"><p class="iname">Water &amp; sodas</p><p class="idesc">Sparkling, Sprite, Coke</p><span class="iprice">$2.50</span></div>
+  </div>
+</section>
+
+<!-- PRIVATE EVENTS -->
+<section class="events" id="events">
+  <div class="events-photo">
+    <img src="CasaG-21.jpg" alt="Casa Gabriele private dining room" />
+  </div>
+  <div class="events-text">
+    <p class="label">Casa Gabriele &amp; Bottega Gabriele</p>
+    <h2>Private events <em>&amp; catering</em></h2>
+    <p class="events-intro">Close the doors for your team, gather a smaller group for a private dinner, or bring Casa Gabriele's kitchen to your office. We build custom menus, pour the wine, and take care of every detail — so all you have to do is show up.</p>
+    <ul class="events-list">
+      <li>Full restaurant buyouts, Casa Gabriele or Bottega Gabriele</li>
+      <li>Private dining for smaller groups within the restaurant</li>
+      <li>Custom three-course menus, family-style feasts, or open bar service</li>
+      <li>Off-site catering, brought to your office or venue</li>
+    </ul>
+    <p class="events-cta">Planning something? Email us at <a href="mailto:ciao@bottegagabriele.com">ciao@bottegagabriele.com</a> and let's talk about your private event or catering.</p>
   </div>
 </section>
 
