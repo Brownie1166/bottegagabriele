@@ -73,9 +73,9 @@
   nav{
     position:sticky;top:0;z-index:10;
     background:var(--carta);
-    padding:12px 0 10px;
+    padding:12px 4px 10px;
     margin:14px -4px 6px;
-    display:flex;justify-content:center;gap:10px;
+    display:flex;justify-content:center;flex-wrap:wrap;gap:8px 8px;
     border-bottom:1px solid var(--hair);
   }
   .tab{
@@ -86,18 +86,30 @@
     color:var(--quiet);
     border:1px solid var(--hair);
     padding:9px 22px;border-radius:999px;
+    white-space:nowrap;
     transition:color .15s,border-color .15s,background .15s;
+  }
+  @media (max-width:420px){
+    nav{gap:6px;padding:10px 2px 8px;}
+    .tab{font-size:.66rem;letter-spacing:.08em;padding:7px 12px;}
+  }
+  @media (max-width:340px){
+    .tab{font-size:.6rem;letter-spacing:.04em;padding:6px 9px;}
   }
   .tabradio{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap}
   #rt-menu:checked ~ nav label[for="rt-menu"],
-  #rt-vini:checked ~ nav label[for="rt-vini"]{
+  #rt-vini:checked ~ nav label[for="rt-vini"],
+  #rt-celeb:checked ~ nav label[for="rt-celeb"],
+  #rt-na:checked ~ nav label[for="rt-na"]{
     color:var(--carta);background:var(--ink);border-color:var(--ink);
   }
   .tabradio:focus-visible ~ nav label{outline:2px solid var(--gold);outline-offset:2px}
   /* ---------- sections ---------- */
   .panel{display:none;padding-top:8px}
   #rt-menu:checked ~ #panel-menu,
-  #rt-vini:checked ~ #panel-vini{display:block}
+  #rt-vini:checked ~ #panel-vini,
+  #rt-celeb:checked ~ #panel-celeb,
+  #rt-na:checked ~ #panel-na{display:block}
   .course{margin-top:30px}
   .course-special{
     margin-top:10px;padding:18px 16px;
@@ -176,6 +188,8 @@
     .tabradio{ display:none !important; } nav{ display:none !important; position:static; }
     .panel{ display:block !important; }
     #panel-vini{ break-before:page; page-break-before:always; }
+    #panel-celeb{ break-before:page; page-break-before:always; }
+    #panel-na{ break-before:page; page-break-before:always; }
     .item,.course,.tasting,.tasting-row{ break-inside:avoid; page-break-inside:avoid; }
     .frame{ border:none; outline:none; max-width:none; margin:0 auto; padding:0; }
     body{ font-size:12.5px; }
@@ -188,6 +202,8 @@
 
   <input type="radio" name="mtab" id="rt-menu" class="tabradio" checked aria-label="Food menu">
   <input type="radio" name="mtab" id="rt-vini" class="tabradio" aria-label="Wine list">
+  <input type="radio" name="mtab" id="rt-celeb" class="tabradio" aria-label="Celebration wines">
+  <input type="radio" name="mtab" id="rt-na" class="tabradio" aria-label="Non-alcoholic and soft drinks">
 
   <header>
     <div class="wordmark">Casa <em>Gabriele</em></div>
@@ -199,6 +215,8 @@
   <nav aria-label="Menu sections">
     <label class="tab" for="rt-menu">Menu</label>
     <label class="tab" for="rt-vini">Vini</label>
+    <label class="tab" for="rt-celeb">Riserva</label>
+    <label class="tab" for="rt-na">N/A</label>
   </nav>
 
   <!-- ================= MENU ================= -->
@@ -333,21 +351,6 @@
 
     <div class="gb">glass / bottle</div>
 
-    <div class="course-special">
-      <div class="course-title">By the Glass — Great Nebbiolo, Old World &amp; New</div>
-      <div class="course-sub">A rare chance to taste two important wines by the glass</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Terzetto Barolo DOCG</span><span class="item-price">$35 / glass</span></div>
-        <div class="item-prod">Piemonte</div>
-        <div class="item-desc">The king of Italian reds, by the glass — 100% Nebbiolo: rose, tar and dark cherry over a firm, elegant, age-worthy frame.</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bacovino Nebbiolo</span><span class="item-price">$25 / glass</span></div>
-        <div class="item-prod">Red Mountain, Washington · our friend &amp; vintner Randy Brooks</div>
-        <div class="item-desc">One of Washington's rare Nebbiolos — delicate and perfumed: cherry, rose petal, tea leaf, orange zest and tobacco. The same noble grape, a New World home.</div>
-      </div>
-    </div>
-
     <div class="course">
       <div class="course-title">Bollicine</div>
       <div class="course-sub">Sparkling</div>
@@ -361,16 +364,17 @@
         <div class="item-prod">Cantina Settecani · Emilia-Romagna</div>
         <div class="item-desc">Sparkling red, gently sweet — violet froth and dark berries; serve cool with salumi, cuoppo di terra, or in place of dessert</div>
       </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Millesimato” Alta Langa DOCG Pas Dosé</span><span class="item-price">$92</span></div>
-        <div class="item-prod">Contratto, 2021 · Piemonte</div>
-        <div class="item-desc">From Italy's oldest house of traditional-method sparkling wine, founded 1867 — 80% Pinot Nero, 20% Chardonnay, hand-picked from high-altitude vineyards and aged over three years on the lees. Fine, persistent bubbles; white flowers, citrus, and brioche, dry and vinous with real depth; the celebration bottle</div>
-      </div>
     </div>
 
     <div class="course">
       <div class="course-title">Bianchi</div>
       <div class="course-sub">White</div>
+      <div class="subhead">Alto Adige</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Pinot Grigio</span><span class="item-price">$15 glass</span></div>
+        <div class="item-prod">Kettimeyer, 2024 · Alto Adige</div>
+        <div class="item-desc">Crisp and refreshing — green apple, white stone fruit, bright minerality; with its refreshing acidity and minerality, a GREAT pairing with the fried calamari, or with light pasta and seafood appetizers</div>
+      </div>
       <div class="subhead">Sardegna</div>
       <div class="item">
         <div class="item-line"><span class="item-name">“Nordest” Vermentino di Sardegna DOC</span><span class="item-price">$12 / $50</span></div>
@@ -381,11 +385,6 @@
         <div class="item-line"><span class="item-name">“Limizzani” Vermentino di Gallura DOCG</span><span class="item-price">$55</span></div>
         <div class="item-prod">Surrau, 2024 · Sardegna</div>
         <div class="item-desc">Sardinia's only DOCG — more structured and select than our Nordest, with citrus, sea-breeze minerality, and a touch more complexity and persistence on the finish; the cuoppo di mare, gamberi alla nerano, or the arugula salad</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Pinot Grigio delle Venezie DOC</span><span class="item-price">$12 / $36</span></div>
-        <div class="item-prod">Due Torri, 2024 · Veneto</div>
-        <div class="item-desc">Crisp and easy, white pear and citrus — chilled with gamberi alla nerano or lighter pasta</div>
       </div>
       <div class="item">
         <div class="item-line"><span class="item-name">Fratelli Cozza Pinot Grigio DOC</span><span class="item-price">$34</span></div>
@@ -469,16 +468,6 @@
       </div>
       <div class="subhead">Sardegna</div>
       <div class="item">
-        <div class="item-line"><span class="item-name">“Naracu” Cannonau di Sardegna DOC</span><span class="item-price">$38</span></div>
-        <div class="item-prod">Surrau, 2024 · Sardegna</div>
-        <div class="item-desc">Cannonau off Gallura in Sardinia's north — ripe red cherry and wild herbs, soft and generous; the Genovese di Napoli, the meatballs, or the Melanzane alla Parmigiana</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Argiolas "Costera" Cannonau di Sardegna DOC</span><span class="item-price">$53</span></div>
-        <div class="item-prod">Argiolas, 2023 · Sardegna</div>
-        <div class="item-desc">Argiolas's benchmark Cannonau — Sardinia's grenache: red berries, Mediterranean scrub and a warm, savory finish; the Genovese di Napoli, the Porchetta, or the meatballs</div>
-      </div>
-      <div class="item">
         <div class="item-line"><span class="item-name">“Cardanera” Carignano</span><span class="item-price">$56</span></div>
         <div class="item-prod">Argiolas, 2024 · Sulcis, Sardegna</div>
         <div class="item-desc">Argiolas's expression of Carignano, Sardinia's southwest — a more gentle, smoother grape than the island's better-known Cannonau, without being any less interesting: wild macchia herbs, red and black fruit, fine-grained tannin; the Porchetta, the meatballs, or the scaloppine di pollo</div>
@@ -504,6 +493,11 @@
         <div class="item-desc">Classic Chianti Classico — 100% Sangiovese, bright red cherry and savory herbs over a firm, food-loving acidity; the Bucatini del Salumiere, Spaghetti al Pomodoro, or the Meatballs</div>
       </div>
       <div class="item">
+        <div class="item-line"><span class="item-name">Berardenga Chianti Classico Riserva</span><span class="item-price">$112</span></div>
+        <div class="item-prod">Felsina, 2021 · Toscana</div>
+        <div class="item-desc">One of Chianti's finest — 100% Sangiovese from Felsina's estate in the heart of Classico country. Elegant and structured with dark cherry, plum, and dried herbs; supple tannins and a long, savory finish. Built to age, but drinking beautifully now; perfect with the Porchetta, the Meatballs, or aged cheese</div>
+      </div>
+      <div class="item">
         <div class="item-line"><span class="item-name">“Il Sasso” Carmignano DOCG</span><span class="item-price">$100</span></div>
         <div class="item-prod">Piaggia (Silvia Vannucci), 2022 · Toscana</div>
         <div class="item-desc">Our choice for a special Super Tuscan — Sangiovese with cabernet and merlot, a Carmignano tradition born five centuries ago, when Catherine de' Medici had French vine cuttings sent from home and planted around the family's hunting lodges in these hills west of Florence; deep ruby, cherry and Marasca laced with balsamic spice, thyme and cocoa, full and enveloping. Lovely with the Porchetta, the Scaloppine di pollo, or the Genovese di Napoli</div>
@@ -514,47 +508,16 @@
         <div class="item-desc">Barolo's grape in a brighter, earlier-drinking style — red cherry, rose and a gentle, savory grip; the Genovese di Napoli, the Meatballs, or the Scaloppine di pollo</div>
       </div>
       <div class="item">
-        <div class="item-line"><span class="item-name">La Spinetta "Garretti" Barolo DOCG</span><span class="item-price">$112</span></div>
-        <div class="item-prod">La Spinetta, 2021 · Piemonte</div>
-        <div class="item-desc">100% Nebbiolo from Grinzane Cavour, 20 months in French oak — sweet and savory herbs, tobacco, mint, liquorice, roses and spice; full-bodied, dense and silky, built for the cellar. Pour it with the Porchetta, the Genovese di Napoli, or the Meatballs</div>
-      </div>
-      <div class="item">
         <div class="item-line"><span class="item-name">Terzetto Barolo DOCG</span><span class="item-price">$136</span></div>
         <div class="item-prod">Terzetto, 2021 · Piemonte</div>
         <div class="item-desc">Nebbiolo in full Barolo dress — rose, tar and dark cherry over a firm, elegant frame built to age; the Porchetta, the Meatballs, or the Genovese di Napoli</div>
       </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Ciacci Piccolomini Brunello di Montalcino</span><span class="item-price">$190</span></div>
-        <div class="item-prod">Ciacci Piccolomini d'Aragona, 2020 · Toscana</div>
-        <div class="item-desc">100% Sangiovese Grosso from the Pianrosso vineyard, ~3 years in Slavonian oak — intensely perfumed: dried flowers, red berry, spice and fresh mushroom; full-bodied yet warm and soft, with fine tannins and incredible length. Beautiful with the Meatballs, the Porchetta, or the Genovese di Napoli</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Barbaresco Riserva "Baluchin" DOCG</span><span class="item-price">$224</span></div>
-        <div class="item-prod">Cocito, 2017 · Neive, Piemonte</div>
-        <div class="item-desc">A wine born of friendship — Ezio Cocito's tiny Baluchin vineyard, farmed with guidance from Giorgio Rivetti of La Spinetta, produced only in the best vintages and only as a Riserva. 100% Nebbiolo from a single high-altitude cru; dark cassis and plum, crushed rose, resin and tea leaf, built for the cellar; our top bottle, for the Porchetta or aged cheese</div>
-      </div>
     </div>
 
     <div class="course">
-      <div class="course-title">Non-Alcoholic</div>
-      <div class="course-sub">Soft drinks</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Coca Cola, Coca Cola Zero, Sprite, Ginger Ale, San Pellegrino Blood Orange</span><span class="item-price">$4</span></div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">San Pellegrino Sparkling Water <span class="flag">— 1 liter</span></span><span class="item-price">$6</span></div>
-      </div>
-      <div class="course-sub">NA Beer</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Heineken</span><span class="item-price">$7.50</span></div>
-      </div>
-      <div class="course-sub">Beer</div>
+      <div class="course-title">Birra</div>
       <div class="item">
         <div class="item-line"><span class="item-name">Peroni</span><span class="item-price">$8</span></div>
-      </div>
-      <div class="course-sub">NA Spirits</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">San Bitter, Crodino</span><span class="item-price">$6</span></div>
       </div>
     </div>
 
@@ -634,4 +597,76 @@
       <div class="item">
         <div class="item-line"><span class="item-name">Moscato d'Asti "Santo Stefano" <span class="flag">— 375 ml</span></span><span class="item-price">$15 / $40</span></div>
         <div class="item-prod">Ceretto · Piemonte</div>
-        <div class="item-desc">A gently sweet, lightly frizzante dessert wine, low in alcohol — peach, apricot and orange blossom with a honeyed lift; 
+        <div class="item-desc">A gently sweet, lightly frizzante dessert wine, low in alcohol — peach, apricot and orange blossom with a honeyed lift; lovely with the Tiramisù or Flan di Latte</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Rubi” Red Dessert Wine</span><span class="item-price">$16</span></div>
+        <div class="item-prod">Bacovino, 2020 · Red Mountain, WA</div>
+        <div class="item-desc">A Washington twist on a traditional Portuguese-style dessert wine — silky red fruit, balanced sweetness and white pepper, with a lengthy candied finish; the perfect partner for the tiramisù</div>
+      </div>
+    </div>
+
+    <div class="note">Wine pairing available upon request</div>
+
+  </section>
+
+  <section class="panel" id="panel-celeb" role="tabpanel" aria-labelledby="rt-celeb">
+    <div class="gb" style="text-align:center;font-style:italic;color:var(--quiet);margin-bottom:8px;">Our finest bottles, for the table that's celebrating</div>
+    <div class="course">
+      <div class="course-title">Celebration Wines</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">“Millesimato” Alta Langa DOCG Pas Dosé</span><span class="item-price">$92</span></div>
+        <div class="item-prod">Contratto, 2021 · Piemonte</div>
+        <div class="item-desc">From Italy's oldest house of traditional-method sparkling wine, founded 1867 — 80% Pinot Nero, 20% Chardonnay, hand-picked from high-altitude vineyards and aged over three years on the lees. Fine, persistent bubbles; white flowers, citrus, and brioche, dry and vinous with real depth; the celebration bottle</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">La Spinetta "Garretti" Barolo DOCG</span><span class="item-price">$240</span></div>
+        <div class="item-prod">La Spinetta, 2021 · Piemonte</div>
+        <div class="item-desc">100% Nebbiolo from Grinzane Cavour, 20 months in French oak — sweet and savory herbs, tobacco, mint, liquorice, roses and spice; full-bodied, dense and silky, built for the cellar. Pour it with the Porchetta, the Genovese di Napoli, or the Meatballs</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Capichera "VT" Vendemmia Tardiva</span><span class="item-price">$300</span></div>
+        <div class="item-prod">Capichera, 2022 · Gallura, Sardegna</div>
+        <div class="item-desc">One of Sardinia's greatest whites — Gallura's most celebrated Vermentino, from late-harvested grapes and aged in oak: powerful yet dry, with candied stone fruit, dried herbs, honey and a deep, saline minerality that lingers. A collector's bottle for a special occasion — beautiful with the Fregula ai Frutti di Mare, or savored on its own</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Ciacci Piccolomini Brunello di Montalcino</span><span class="item-price">$190</span></div>
+        <div class="item-prod">Ciacci Piccolomini d'Aragona, 2020 · Toscana</div>
+        <div class="item-desc">100% Sangiovese Grosso from the Pianrosso vineyard, ~3 years in Slavonian oak — intensely perfumed: dried flowers, red berry, spice and fresh mushroom; full-bodied yet warm and soft, with fine tannins and incredible length. Beautiful with the Meatballs, the Porchetta, or the Genovese di Napoli</div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Barbaresco Riserva "Baluchin" DOCG</span><span class="item-price">$224</span></div>
+        <div class="item-prod">Cocito, 2017 · Neive, Piemonte</div>
+        <div class="item-desc">A wine born of friendship — Ezio Cocito's tiny Baluchin vineyard, farmed with guidance from Giorgio Rivetti of La Spinetta, produced only in the best vintages and only as a Riserva. 100% Nebbiolo from a single high-altitude cru; dark cassis and plum, crushed rose, resin and tea leaf, built for the cellar; our top bottle, for the Porchetta or aged cheese</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-na" role="tabpanel" aria-labelledby="rt-na">
+    <div class="course">
+      <div class="course-title">N/A &amp; Soft Drinks</div>
+      <div class="course-sub">Soft drinks</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Coca Cola, Coca Cola Zero, Sprite, Ginger Ale, San Pellegrino Blood Orange</span><span class="item-price">$4</span></div>
+      </div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">San Pellegrino Sparkling Water <span class="flag">— 1 liter</span></span><span class="item-price">$6</span></div>
+      </div>
+      <div class="course-sub">NA Beer</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">Heineken</span><span class="item-price">$7.50</span></div>
+      </div>
+      <div class="course-sub">NA Spirits</div>
+      <div class="item">
+        <div class="item-line"><span class="item-name">San Bitter, Crodino</span><span class="item-price">$6</span></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+</div>
+</body>
+</html>
