@@ -3,693 +3,367 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa Gabriele — Menu & Vini</title>
-<meta name="description" content="Casa Gabriele — Neapolitan trattoria and Sardinian kitchen on Yesler Way, Seattle. Dinner menu and wine list.">
+<title>Casa Gabriele — Food Menu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --carta:#F7F3EB;
     --ink:#1C1A17;
     --gold:#8B6F3E;
-    --quiet:#6B6560;
-    --hair:#D8CFBE;
+    --quiet:#5F5A54;
+    --hair:#CFC5B2;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
-    background:var(--carta);
+    background:#e8e2d5;
     color:var(--ink);
-    font-family:Georgia,'Times New Roman',serif;
-    font-size:16px;
-    line-height:1.45;
+    font-family:'EB Garamond',Georgia,serif;
     -webkit-font-smoothing:antialiased;
   }
-  .frame{
-    max-width:640px;
-    margin:10px auto 24px;
-    border:1px solid var(--ink);
-    outline:1px solid var(--ink);
-    outline-offset:3px;
-    padding:28px 20px 36px;
+  @page{ size:A4; margin:0; }
+  .page{
+    width:210mm;
+    height:297mm;
+    background:var(--carta);
+    margin:16px auto;
+    padding:15mm 15mm 11mm;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 4px 30px rgba(0,0,0,.18);
+    overflow:hidden;
   }
+  /* ---------- deco corners ---------- */
+  .deco{position:absolute;width:70px;height:70px;}
+  .deco::before,.deco::after{content:"";position:absolute;background:var(--gold);opacity:.55;}
+  .deco::before{width:70px;height:1.5px;}
+  .deco::after{width:1.5px;height:70px;}
+  .deco.tl{top:9mm;left:9mm;}
+  .deco.tr{top:9mm;right:9mm;}
+  .deco.tr::after{right:0;}
+  .deco.tr::before{right:0;}
+  .deco.bl{bottom:9mm;left:9mm;}
+  .deco.bl::after{bottom:0;}
+  .deco.bl::before{bottom:0;}
+  .deco.br{bottom:9mm;right:9mm;}
+  .deco.br::after{bottom:0;right:0;}
+  .deco.br::before{bottom:0;right:0;}
+  .deco .star{position:absolute;color:var(--gold);opacity:.55;font-size:14px;}
+  .deco.tl .star{top:14px;left:14px;}
+  .deco.tr .star{top:14px;right:14px;}
+  .deco.bl .star{bottom:14px;left:14px;}
+  .deco.br .star{bottom:14px;right:14px;}
+
   /* ---------- header ---------- */
-  header{text-align:center;margin-bottom:18px}
-  .wordmark{
-    font-family:'Cormorant Garamond',Georgia,serif;
-    font-size:2.35rem;
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-bottom:8px;
+    position:relative;
+    flex:0 0 auto;
+  }
+  .side{
+    flex:1;
+    font-family:'Cormorant Garamond',serif;
+    font-size:23px;
+    line-height:1.15;
+    color:var(--ink);
     font-weight:500;
-    letter-spacing:.04em;
-    line-height:1.05;
   }
-  .wordmark em{font-style:italic;font-weight:400}
-  .tagline{
-    font-family:'Cormorant Garamond',Georgia,serif;
-    font-style:italic;
-    color:var(--quiet);
-    font-size:1.02rem;
-    margin-top:6px;
+  .side.left{text-align:right;padding-right:6px;}
+  .side.right{text-align:left;padding-left:6px;}
+  .logo-circle{
+    flex:0 0 auto;
+    width:138px;height:138px;
+    border:1.5px solid var(--ink);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
   }
-  .meta{
-    font-size:.72rem;
+  .logo-circle .name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.3rem;
+    font-weight:500;
+    line-height:1.0;
+  }
+  .logo-circle .name .sm{display:block;font-size:1.95rem;}
+
+  /* ---------- menu (two fixed columns) ---------- */
+  .menu{
+    flex:1 1 auto;
+    min-height:0;
+    display:flex;
+    gap:44px;
+  }
+  .col{
+    flex:1 1 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .col > .course:first-child .course-title{margin-top:0;}
+  .course-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.7rem;
+    font-weight:600;
     letter-spacing:.14em;
     text-transform:uppercase;
-    color:var(--quiet);
-    margin-top:10px;
-  }
-  .rule{
-    width:64px;height:1px;background:var(--gold);
-    margin:16px auto 0;
-    position:relative;
-  }
-  .rule::after{
-    content:"";position:absolute;left:50%;top:-2.5px;
-    width:5px;height:5px;background:var(--gold);
-    transform:translateX(-50%) rotate(45deg);
-  }
-  /* ---------- tabs ---------- */
-  nav{
-    position:sticky;top:0;z-index:10;
-    background:var(--carta);
-    padding:12px 4px 10px;
-    margin:14px -4px 6px;
-    display:flex;justify-content:center;flex-wrap:wrap;gap:8px 8px;
-    border-bottom:1px solid var(--hair);
-  }
-  .tab{
-    appearance:none;background:none;cursor:pointer;
-    display:inline-block;user-select:none;
-    font-family:Georgia,serif;
-    font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--quiet);
-    border:1px solid var(--hair);
-    padding:9px 22px;border-radius:999px;
-    white-space:nowrap;
-    transition:color .15s,border-color .15s,background .15s;
-  }
-  @media (max-width:420px){
-    nav{gap:6px;padding:10px 2px 8px;}
-    .tab{font-size:.66rem;letter-spacing:.08em;padding:7px 12px;}
-  }
-  @media (max-width:340px){
-    .tab{font-size:.6rem;letter-spacing:.04em;padding:6px 9px;}
-  }
-  .tabradio{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap}
-  #rt-menu:checked ~ nav label[for="rt-menu"],
-  #rt-vini:checked ~ nav label[for="rt-vini"],
-  #rt-celeb:checked ~ nav label[for="rt-celeb"],
-  #rt-na:checked ~ nav label[for="rt-na"]{
-    color:var(--carta);background:var(--ink);border-color:var(--ink);
-  }
-  .tabradio:focus-visible ~ nav label{outline:2px solid var(--gold);outline-offset:2px}
-  /* ---------- sections ---------- */
-  .panel{display:none;padding-top:8px}
-  #rt-menu:checked ~ #panel-menu,
-  #rt-vini:checked ~ #panel-vini,
-  #rt-celeb:checked ~ #panel-celeb,
-  #rt-na:checked ~ #panel-na{display:block}
-  .course{margin-top:30px}
-  .course-special{
-    margin-top:10px;padding:18px 16px;
-    border:1px solid var(--gold);
-  }
-  .course-title{
     text-align:center;
-    font-size:.92rem;font-weight:bold;
-    letter-spacing:.22em;text-transform:uppercase;
+    margin:6px 0 7px;
+    break-after:avoid;
+    break-before:avoid;
+  }
+  .item{
+    margin-bottom:9px;
+    break-inside:avoid;
+  }
+  .item-line{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .item-name{
+    font-weight:500;
+    font-size:20px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .dots{
+    flex:1;
+    border-bottom:1px dotted var(--hair);
+    transform:translateY(-4px);
+  }
+  .item-price{
     color:var(--gold);
-  }
-  .course-sub{
-    text-align:center;
-    font-family:'Cormorant Garamond',Georgia,serif;
-    font-style:italic;color:var(--quiet);
-    font-size:.95rem;margin-top:2px;margin-bottom:6px;
-  }
-  .item{padding:13px 0;border-bottom:1px solid var(--hair)}
-  .item:last-child{border-bottom:none}
-  .item-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
-  .item-name{font-weight:bold;font-size:1rem}
-  .item-name .flag{
-    font-weight:normal;font-style:italic;color:var(--quiet);font-size:.88rem;
+    font-weight:600;
+    font-size:19px;
     white-space:nowrap;
   }
-  .item-price{font-size:1rem;white-space:nowrap}
-  .item-prod{color:var(--quiet);font-size:.86rem;margin-top:2px}
   .item-desc{
-    font-style:italic;color:var(--quiet);
-    font-size:.9rem;margin-top:3px;
+    font-size:16px;
+    color:var(--quiet);
+    line-height:1.3;
+    font-style:italic;
+    margin-top:1px;
   }
-  .note{
-    text-align:center;font-style:italic;color:var(--quiet);
-    font-size:.88rem;margin-top:26px;
-    padding-top:16px;border-top:1px solid var(--hair);
+  .add{color:var(--gold);font-style:italic;}
+  .section-note{
+    font-size:14px;
+    color:var(--gold);
+    font-style:italic;
+    text-align:center;
+    margin:-3px 0 8px;
+    break-before:avoid;
+    break-after:avoid;
+    break-inside:avoid;
   }
-  .course-note{
-    text-align:center;font-style:italic;color:var(--quiet);
-    font-size:.85rem;margin-top:14px;
+  /* ---------- chef's special banner (full width, top) ---------- */
+  .special{
+    flex:0 0 auto;
+    border:1px solid var(--gold);
+    padding:10px 26px 12px;
+    margin-bottom:12px;
   }
-  .subhead{
-    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--gold);margin:4px 0 8px;font-weight:bold;
+  .special .course-title{ color:var(--gold); margin:2px 0 8px; }
+  .special-grid{
+    display:flex;
+    gap:34px;
   }
-  .gb{ /* glass/bottle key */
-    text-align:right;font-style:italic;color:var(--quiet);
-    font-size:.78rem;margin-top:14px;
-  }
-  /* tasting block */
-  .tasting{
-    margin-top:30px;border:1px solid var(--hair);
-    padding:18px 16px;text-align:center;
-  }
-  .tasting .course-title{margin-bottom:4px}
-  .tasting-row{
-    display:flex;justify-content:space-between;
-    max-width:300px;margin:10px auto 0;font-size:1rem;
-  }
-  .tasting p{
-    font-family:'Cormorant Garamond',Georgia,serif;
-    font-style:italic;color:var(--quiet);font-size:.98rem;
-  }
+  .special-grid .item{ flex:1; margin-bottom:0; }
+
   /* ---------- footer ---------- */
-  footer{
-    margin-top:36px;text-align:center;
-    border-top:1px solid var(--ink);
-    padding-top:18px;
-  }
-  footer .wordmark{font-size:1.3rem}
-  footer p{color:var(--quiet);font-size:.85rem;margin-top:6px}
-  footer a{color:var(--ink)}
-  footer a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-
-  @media print{
-    @page{ size:Letter; margin:14mm; }
-    .tabradio{ display:none !important; } nav{ display:none !important; position:static; }
-    .panel{ display:block !important; }
-    #panel-vini{ break-before:page; page-break-before:always; }
-    #panel-celeb{ break-before:page; page-break-before:always; }
-    #panel-na{ break-before:page; page-break-before:always; }
-    .item,.course,.tasting,.tasting-row{ break-inside:avoid; page-break-inside:avoid; }
-    .frame{ border:none; outline:none; max-width:none; margin:0 auto; padding:0; }
-    body{ font-size:12.5px; }
+  .footer{
+    flex:0 0 auto;
+    margin-top:8px;
+    border-top:1px solid var(--hair);
+    padding-top:8px;
+    font-size:16px;
+    color:var(--ink);
+    line-height:1.45;
+    font-style:italic;
+    text-align:center;
   }
 
+  /* ---------- tuned sizing: applied to BOTH screen and print so the HTML
+       preview matches the printed PDF (must come last to win the cascade) ---------- */
+  @media screen, print{
+    html,body{ background:#fff; margin:0; padding:0; }
+    .page{
+      margin:0;
+      box-shadow:none;
+      height:287mm;
+      padding:12mm 15mm 7mm;
+    }
+    header{ margin-bottom:8px; }
+    .logo-circle{ width:128px; height:128px; }
+    .logo-circle .name{ font-size:2.1rem; }
+    .logo-circle .name .sm{ font-size:1.8rem; }
+    .side{ font-size:22px; }
+    .course-title{ font-size:1.6rem; margin:6px 0 5px; }
+    .col > .course:first-child .course-title{ margin-top:2px; }
+    .item{ margin-bottom:5px; }
+    .item-name{ font-size:18px; }
+    .item-price{ font-size:17px; }
+    .item-desc{ font-size:13.5px; line-height:1.3; }
+    .section-note{ font-size:13.5px; margin:-4px 0 7px; }
+    .footer{ font-size:14px; margin-top:6px; padding-top:7px; }
+    .special{ padding:8px 24px 9px; margin-bottom:9px; }
+    .special .course-title{ margin:2px 0 6px; }
+    header{ margin-bottom:6px; }
+    .logo-circle{ width:118px; height:118px; }
+    .logo-circle .name{ font-size:1.95rem; }
+    .logo-circle .name .sm{ font-size:1.65rem; }
+  }
 </style>
 </head>
 <body>
-<div class="frame">
+<div class="page">
 
-  <input type="radio" name="mtab" id="rt-menu" class="tabradio" checked aria-label="Food menu">
-  <input type="radio" name="mtab" id="rt-vini" class="tabradio" aria-label="Wine list">
-  <input type="radio" name="mtab" id="rt-celeb" class="tabradio" aria-label="Celebration wines">
-  <input type="radio" name="mtab" id="rt-na" class="tabradio" aria-label="Non-alcoholic and soft drinks">
 
   <header>
-    <div class="wordmark">Casa <em>Gabriele</em></div>
-    <div class="tagline">Cucina casereccia del Sud — Napoli &amp; Sardegna</div>
-    <div class="meta">Restaurant · Bar — 88 Yesler Way, Seattle</div>
-    <div class="rule" aria-hidden="true"></div>
+    <div class="side left">authentic<br>italian</div>
+    <div class="logo-circle">
+      <div class="name">casa<span class="sm">Gabriele</span></div>
+    </div>
+    <div class="side right">bar &amp;<br>ristorante</div>
   </header>
 
-  <nav aria-label="Menu sections">
-    <label class="tab" for="rt-menu">Menu</label>
-    <label class="tab" for="rt-vini">Vini</label>
-    <label class="tab" for="rt-celeb">Riserva</label>
-    <label class="tab" for="rt-na">N/A</label>
-  </nav>
-
-  <!-- ================= MENU ================= -->
-  <section class="panel" id="panel-menu" role="tabpanel" aria-labelledby="rt-menu">
-
-    <div class="course-special">
-      <div class="course-title">Chef's Special</div>
+  <div class="special">
+    <div class="course-title">Just Arrived — From Sardegna</div>
+    <div class="special-grid">
       <div class="item">
-        <div class="item-line"><span class="item-name">La Cianfotta</span><span class="item-price">$30</span></div>
-        <div class="item-desc">Rigatoncelli with Chef Gabriele's home-made red wine sausage, sautéed chanterelle and sun-dried tomatoes in a potato cream sauce</div>
+        <div class="item-line"><span class="item-name">Organic Extra Virgin Olive Oil · Boni Mores (250 mL)</span><span class="dots"></span><span class="item-price">$30</span></div>
+        <div class="item-desc">Served with our bread — a free bread refill. Remarkably low acidity (0.01%), high in polyphenols; from the Boni Mores orchard &amp; press, Villaperuccio, Sardegna. Take the bottle home.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu">
+
+    <!-- LEFT COLUMN: ANTIPASTI + PASTA -->
+    <div class="col">
+      <div class="course">
+        <div class="course-title">Antipasti</div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Bruschetta</span><span class="dots"></span><span class="item-price">$20</span></div>
+          <div class="item-desc">Cherry tomatoes, stracciatella, garlic, extra virgin olive oil</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Cuoppo di Mare</span><span class="dots"></span><span class="item-price">$25</span></div>
+          <div class="item-desc">Crispy calamari and shrimp, lemon, capers, tartar sauce</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Cuoppo di Terra</span><span class="dots"></span><span class="item-price">$22</span></div>
+          <div class="item-desc">Rice arancine, fried seasonal vegetables, tomato sauce</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Meatballs</span><span class="dots"></span><span class="item-price">$22</span></div>
+          <div class="item-desc">Veal and pork, garlic, parsley, parmesan, San Marzano tomato</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Charcuterie Board</span><span class="dots"></span><span class="item-price">$45</span></div>
+          <div class="item-desc">Salami, hot capocollo &amp; a selection of newly arrived Sardinian goat &amp; sheep cheeses, sun-dried tomatoes &amp; organic artichokes; serves 2–3</div>
+        </div>
+      </div>
+
+      <div class="course">
+        <div class="course-title">Pasta</div>
+        <div class="section-note">Gluten-free pasta available — please ask your server</div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Fregula ai Frutti di Mare</span><span class="dots"></span><span class="item-price">$30</span></div>
+          <div class="item-desc">Sardinian fregula, calamari, shrimp, mussels in a San Marzano &amp; white wine sauce, herbs, hot pepper, bottarga</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Spaghetti al Pomodoro</span><span class="dots"></span><span class="item-price">$22</span></div>
+          <div class="item-desc">San Marzano tomato, fresh basil, stracciatella, olive oil <span class="add">· add meatballs +$6</span></div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Pasta Fagioli e Cozze</span><span class="dots"></span><span class="item-price">$26</span></div>
+          <div class="item-desc">Tubetti rigati, beans, stewed mussels</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Gamberi alla Nerano</span><span class="dots"></span><span class="item-price">$28</span></div>
+          <div class="item-desc">Zucchini cream, fresh basil, sautéed shrimp</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Genovese di Napoli</span><span class="dots"></span><span class="item-price">$25</span></div>
+          <div class="item-desc">Tubetti rigati, slow-cooked onions, pork shoulder ragù</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Bucatini del Salumiere</span><span class="dots"></span><span class="item-price">$28</span></div>
+          <div class="item-desc">Prosciutto crudo, onion, pecorino, egg, mozzarella, San Marzano tomatoes — our Neapolitan take on Carbonara</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Pasta alla Norma</span><span class="dots"></span><span class="item-price">$24</span></div>
+          <div class="item-desc">Fried eggplant, San Marzano tomato, basil, ricotta salata</div>
+        </div>
       </div>
     </div>
 
-    <div class="course">
-      <div class="course-title">Appetizers</div>
-      <div class="course-sub">Antipasti</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bruschetta</span><span class="item-price">$20</span></div>
-        <div class="item-desc">Cherry tomatoes, stracciatella, garlic, extra virgin olive oil</div>
+    <!-- RIGHT COLUMN: INSALATE + SECONDI + DOLCI -->
+    <div class="col">
+      <div class="course">
+        <div class="course-title">Insalate</div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Arugula</span><span class="dots"></span><span class="item-price">$18</span></div>
+          <div class="item-desc">Tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Romaine</span><span class="dots"></span><span class="item-price">$16</span></div>
+          <div class="item-desc">Cherry tomatoes, parmigiano, croutons; Caesar dressing (contains anchovies) or balsamic <span class="add">· shrimp +$8 · chicken +$7</span></div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Cuoppo di Mare</span><span class="item-price">$25</span></div>
-        <div class="item-desc">Crispy calamari and shrimp, lemon, capers, tartar sauce</div>
+
+      <div class="course">
+        <div class="course-title">Secondi</div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Melanzane Parmigiana</span><span class="dots"></span><span class="item-price">$24</span></div>
+          <div class="item-desc">Oven-roasted eggplant, tomato sauce, basil, mozzarella, parmigiano</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Scaloppine di Pollo</span><span class="dots"></span><span class="item-price">$27</span></div>
+          <div class="item-desc">Chicken, white wine, salsa verde (mint, parsley, caper, lemon), seasonal vegetables</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Porchetta</span><span class="dots"></span><span class="item-price">$30</span></div>
+          <div class="item-desc">Pork belly, Sardinian herbs, mashed potatoes, salsa verde, stracciatella</div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Cuoppo di Terra</span><span class="item-price">$22</span></div>
-        <div class="item-desc">Rice arancine, fried seasonal vegetables, tomato sauce</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Meatballs</span><span class="item-price">$22</span></div>
-        <div class="item-desc">Veal and pork, parmesan, San Marzano tomato</div>
+
+      <div class="course">
+        <div class="course-title">Dolci</div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Migliaccio</span><span class="dots"></span><span class="item-price">$10</span></div>
+          <div class="item-desc"><span class="add">Chef's special</span> — Neapolitan semolina &amp; ricotta custard cake, milk, eggs, orange zest &amp; a touch of Grand Marnier</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Flan di Latte</span><span class="dots"></span><span class="item-price">$10</span></div>
+          <div class="item-desc">Silky baked milk custard with a soft caramel</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Cannoli</span><span class="dots"></span><span class="item-price">$10</span></div>
+          <div class="item-desc">Pastry filled with sweet ricotta and pistachio</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Tiramisù</span><span class="dots"></span><span class="item-price">$10</span></div>
+          <div class="item-desc">House-made — ladyfingers, espresso, mascarpone, cocoa</div>
+        </div>
+        <div class="item">
+          <div class="item-line"><span class="item-name">Tiramisù &amp; Rubi</span><span class="dots"></span><span class="item-price">$22</span></div>
+          <div class="item-desc">Our tiramisù with a pour of Rubi dessert wine</div>
+        </div>
       </div>
     </div>
 
-    <div class="course">
-      <div class="course-title">Pasta</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Fregula ai Frutti di Mare</span><span class="item-price">$30</span></div>
-        <div class="item-desc">Sardinian fregula with calamari, shrimp and mussels, Sardinian herbs and hot pepper, topped with bottarga</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bucatini del Salumiere</span><span class="item-price">$28</span></div>
-        <div class="item-desc">Bucatini with prosciutto crudo, onion, pecorino, egg, mozzarella and San Marzano tomatoes — our Neapolitan take on Carbonara</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Spaghetti al Pomodoro</span><span class="item-price">$22</span></div>
-        <div class="item-desc">San Marzano tomato, fresh basil, olive oil</div>
-        <div class="item-desc"><em>Add meatballs +$6</em></div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Pasta fagioli e cozze</span><span class="item-price">$26</span></div>
-        <div class="item-desc">Tubetti, beans, stewed mussels</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Gamberi alla nerano</span><span class="item-price">$28</span></div>
-        <div class="item-desc">Zucchini cream, basil, sautéed shrimp</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Genovese di Napoli</span><span class="item-price">$25</span></div>
-        <div class="item-desc">Tubetti, slow-cooked onions, pork ragù</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Pasta alla Norma</span><span class="item-price">$24</span></div>
-        <div class="item-desc">Fried eggplant, San Marzano tomato and basil, finished with Sardinian ricotta salata</div>
-      </div>
-      <div class="course-note">We have gluten-free pasta available &mdash; please ask your server if you'd like a gluten-free option</div>
-    </div>
+  </div>
 
-    <div class="course">
-      <div class="course-title">Salads</div>
-      <div class="course-sub">Insalate</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Arugula</span><span class="item-price">$18</span></div>
-        <div class="item-desc">Cherry tomatoes, olives, sun-dried tomatoes, walnuts, artichokes, balsamic</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Romaine</span><span class="item-price">$16</span></div>
-        <div class="item-desc">Parmesan, garlic croutons, anchovies, caesar or balsamic</div>
-        <div class="item-desc"><em>Add shrimp +$8 &nbsp;·&nbsp; add chicken +$7</em></div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Secondi</div>
-      <div class="course-sub">Mains</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Melanzane alla Parmigiana</span><span class="item-price">$24</span></div>
-        <div class="item-desc">Oven-roasted eggplant, house tomato sauce, basil, melted parmesan</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Scaloppine di pollo</span><span class="item-price">$27</span></div>
-        <div class="item-desc">Chicken breast, white wine and salsa verde — mint, parsley, lemon, capers and garlic</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Porchetta</span><span class="item-price">$30</span></div>
-        <div class="item-desc">Rolled pork belly roasted with Sardinian herbs, served on a bed of mashed potatoes, topped with salsa verde &mdash; mint, parsley, lemon, caper, garlic &mdash; and stracciatella cheese</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Dessert</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Flan di Latte <span class="flag">— special</span></span><span class="item-price">$10</span></div>
-        <div class="item-desc">Silky baked milk custard with a soft caramel — light and just sweet enough to finish the meal</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Cannoli</span><span class="item-price">$10</span></div>
-        <div class="item-desc">Pastry filled with sweet ricotta and pistachio</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Tiramisù</span><span class="item-price">$10</span></div>
-        <div class="item-desc">Made in house, ladyfingers soaked in espresso with marscarpone and cocoa powder</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Tiramisù &amp; Rubi <span class="flag">— the perfect pairing</span></span><span class="item-price">$22</span></div>
-        <div class="item-desc">Our tiramisù alongside a pour of Rubi, a silky Red Mountain dessert wine — candied red fruit and white pepper that finish a meal at Casa Gabriele the way it deserves to end</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Espresso</span><span class="item-price">$4</span></div>
-      </div>
-    </div>
-
-    <div class="note">For parties of 6 or more, 20% gratuity. For parties of 8 or more, please contact us for a family-style meal.<br>Please inform your server of any allergies or dietary preferences.</div>
-  </section>
-
-  <!-- ================= VINI ================= -->
-  <section class="panel" id="panel-vini" role="tabpanel" aria-labelledby="rt-vini">
-
-    <div class="gb">glass / bottle</div>
-
-    <div class="course">
-      <div class="course-title">Featured by the Glass</div>
-      <div class="course-sub">Exceptional Wines — Normally Only Available as Full Bottles</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Capichera Vermentino di Gallura</span><span class="item-price">$50 / $80</span></div>
-        <div class="item-prod">VT, 2022 · Sardegna</div>
-        <div class="item-desc">One of Sardinia's most prestigious whites from the storied Capichera estate in Gallura — a wine rarely offered by the glass. This is a serious expression: layered minerality, white peach, citrus blossom, and a salinity that speaks to the island's granite-laced terroir. Crisp acidity and remarkable complexity. Perfect with the Cuoppo di Mare, the Fregula ai Frutti di Mare, the Pasta Fagioli e Cozze, or the Scallopine. 1 glass $50 | 2 glasses $80 — buy 2 and save $20 to fully appreciate its depth</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Barbaresco Riserva "Baluchin"</span><span class="item-price">$50 / $80</span></div>
-        <div class="item-prod">Cocito, 2017 · Piemonte</div>
-        <div class="item-desc">A serious Nebbiolo from one of Piedmont's most respected producers — aged as a Riserva (minimum 4+ years in wood) and representing nearly a decade of complexity. This is a wine that demands respect: elegant tannins, notes of cherry, licorice, rose petal, and earth with a long, refined finish. A singular expression of what great Barbaresco can be. Experience it by the glass here — a rare opportunity. Pair with the Pasta alla Genovese, the Bucatini al Salumiere, the Meatballs, or the Porchetta. 1 glass $50 | 2 glasses $80 — buy 2 and save $20 to let it open and reveal its character</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Bollicine</div>
-      <div class="course-sub">Sparkling</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Lambrusco Grasparossa di Castelvetro DOP Amabile</span><span class="item-price">$12 / $38</span></div>
-        <div class="item-prod">Cantina Settecani · Emilia-Romagna</div>
-        <div class="item-desc">Sparkling red, gently sweet — violet froth and dark berries; serve cool with salumi, cuoppo di terra, or in place of dessert</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Contemporaneo” Prosecco DOC Brut</span><span class="item-price">$12 / $48</span></div>
-        <div class="item-prod">Batiso, NV · Veneto</div>
-        <div class="item-desc">Brut and bone-bright — crisp pear, white flowers, fine bubbles; the way to start, or alongside the cuoppo di mare</div>
-      </div>
-    </div>
-
-
-
-    <div class="course">
-      <div class="course-title">Bianchi</div>
-      <div class="course-sub">White</div>
-      <div class="subhead">Sardegna</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Fratelli Cozza Pinot Grigio DOC</span><span class="item-price">$34</span></div>
-        <div class="item-prod">Fratelli Cozza · Italy</div>
-        <div class="item-desc">Crisp and clean — green apple, pear and citrus with a bright, easy finish; the cuoppo di mare, gamberi alla nerano, or the arugula salad</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Nordest” Vermentino di Sardegna DOC</span><span class="item-price">$12 / $50</span></div>
-        <div class="item-prod">Cantina del Vermentino, 2024 · Sardegna</div>
-        <div class="item-desc">Dry and breezy, green apple with a hint of almond — Gabriele’s island in a glass; a Sardinian white made for tonight’s Fregula ai Frutti di Mare, the cuoppo di mare, or gamberi alla nerano</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Limizzani” Vermentino di Gallura DOCG</span><span class="item-price">$55</span></div>
-        <div class="item-prod">Surrau, 2024 · Sardegna</div>
-        <div class="item-desc">Sardinia's only DOCG — more structured and select than our Nordest, with citrus, sea-breeze minerality, and a touch more complexity and persistence on the finish; the cuoppo di mare, gamberi alla nerano, or the arugula salad</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Ceretto Langhe Arneis DOC</span><span class="item-price">$15 / $60</span></div>
-        <div class="item-prod">Ceretto, 2024 · Piemonte</div>
-        <div class="item-desc">Piedmont's elegant white grape from one of the Langhe's great houses — white peach, pear and chamomile over crushed-limestone minerality, with a soft almond finish; crisp, aromatic and lightly frizzante; the cuoppo di mare, gamberi alla nerano, or the arugula salad</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Fiano di Avellino DOCG</span><span class="item-price">$67</span></div>
-        <div class="item-prod">Rocca del Principe, 2023 · Irpinia, Campania</div>
-        <div class="item-desc">A small family estate in Lapio, the heartland of Fiano, farming ancient hillside vines above 500 meters — white peach, lemon, and crushed stone, with notes of white flowers and aromatic herbs; pure, fresh, and long on the finish; the cuoppo di mare, gamberi alla nerano, or the scaloppine di pollo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Capichera "VT" Vendemmia Tardiva</span><span class="item-price">$300</span></div>
-        <div class="item-prod">Capichera, 2022 · Gallura, Sardegna</div>
-        <div class="item-desc">One of Sardinia's greatest whites — Gallura's most celebrated Vermentino, from late-harvested grapes and aged in oak: powerful yet dry, with candied stone fruit, dried herbs, honey and a deep, saline minerality that lingers. A collector's bottle for a special occasion — beautiful with the Fregula ai Frutti di Mare, or savored on its own</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Rosati</div>
-      <div class="course-sub">Rosé</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Casa Rossa</span><span class="item-price">$12 / $45</span></div>
-        <div class="item-prod">Ile De Beaute · Corsica</div>
-        <div class="item-desc">Pale salmon, bright and refreshing with notes of wild strawberry and citrus, crisp finish with a touch of minerality; perfect with the cuoppo di mare, gamberi alla nerano, the arugula salad, or on its own at the bar</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Rossi</div>
-      <div class="course-sub">Red — lighter to fuller</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Montepulciano d’Abruzzo DOC</span><span class="item-price">$12 / $40</span></div>
-        <div class="item-prod">Collegiata, 2024 · Abruzzo</div>
-        <div class="item-desc">Ruby and easygoing, ripe dark cherry, soft round finish — along with the Biferno, this is our absolute best quality-price wine on the menu; the Spaghetti al Pomodoro, the meatballs, or the Melanzane alla Parmigiana</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Barbera d’Asti Superiore DOCG</span><span class="item-price">$12 / $45</span></div>
-        <div class="item-prod">Terzetto, 2023 · Piemonte</div>
-        <div class="item-desc">For lovers of young, blackberry, dark fruity wines — easy and smooth, yet big enough to stand up to our heartier dishes too; the pasta fagioli e cozze or the meatballs</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Possessioni” Rosso del Veronese IGT</span><span class="item-price">$50</span></div>
-        <div class="item-prod">Serego Alighieri · Veneto</div>
-        <div class="item-desc">From the estate Dante’s family has farmed for seven centuries — corvina’s bright sour-cherry lift, light and supple; the meatballs, the scaloppine di pollo, or the Spaghetti al Pomodoro</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Carbonic Nebbiolo <span class="flag">— served chilled</span></span><span class="item-price">$14 / $56</span></div>
-        <div class="item-prod">Sage Rat, 2025 · Columbia Valley, Washington</div>
-        <div class="item-desc">Our hometown guest — nebbiolo done carbonic-style, bright cranberry and black tea, between a red and a dark rosé; pour it cool with the cuoppo di mare or on its own at the bar</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Biferno Rosso Riserva DOC</span><span class="item-price">$14 / $60</span></div>
-        <div class="item-prod">Rinomata Cantina Tombacco, 2020 · Molise</div>
-        <div class="item-desc">80% Montepulciano, 20% Aglianico — an earthy, fruity riserva and one of our best value-for-quality reds on the list, built for anyone who loves big, fruity, earthy red wines. Surprisingly smooth thanks to the varietal mix; the Porchetta or the Genovese di Napoli</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Monte Piazzo” Valpolicella Classico Superiore</span><span class="item-price">$80</span></div>
-        <div class="item-prod">Serego Alighieri, 2019 · Veneto</div>
-        <div class="item-desc">The step up from our Possessioni, from the same historic Serego Alighieri estate — a Classico Superiore with deeper cherry and red plum, dried herbs and a smooth, savory finish; the meatballs, the Genovese di Napoli, or the Porchetta</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bacovino Sangiovese</span><span class="item-price">$95</span></div>
-        <div class="item-prod">Bacovino (Randy Brooks), 2021 · Red Mountain, Washington</div>
-        <div class="item-desc">A local labor of love from our friend and vintner Randy Brooks — Red Mountain Sangiovese in an old-world style, cold-soaked and aged nearly two years in French oak; savory red cherry, dried herb and Red Mountain's signature mineral grip. Its bright acidity is made for the Bucatini del Salumiere, Spaghetti al Pomodoro, or the Meatballs</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bacovino Nebbiolo</span><span class="item-price">$95</span></div>
-        <div class="item-prod">Bacovino (Randy Brooks), 2021 · Red Mountain, Washington</div>
-        <div class="item-desc">One of Washington's rare Nebbiolos, from our friend and vintner Randy Brooks on Red Mountain — a wonderful nose of cherry, rose petal, tea leaf, orange zest, tobacco and chocolate, and far more delicate than Nebbiolo can often be. An elegant, fun wine that's perfect for so many of our dishes — the Porchetta, the Meatballs, or the Genovese di Napoli</div>
-      </div>
-      <div class="subhead">Sardegna</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Perdera” Monica di Sardegna DOC</span><span class="item-price">$12 / $40</span></div>
-        <div class="item-prod">Argiolas, 2023 · Sardegna</div>
-        <div class="item-desc">Mostly Monica with a touch of Carignano and Bovale — Sardinia's most gentle grape: elegant, smooth and floral, soft juicy cherry and plum, light enough to chill; pairs beautifully with both meat and fish — tonight's Fregula ai Frutti di Mare, the pasta fagioli e cozze, or the scaloppine di pollo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Cardanera” Carignano</span><span class="item-price">$56</span></div>
-        <div class="item-prod">Argiolas, 2024 · Sulcis, Sardegna</div>
-        <div class="item-desc">Argiolas's expression of Carignano, Sardinia's southwest — a more gentle, smoother grape than the island's better-known Cannonau, without being any less interesting: wild macchia herbs, red and black fruit, fine-grained tannin; the Porchetta, the meatballs, or the scaloppine di pollo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Marcanelli Chianti Classico DOCG</span><span class="item-price">$56</span></div>
-        <div class="item-prod">Marcanelli, 2020 · Toscana</div>
-        <div class="item-desc">Classic Chianti Classico — 100% Sangiovese, bright red cherry and savory herbs over a firm, food-loving acidity; the Bucatini del Salumiere, Spaghetti al Pomodoro, or the Meatballs</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Josto Miglior” Cannonau di Sardegna Riserva DOC</span><span class="item-price">$12 / $60</span></div>
-        <div class="item-prod">Antichi Poderi Jerzu, 2019 · Sardegna</div>
-        <div class="item-desc">From Jerzu, one of Sardinia's most prestigious Cannonau zones and the heart of the island's Blue Zone — longevity experts credit wines like this with 2-3 times the polyphenols of most reds. Gabriele's island in red — sun-baked grenache, wild macchia herbs and bramble fruit, warm and open; the Genovese di Napoli, the Porchetta, or the Meatballs</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Reverdito Langhe Nebbiolo "Simane" DOC</span><span class="item-price">$65</span></div>
-        <div class="item-prod">Reverdito, 2023 · Piemonte</div>
-        <div class="item-desc">Barolo's grape in a brighter, earlier-drinking style — red cherry, rose and a gentle, savory grip; the Genovese di Napoli, the Meatballs, or the Scaloppine di pollo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Portale Adduca” Aglianico del Vulture DOC</span><span class="item-price">$100</span></div>
-        <div class="item-prod">Casa Maschito, 2019 · Basilicata</div>
-        <div class="item-desc">Grown on the slopes of an extinct volcano — a gentler, more approachable Aglianico than most, more balanced and less aggressive than a Taurasi: dark fruit, smoke, refined structure; the Porchetta or the Genovese di Napoli</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Il Sasso” Carmignano DOCG</span><span class="item-price">$100</span></div>
-        <div class="item-prod">Piaggia (Silvia Vannucci), 2022 · Toscana</div>
-        <div class="item-desc">Our choice for a special Super Tuscan — Sangiovese with cabernet and merlot, a Carmignano tradition born five centuries ago, when Catherine de' Medici had French vine cuttings sent from home and planted around the family's hunting lodges in these hills west of Florence; deep ruby, cherry and Marasca laced with balsamic spice, thyme and cocoa, full and enveloping. Lovely with the Porchetta, the Scaloppine di pollo, or the Genovese di Napoli</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Berardenga Chianti Classico Riserva</span><span class="item-price">$112</span></div>
-        <div class="item-prod">Felsina, 2021 · Toscana</div>
-        <div class="item-desc">One of Chianti's finest — 100% Sangiovese from Felsina's estate in the heart of Classico country. Elegant and structured with dark cherry, plum, and dried herbs; supple tannins and a long, savory finish. Built to age, but drinking beautifully now; perfect with the Porchetta, the Meatballs, or aged cheese</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Terzetto Barolo DOCG</span><span class="item-price">$136</span></div>
-        <div class="item-prod">Terzetto, 2021 · Piemonte</div>
-        <div class="item-desc">Nebbiolo in full Barolo dress — rose, tar and dark cherry over a firm, elegant frame built to age; the Porchetta, the Meatballs, or the Genovese di Napoli</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Birra</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Peroni</span><span class="item-price">$8</span></div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Dolci &amp; Amari</div>
-      <div class="course-sub">Aperitivi &amp; after dinner</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Campari Spritz</span><span class="item-price">$15</span></div>
-        <div class="item-prod">Campari · Milano</div>
-        <div class="item-desc">Campari, prosecco, soda, and orange — bittersweet and bracing; the classic aperitivo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Aperol Spritz</span><span class="item-price">$15</span></div>
-        <div class="item-prod">Aperol · Padova</div>
-        <div class="item-desc">Aperol, prosecco, and soda — light and orange-bitter; the easy aperitivo</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Crodino Spritz</span><span class="item-price">$16</span></div>
-        <div class="item-prod">Crodino · Italia</div>
-        <div class="item-desc">The sophisticated NA spritz — Crodino's signature bittersweet blend with prosecco and soda, bright and refreshing</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Mirto Spritz <span class="flag">— Casa Gabriele original</span></span><span class="item-price">$16</span></div>
-        <div class="item-prod">Tre Montis Mirto · Sardegna</div>
-        <div class="item-desc">Sardinians call it their little elixir of long life — mirto grows wild across the island's macchia, its dark berries hand-picked from ancient shrubs and steeped for months into a deep purple, berry-sweet liqueur that's graced Blue Zone tables for centuries. Genuinely rich in polyphenols and antioxidants, and undeniably delicious. Our own spin on the spritz, no Aperol here: mirto built with prosecco and soda, finished with a leaf of fresh mint</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Limoncello Spritz</span><span class="item-price">$16</span></div>
-        <div class="item-prod">Tremontis “Limonsardo” · Sardegna</div>
-        <div class="item-desc">Sunny and citrus-forward, no Aperol here either — Sardinian limoncello lifted with prosecco and soda and a sprig of fresh basil; sweet lemon up front, crisp and refreshing all the way through</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Liquore delle Sirene Americano <span class="flag">— rosso or bianco</span></span><span class="item-price">$12 neat / $15 spritz</span></div>
-        <div class="item-prod">Liquore delle Sirene · Italia</div>
-        <div class="item-desc">Artisan Italian americano — gentian and wormwood, softly bitter; neat over ice, or as a spritz with prosecco and soda</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Amaro Montenegro</span><span class="item-price">$14</span></div>
-        <div class="item-prod">Montenegro · Bologna</div>
-        <div class="item-desc">Italy’s most-loved amaro — orange peel, vanilla, and a wealth of botanicals; gentle and rounded, neat</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Averna</span><span class="item-price">$13</span></div>
-        <div class="item-prod">Amaro Averna · Sicilia</div>
-        <div class="item-desc">Sicilian classic — caramel, dried fig, and bitter herbs; rich and smooth, neat or over ice</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Cynar</span><span class="item-price">$12</span></div>
-        <div class="item-prod">Cynar Ricetta Originale · Italia</div>
-        <div class="item-desc">Artichoke amaro, the original recipe — herbal and lightly bitter; neat, on ice, or with soda</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Mirto della Sardegna</span><span class="item-price">$12</span></div>
-        <div class="item-prod">Tre Montis · Sardegna</div>
-        <div class="item-desc">A Sardinian digestivo steeped in wild myrtle berries — deep purple, sweet and herbal with a dark-berry bite; served chilled, neat, at the close of the meal</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Lo-Fi Gentian Amaro</span><span class="item-price">$10</span></div>
-        <div class="item-prod">Lo-Fi Aperitifs · California</div>
-        <div class="item-desc">Bright, root-driven gentian amaro — clean and lightly bitter; over ice with an orange twist</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Amaro Sfumato Rabarbaro</span><span class="item-price">$10</span></div>
-        <div class="item-prod">Antica Erboristeria Cappelletti · Trentino</div>
-        <div class="item-desc">Smoky alpine rhubarb, dark and bittersweet — after dinner, neat or over ice</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Limoncello Italiano</span><span class="item-price">$9</span></div>
-        <div class="item-prod">Vita Vera · Italia</div>
-        <div class="item-desc">Bright, sweet lemon, ice cold — the only proper way to end</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Bomba Carta</span><span class="item-price">$16</span></div>
-        <div class="item-prod">Silvio Carta · Sardegna</div>
-        <div class="item-desc">Explosive Sardinian amaro — wild mountain herbs and rare strawberry-tree honey, bittersweet and balsamic; a perfect after-dinner pour</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Moscato d'Asti "Santo Stefano" <span class="flag">— 375 ml</span></span><span class="item-price">$15 / $40</span></div>
-        <div class="item-prod">Ceretto · Piemonte</div>
-        <div class="item-desc">A gently sweet, lightly frizzante dessert wine, low in alcohol — peach, apricot and orange blossom with a honeyed lift; lovely with the Tiramisù</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Rubi” Red Dessert Wine</span><span class="item-price">$16</span></div>
-        <div class="item-prod">Bacovino, 2020 · Red Mountain, WA</div>
-        <div class="item-desc">A Washington twist on a traditional Portuguese-style dessert wine — silky red fruit, balanced sweetness and white pepper, with a lengthy candied finish; the perfect partner for the tiramisù</div>
-      </div>
-    </div>
-
-    <div class="note">Wine pairing available upon request</div>
-
-  </section>
-
-  <section class="panel" id="panel-celeb" role="tabpanel" aria-labelledby="rt-celeb">
-    <div class="gb" style="text-align:center;font-style:italic;color:var(--quiet);margin-bottom:8px;">Our finest bottles, for the table that's celebrating</div>
-    <div class="course">
-      <div class="course-title">Celebration Wines</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">“Millesimato” Alta Langa DOCG Pas Dosé</span><span class="item-price">$92</span></div>
-        <div class="item-prod">Contratto, 2021 · Piemonte</div>
-        <div class="item-desc">From Italy's oldest house of traditional-method sparkling wine, founded 1867 — 80% Pinot Nero, 20% Chardonnay, hand-picked from high-altitude vineyards and aged over three years on the lees. Fine, persistent bubbles; white flowers, citrus, and brioche, dry and vinous with real depth; the celebration bottle</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Ciacci Piccolomini Brunello di Montalcino</span><span class="item-price">$190</span></div>
-        <div class="item-prod">Ciacci Piccolomini d'Aragona, 2020 · Toscana</div>
-        <div class="item-desc">100% Sangiovese Grosso from the Pianrosso vineyard, ~3 years in Slavonian oak — intensely perfumed: dried flowers, red berry, spice and fresh mushroom; full-bodied yet warm and soft, with fine tannins and incredible length. Beautiful with the Meatballs, the Porchetta, or the Genovese di Napoli</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Barbaresco Riserva "Baluchin" DOCG</span><span class="item-price">$224</span></div>
-        <div class="item-prod">Cocito, 2017 · Neive, Piemonte</div>
-        <div class="item-desc">A wine born of friendship — Ezio Cocito's tiny Baluchin vineyard, farmed with guidance from Giorgio Rivetti of La Spinetta, produced only in the best vintages and only as a Riserva. 100% Nebbiolo from a single high-altitude cru; dark cassis and plum, crushed rose, resin and tea leaf, built for the cellar; our top bottle, for the Porchetta or aged cheese</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">La Spinetta "Garretti" Barolo DOCG</span><span class="item-price">$240</span></div>
-        <div class="item-prod">La Spinetta, 2021 · Piemonte</div>
-        <div class="item-desc">100% Nebbiolo from Grinzane Cavour, 20 months in French oak — sweet and savory herbs, tobacco, mint, liquorice, roses and spice; full-bodied, dense and silky, built for the cellar. Pour it with the Porchetta, the Genovese di Napoli, or the Meatballs</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Amarone della Valpolicella Classico Riserva DOCG</span><span class="item-price">$268</span></div>
-        <div class="item-prod">Tenuta Santa Maria di Gaetano Bertani · Veneto</div>
-        <div class="item-desc">Ruby red with garnet reflections; preserved cherry, spice and dried rose petal lend complexity and elegance, while the palate is warm and subtle — well-structured and full, with velvety tannins and an elegant acidity and freshness. 97 points, Decanter. A profound, ageworthy Amarone for the Porchetta, the Genovese di Napoli, or aged cheese</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Capichera "VT" Vendemmia Tardiva</span><span class="item-price">$300</span></div>
-        <div class="item-prod">Capichera, 2022 · Gallura, Sardegna</div>
-        <div class="item-desc">One of Sardinia's greatest whites — Gallura's most celebrated Vermentino, from late-harvested grapes and aged in oak: powerful yet dry, with candied stone fruit, dried herbs, honey and a deep, saline minerality that lingers. A collector's bottle for a special occasion — beautiful with the Fregula ai Frutti di Mare, or savored on its own</div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Barolo "Monvigliero" DOCG</span><span class="item-price">$460</span></div>
-        <div class="item-prod">Fratelli Alessandria, 2021 · Verduno, Piemonte</div>
-        <div class="item-desc">The crown jewel of our list — 100% Nebbiolo from Monvigliero, the most storied grand cru of Verduno, farmed by Fratelli Alessandria since the 19th century. Traditional, large-cask aging gives a wine of extraordinary perfume and finesse: rose petal, wild cherry, blood orange, white pepper and crushed stone, with silken tannins and a finish that seems to never end. A singular, ageworthy bottle for the most special occasion — the Porchetta, aged cheese, or simply a night to remember</div>
-      </div>
-    </div>
-
-    <div class="course">
-      <div class="course-title">Reserve Spirits</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Yamazaki 12 Year Single Malt</span><span class="item-price">$45 / $80</span></div>
-        <div class="item-prod">Suntory · Japan</div>
-        <div class="item-desc">Japan's benchmark single malt, aged 12 years — honeyed stone fruit, candied orange and a whisper of Mizunara-oak incense; silky and long. $45 single pour / $80 double</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-na" role="tabpanel" aria-labelledby="rt-na">
-    <div class="course">
-      <div class="course-title">N/A &amp; Soft Drinks</div>
-      <div class="course-sub">Soft drinks</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Coca Cola, Coca Cola Zero, Sprite, Ginger Ale, San Pellegrino Sodas</span><span class="item-price">$4</span></div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">San Pellegrino Sparkling Water <span class="flag">— small</span></span><span class="item-price">$3</span></div>
-      </div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">San Pellegrino Sparkling Water <span class="flag">— 1 liter</span></span><span class="item-price">$6</span></div>
-      </div>
-      <div class="course-sub">NA Beer</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">Heineken</span><span class="item-price">$7.50</span></div>
-      </div>
-      <div class="course-sub">NA Spirits</div>
-      <div class="item">
-        <div class="item-line"><span class="item-name">San Bitter, Crodino</span><span class="item-price">$6</span></div>
-      </div>
-    </div>
-  </section>
-
-
-
-
+  <div class="footer">
+For parties of 6 or more, 20% gratuity. For parties of 8 or more, please contact us for a family-style meal.
+  </div>
 
 </div>
 </body>
